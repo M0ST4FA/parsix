@@ -1,0 +1,914 @@
+\hypertarget{_p_production_8h_source}{}\doxysection{PProduction.\+h}
+\mbox{\hyperlink{_p_production_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <exception>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_p_exceptions_8h}{PExceptions.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_p_stack_8h}{PStack.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Logger.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}common.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacem0st4fa}{m0st4fa}}\ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ SymbolT>}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{class\ }GrammaticalSymbolString;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ SymbolT,\ \textcolor{keyword}{typename}\ ProductionElementT>}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classm0st4fa_1_1_production_record}{ProductionRecord}}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }StackType\ =\ StackType<ProductionElementT>;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{SymbolStringType}}\ =\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{GrammaticalSymbolString<SymbolT>}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ m\_Size\ =\ 0;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ Logger\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_ac7f59e06146ca6408823b82bf0d23029}{p\_Logger}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ SymbolT\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a4035c8aae37da83295a9b4bf6ee15c23}{prodHead}}\ =\ SymbolT\{\};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ std::vector<ProductionElementT>\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_ae8bfd38d1384efa54c01d65e8a9d5b9d}{prodBody}};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a26c27abb26ea9c09361103ca6d06322a}{prodNumber}}\ =\ 0;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a96550888aee622a25f57f8d495c0b8bb}{postfixAction}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a38dbff156fdc69304c20f7f906fae65c}{ProductionRecord}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a41bf08f0c71d13e9382d702f203a463f}{ProductionRecord}}(\textcolor{keyword}{const}\ SymbolT\&\ head,\ \textcolor{keyword}{const}\ std::vector<ProductionElementT>\&\ body,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ number,\ \textcolor{keywordtype}{void}*\ postfixAct\ =\ \textcolor{keyword}{nullptr})\ :\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a4035c8aae37da83295a9b4bf6ee15c23}{prodHead}}\{\ head\ \},\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_ae8bfd38d1384efa54c01d65e8a9d5b9d}{prodBody}}\{\ body\ \},\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a26c27abb26ea9c09361103ca6d06322a}{prodNumber}}\{\ number\ \},\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a96550888aee622a25f57f8d495c0b8bb}{postfixAction}}\ \{\ postfixAct\ \}\ \{}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ head\ must\ be\ a\ non-\/terminal}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (head.isTerminal)\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>p\_Logger.log(LoggerInfo::ERR\_INVALID\_VAL,\ \textcolor{stringliteral}{"{}The\ head\ of\ a\ production\ must\ be\ a\ non-\/terminal."{}});}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::logic\_error(\textcolor{stringliteral}{"{}The\ head\ of\ a\ production\ must\ be\ a\ non-\/terminal."{}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ body\ cannot\ be\ empty}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classm0st4fa_1_1_production_record_ae8bfd38d1384efa54c01d65e8a9d5b9d}{prodBody}}.empty())\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>p\_Logger.log(LoggerInfo::ERR\_EMPTY\_PROD\_BODY,\ \textcolor{stringliteral}{"{}The\ body\ of\ a\ production\ cannot\ be\ empty."{}});}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::logic\_error(\textcolor{stringliteral}{"{}The\ body\ of\ a\ production\ cannot\ be\ empty."{}});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Size\ =\ std::count\_if(\mbox{\hyperlink{classm0st4fa_1_1_production_record_ae8bfd38d1384efa54c01d65e8a9d5b9d}{prodBody}}.begin(),\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_ae8bfd38d1384efa54c01d65e8a9d5b9d}{prodBody}}.end(),\ [\textcolor{keyword}{this}](\textcolor{keyword}{const}\ ProductionElementT\&\ prodElement)\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ count\ an\ element\ only\ if\ it\ is\ a\ grammar\ symbol}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ prodElement.type\ ==\ ProdElementType::PET\_GRAM\_SYMBOL;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classm0st4fa_1_1_production_record}{ProductionRecord}}\&\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a9ba4bb133a7472ebfc67553ac3370004}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record}{ProductionRecord}}\&\ other)\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a4035c8aae37da83295a9b4bf6ee15c23}{prodHead}}\ =\ other.\mbox{\hyperlink{classm0st4fa_1_1_production_record_a4035c8aae37da83295a9b4bf6ee15c23}{prodHead}};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classm0st4fa_1_1_production_record_ae8bfd38d1384efa54c01d65e8a9d5b9d}{prodBody}}\ =\ other.\mbox{\hyperlink{classm0st4fa_1_1_production_record_ae8bfd38d1384efa54c01d65e8a9d5b9d}{prodBody}};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a26c27abb26ea9c09361103ca6d06322a}{prodNumber}}\ =\ other.\mbox{\hyperlink{classm0st4fa_1_1_production_record_a26c27abb26ea9c09361103ca6d06322a}{prodNumber}};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Size\ =\ other.m\_Size;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_adfa09b11eedcb5d78bef52f349329394}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record}{ProductionRecord}}\&\ rhs)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ their\ heads\ are\ not\ equal,\ they\ are\ not\ equal}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>prodHead\ !=\ rhs.\mbox{\hyperlink{classm0st4fa_1_1_production_record_a4035c8aae37da83295a9b4bf6ee15c23}{prodHead}})}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ their\ heads\ are\ equal,\ then\ they\ are\ equal\ if\ their\ }}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bodies\ are\ also\ equal}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>prodBody\ ==\ rhs.\mbox{\hyperlink{classm0st4fa_1_1_production_record_ae8bfd38d1384efa54c01d65e8a9d5b9d}{prodBody}};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{operator}\ std::string()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_record_a14edf8aa0d229a1a2b873018cc8ba418}{toString}}();}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{operator}\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{SymbolStringType}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_record_a57f18600efeac242715cfbd464b60fdd}{toSymbolString}}();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_aa76174aa0afb0b94afaa032fecd3affa}{begin}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>prodBody.begin();\ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_aba5305779b8e02632104f56450b5998b}{rbegin}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>prodBody.rbegin();\ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a0c9754de0974742e7a64f87a2d81f85e}{end}}()\textcolor{keyword}{\ \ \ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>prodBody.end();\ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a0d6be8946825daf4543adf28de02885c}{rend}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>prodBody.rend();\ \}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ ProductionElementT\&\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a8782d913127a770742d2335efe03d831}{at}}(\textcolor{keywordtype}{size\_t}\ index)\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>prodBody.at(index);}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ ProductionElementT\&\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a5c2de11ef7e2d5b15511bc836d64e030}{at}}(\textcolor{keywordtype}{size\_t}\ index)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>prodBody.at(index);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ ProductionElementT\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_af395031b3c9c25c9068a6a3cdd8f359a}{get}}(\textcolor{keywordtype}{size\_t}\ index)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_record_a8782d913127a770742d2335efe03d831}{at}}(index);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a14edf8aa0d229a1a2b873018cc8ba418}{toString}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ str\ =\ this-\/>prodHead.toString()\ +\ \textcolor{stringliteral}{"{}\ -\/>"{}};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ body}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ ProductionElementT\&\ prodElement\ :\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_record_ae8bfd38d1384efa54c01d65e8a9d5b9d}{prodBody}})}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ str\ +=\ \textcolor{stringliteral}{"{}\ "{}}\ +\ (std::string)prodElement;}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ str;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{SymbolStringType}}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a57f18600efeac242715cfbd464b60fdd}{toSymbolString}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{SymbolStringType}}\ \textcolor{keywordtype}{string}\{\};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ ProductionElementT\&\ pe\ :\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_record_ae8bfd38d1384efa54c01d65e8a9d5b9d}{prodBody}})\ \{}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pe.type\ !=\ \mbox{\hyperlink{namespacem0st4fa_a728a56a7d23cf8ec33aac9f9b420ba04a42c1ebc8f84ef20ad44c7d006106e749}{ProdElementType::PET\_GRAM\_SYMBOL}})}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}.\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_ac24ebae3e5d95e2cb637287860a910fa}{push\_back}}(pe.as.gramSymbol);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a2e17913fcf5e14ba324e4256a46aa8c8}{string}};}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a6c61ab47e577778d23b70383b6cffa9e}{size}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>m\_Size;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a433eb0ae7804611a8928a62110980946}{contains}}(\textcolor{keyword}{const}\ SymbolT\&\ symbol)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ prodElement\ :\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_record_ae8bfd38d1384efa54c01d65e8a9d5b9d}{prodBody}})\ \{}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (prodElement.type\ !=\ \mbox{\hyperlink{namespacem0st4fa_a728a56a7d23cf8ec33aac9f9b420ba04a42c1ebc8f84ef20ad44c7d006106e749}{ProdElementType::PET\_GRAM\_SYMBOL}})}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ stack\ element\ is\ a\ grammar\ symbol}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (prodElement.as.gramSymbol\ ==\ symbol)}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we\ reach\ here,\ we\ didn't\ find\ the\ symbol\ (otherwise,\ we\ would've\ returned\ from\ the\ loop\ with\ \`{}true`)}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_a41d34342c7307da6b814ce5498573000}{isEpsilon}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_record_a433eb0ae7804611a8928a62110980946}{contains}}(SymbolT::EPSILON);}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ SymbolT\ \mbox{\hyperlink{classm0st4fa_1_1_production_record_ac7aee434be1b702022a0a53dcb242478}{getLastSymbol}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (std::find\_if(this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_record_aba5305779b8e02632104f56450b5998b}{rbegin}}(),\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_record_a0d6be8946825daf4543adf28de02885c}{rend}}(),\ [](\textcolor{keyword}{const}\ ProductionElementT\&\ pe)\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pe.type\ ==\ \mbox{\hyperlink{namespacem0st4fa_a728a56a7d23cf8ec33aac9f9b420ba04a42c1ebc8f84ef20ad44c7d006106e749}{ProdElementType::PET\_GRAM\_SYMBOL}};}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \})-\/>as.gramSymbol);}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00168\ \ \ \ \ \};}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ SymbolT,\ \textcolor{keyword}{typename}\ ProductionElementT>}
+\DoxyCodeLine{00171\ \ \ \ \ std::ostream\&\ \mbox{\hyperlink{namespacem0st4fa_a953562dc5a196e68049cec40a11b4894}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classm0st4fa_1_1_production_record}{ProductionRecord<SymbolT,\ ProductionElementT>}}\&\ prod)\ \{}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::cout\ <<\ prod.\mbox{\hyperlink{classm0st4fa_1_1_production_record_a14edf8aa0d229a1a2b873018cc8ba418}{toString}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00174\ \ \ \ \ \};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ TerminalT,\ \textcolor{keyword}{typename}\ VariableT>}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{GrammaticalSymbol}}\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_ab0cc22cd176732cb3cc9ec7d52988d2d}{isTerminal}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ TerminalT\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a5b1ac2eb6a13caa53869499a0136dfd9}{terminal}};}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ VariableT\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_ad324e9c556a6f4fe05cb90257a6b5eb9}{nonTerminal}};}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}{as}};}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{GrammaticalSymbol}}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a20ccf8a32c75436367f927658de63020}{EPSILON}};}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{GrammaticalSymbol}}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a450a38790a0ed9eb39da48059b0de97f}{END\_MARKER}};}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ TokenT>}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ \textcolor{keyword}{requires}\ (TokenT\ tok)\ \{\ tok.name;\ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_af4aa29306d576c34f01d97804e351501}{operator==}}(\textcolor{keyword}{const}\ TokenT\&\ token)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>isTerminal)}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}{as}}.terminal\ ==\ token.name;}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_abda009a3c5b5aa62313b52711824e4f8}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{GrammaticalSymbol}}\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_ab0cc22cd176732cb3cc9ec7d52988d2d}{isTerminal}})}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}{as}}.terminal\ ==\ other.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}{as}}.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a5b1ac2eb6a13caa53869499a0136dfd9}{terminal}};}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}{as}}.nonTerminal\ ==\ other.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}{as}}.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_ad324e9c556a6f4fe05cb90257a6b5eb9}{nonTerminal}};}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a64fa2ba6c1c4d4fe81fa9aa8ce098cad}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{GrammaticalSymbol}}\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ one\ is\ a\ terminal\ and\ the\ other\ is\ non-\/terminal}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_ab0cc22cd176732cb3cc9ec7d52988d2d}{isTerminal}}\ !=\ other.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_ab0cc22cd176732cb3cc9ec7d52988d2d}{isTerminal}})}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_ab0cc22cd176732cb3cc9ec7d52988d2d}{isTerminal}}\ -\/\ other.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_ab0cc22cd176732cb3cc9ec7d52988d2d}{isTerminal}};}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ both\ are\ terminals}}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_ab0cc22cd176732cb3cc9ec7d52988d2d}{isTerminal}}\ \&\&\ other.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_ab0cc22cd176732cb3cc9ec7d52988d2d}{isTerminal}})}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{size\_t})this-\/>\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}{as}}.terminal\ <\ (size\_t)other.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}{as}}.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a5b1ac2eb6a13caa53869499a0136dfd9}{terminal}};}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ both\ are\ non-\/terminals}}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{size\_t})this-\/>\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}{as}}.nonTerminal\ <\ (size\_t)other.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}{as}}.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_ad324e9c556a6f4fe05cb90257a6b5eb9}{nonTerminal}};}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keyword}{operator}\ std::string()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_acc14ff918398a4a217ba7f60f9cb25dc}{toString}}();}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_acc14ff918398a4a217ba7f60f9cb25dc}{toString}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>isTerminal\ ?\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_acc14ff918398a4a217ba7f60f9cb25dc}{toString}}(this-\/>\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}{as}}.terminal)\ :\ std::string(\textcolor{stringliteral}{"{}<"{}})\ +\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_acc14ff918398a4a217ba7f60f9cb25dc}{toString}}(this-\/>\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}{as}}.nonTerminal)\ +\ \textcolor{stringliteral}{"{}>"{}};}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \ \ \};}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ TerminalT,\ \textcolor{keyword}{typename}\ VariableT>}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keyword}{const}\ GrammaticalSymbol<TerminalT,\ VariableT>}
+\DoxyCodeLine{00238\ \ \ \ \ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a20ccf8a32c75436367f927658de63020}{GrammaticalSymbol<TerminalT,\ VariableT>::EPSILON}}\ =\ \{\ \textcolor{keyword}{true},\ \{.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a5b1ac2eb6a13caa53869499a0136dfd9}{terminal}}\ =\ TerminalT::T\_EPSILON\}\ \};}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ TerminalT,\ \textcolor{keyword}{typename}\ VariableT>}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keyword}{const}\ GrammaticalSymbol<TerminalT,\ VariableT>}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a450a38790a0ed9eb39da48059b0de97f}{GrammaticalSymbol<TerminalT,\ VariableT>::END\_MARKER}}\ =\ \{\ \textcolor{keyword}{true},\ \{.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a5b1ac2eb6a13caa53869499a0136dfd9}{terminal}}\ =\ TerminalT::T\_EOF\}\ \};}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ TerminalT,\ \textcolor{keyword}{typename}\ VariableT>}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{Symbol}}\ =\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{GrammaticalSymbol<TerminalT,\ VariableT>}};}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ TerminalT,\ \textcolor{keyword}{typename}\ VariableT>}
+\DoxyCodeLine{00248\ \ \ \ \ std::ostream\&\ \mbox{\hyperlink{namespacem0st4fa_a953562dc5a196e68049cec40a11b4894}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{Symbol<TerminalT,\ VariableT>}}\&\ symbol)\ \{}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os\ <<\ symbol.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_acc14ff918398a4a217ba7f60f9cb25dc}{toString}}();}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00252\ \ \ \ \ \}}
+\DoxyCodeLine{00253\ \ \ \ \ }
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ SymbolT>}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{GrammaticalSymbolString}}\ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }SymbolType\ =\ SymbolT;}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }SetType\ =\ std::set<SymbolType>;}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }SymVecType\ =\ std::vector<SymbolType>;}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }SymVecItType\ =\ std::vector<SymbolType>::iterator;}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }FRSTVecType\ =\ std::vector<SetType>;}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ Logger\ m\_Logger;}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_CalculatedFIRST\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ SetType\ FIRST\{\ \};}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ SymVecType\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a49d8be396ba54551813a001c5f62ef2a}{symbols}};}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a29b75433e3909b2d8a6e395eaaa412c4}{GrammaticalSymbolString}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_add55763687d4bae4b94a1f76df0b064d}{GrammaticalSymbolString}}(\textcolor{keyword}{const}\ std::initializer\_list<SymbolType>\&\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a49d8be396ba54551813a001c5f62ef2a}{symbols}})\ :\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a49d8be396ba54551813a001c5f62ef2a}{symbols}}\{\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a49d8be396ba54551813a001c5f62ef2a}{symbols}}\ \}\ }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \{\};}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_aabde4cc54d60b421b848846f4a2af984}{GrammaticalSymbolString}}(\textcolor{keyword}{const}\ SymVecItType\ begin,\ \textcolor{keyword}{const}\ SymVecItType\ end)\ :\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a49d8be396ba54551813a001c5f62ef2a}{symbols}}\{\ begin,\ end\ \}}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \{\};}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keyword}{operator}\ std::string()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a3b34ad24bb130bb1c795104fedb17ca4}{toString}}();}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a3b34ad24bb130bb1c795104fedb17ca4}{toString}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ temp;}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ symbol\ string\ is\ empty}}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>symbols.empty())}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ R\textcolor{stringliteral}{"{}("{}"{})"{};}}
+\DoxyCodeLine{00287\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{00288\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ if\ it\ is\ not\ empty\ (contains\ at\ least\ one\ element)}}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ temp\ +=\ (std::string)this-\/>symbols.at(0);}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&\ sym\ :\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a49d8be396ba54551813a001c5f62ef2a}{symbols}})\ \{}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)\ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ temp\ +=\ \textcolor{stringliteral}{"{}\ "{}}\ +\ sym.toString();}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ temp;}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_ac24ebae3e5d95e2cb637287860a910fa}{push\_back}}(\textcolor{keyword}{const}\ SymbolType\&\ symbol)\ \{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>symbols.push\_back(symbol);}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a78e23fcc4c3a30ec262e83af02fec79e}{pop\_back}}()\ \{}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>symbols.pop\_back();}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_aab4d004914ab6b13ded761093d2cf1b2}{calculateFIRST}}(\textcolor{keyword}{const}\ FRSTVecType\&);}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a0012a7045adccdf1971074cf44aa6f8f}{FIRSTCalculated}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>m\_CalculatedFIRST;\ \};}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ SetType\&\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a333715649c6ecc8a863125f6b7a0f633}{getFIRST}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ FIRST\ is\ already\ calcualted}}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>m\_CalculatedFIRST)}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>FIRST;\ }
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::string\ msg\ =\ \textcolor{stringliteral}{"{}The\ FIRST\ set\ of\ the\ non-\/terminals\ of\ this\ grammar\ symbol\ string\ is\ yet\ to\ be\ calculated."{}};}
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ FIRST\ is\ not\ already\ calculated}}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.log(LoggerInfo::ERR\_MISSING\_VAL,\ msg);}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(msg);}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00332\ \ \ \ \ \};}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ SymbolT>}
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{SymbolString}}\ =\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{GrammaticalSymbolString<SymbolT>}};}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00337\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ TerminalT,\ \textcolor{keyword}{typename}\ VariableT>}
+\DoxyCodeLine{00338\ \ \ \ \ std::ostream\&\ \mbox{\hyperlink{namespacem0st4fa_a953562dc5a196e68049cec40a11b4894}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{SymbolString}}<\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{Symbol<TerminalT,\ VariableT>}}>\&\ symbolString)\ \{}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ std::cout\ <<\ symbolString.toString();}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00343\ \ \ \ \ \}}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ProductionT>}
+\DoxyCodeLine{00349\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classm0st4fa_1_1_production_vector}{ProductionVector}}\ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }ProdRec\ =\ ProductionT;}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }SymbolT\ =\ \textcolor{keyword}{decltype}(ProductionT\{\}.prodHead);}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }VariableType\ =\ \textcolor{keyword}{decltype}(SymbolT\{\}.as.nonTerminal);}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }VecType\ =\ std::vector<ProdRec>;}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ consider\ making\ this\ use\ terminals\ instead\ for\ storage\ efficiencey}}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }SetType\ =\ std::vector<std::set<SymbolT>>;}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }SymbolString\ =\ SymbolString<SymbolT>;}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ SetType\ FIRST\ \{0\};}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ SetType\ FOLLOW\ \{0\};}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_CalculatedFIRST\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_CalculatedFOLLOW\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_calc\_FIRST\_of\_prod(\textcolor{keyword}{const}\ ProdRec\&,\ \textcolor{keyword}{const}\ SymbolT\&,\ \textcolor{keywordtype}{bool}\&,\ \textcolor{keywordtype}{size\_t});}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_calc\_FOLLOW\_of\_nonTerminal(VariableType,\ \textcolor{keywordtype}{size\_t},\ \textcolor{keywordtype}{size\_t});}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00379\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ VecType\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}}\{\};}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ Logger\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a39aab496a4f89cef4d3b62ad30d9e77c}{m\_Logger}}\{\};}
+\DoxyCodeLine{00382\ }
+\DoxyCodeLine{00383\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00384\ }
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ constructors}}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a2edf705c6c62605cacef65b6cd80bf62}{ProductionVector}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}(\textcolor{keyword}{true})\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a2edf705c6c62605cacef65b6cd80bf62}{ProductionVector}}(\textcolor{keyword}{const}\ VecType\&\ vec)\ :\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}}\ \{\ vec\ \}\ \{\};}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ production\ vector\ access\ methods}}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ VecType\&\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a0e1dd45ac9d11074f9c3ab6e2b3efd16}{getProdVector}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}};\ \}}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ VecType\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a763215209c3260eb11218aa52856cc02}{getProdVectorValue}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}};\ \}}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a2814cfd772f03bfaa474784243f6572d}{pushProduction}}(\textcolor{keyword}{const}\ ProdRec\&\ prod)\ \{\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}}.push\_back(prod);\ \}}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ element\ access\ methods}}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ ProdRec\&\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a7a7e9a049901bd6a4ce97c876f699bf9}{operator\ []\ }}(\textcolor{keywordtype}{size\_t}\ i)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}}.at(i);\ \}}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ ProdRec\&\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a9d9eda2c74ae36ad919f427e3534a7b9}{at}}(\textcolor{keywordtype}{size\_t}\ i)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}}.at(i);\ \};}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a70ca64406cb13d4b6c61f261c26279d2}{getVector}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}};\ \}}
+\DoxyCodeLine{00398\ }
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ other\ methods}}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3d72d4ee9a572ed1a392c6a8cfe66b33}{begin}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}}.begin();\ \}}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_ab0c8a483b239e5287e47d83dcbdaeede}{end}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}}.end();\ \}}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a0576e2d853791d54dbe22d8e6dedb0eb}{size}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}}.size();\ \}}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a4fb463305c7b276ec6e8fefc781c076a}{clear}}()\ \{\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}}.clear();\ this-\/>FIRST.clear();\ this-\/>FOLLOW.clear();\ \}}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a5ae4c60abea89dcf6573921d21c884aa}{empty}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}}.empty();\ \}}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_ad425c26ad36ab3e83bc788d718163788}{push\_back}}(\textcolor{keyword}{const}\ ProductionT\&\ production)\ \{\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}}.push\_back(production);\ \}}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a2d19ec55e9f01ccd7d1e37e78893cf97}{pop\_back}}()\ \{\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}}.pop\_back();\ \}}
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ conversion\ methods}}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}(\textcolor{keyword}{false})\ \textcolor{keyword}{operator}\ std::string()\ \textcolor{keyword}{const}\ \{}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{toString}}();}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{toString}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00413\ }
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ str;}
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ prod\ :\ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\_Vector}})}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ str\ +=\ (std::string)prod\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ str;}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00421\ }
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ FIRST\ and\ FOLLOW\ calculation\ methods}}
+\DoxyCodeLine{00431\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ calculateFIRST();}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_ad3844e204aa6ac18fa8a574fd3d21d87}{FIRSTCalculated}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>m\_CalculatedFIRST;\ \};}
+\DoxyCodeLine{00433\ }
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ std::set<SymbolT>\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a94194be9ecc6157931ac83116f4187f9}{getFIRST}}(\textcolor{keyword}{decltype}(SymbolT().as.nonTerminal)\ nonTerminal)\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ FIRST\ is\ already\ calculated}}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>m\_CalculatedFIRST)}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>FIRST[(size\_t)nonTerminal];}
+\DoxyCodeLine{00444\ }
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ handle\ the\ non-\/presence\ of\ the\ FIRST\ set\ for\ this\ production\ vector}}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a39aab496a4f89cef4d3b62ad30d9e77c}{m\_Logger}}.log(LoggerInfo::ERR\_MISSING\_VAL,\ \textcolor{stringliteral}{"{}The\ FIRST\ set\ of\ the\ non-\/terminals\ of\ this\ production\ vector\ is\ yet\ to\ be\ calculated."{}});}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{structm0st4fa_1_1_missing_value_exception}{m0st4fa::MissingValueException}}(\ \textcolor{stringliteral}{"{}The\ FIRST\ set\ of\ the\ non-\/terminals\ of\ this\ production\ vector\ is\ yet\ to\ be\ calculated."{}}\ );}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00449\ }
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ SetType\&\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a5ae3d2046b92ddfb71fd92ac915bb0af}{getFIRST}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>FIRST;}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00456\ }
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3d90ec1b6a1c367155a85773b90c0c33}{calculateFOLLOW}}();}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a03f7b1f06686ead540fc7b11891b16e3}{FOLLOWCalculated}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>m\_CalculatedFOLLOW;\ \};}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ std::set<SymbolT>\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_ab0cf1339ea2d18ae121cb979ccf9252a}{getFOLLOW}}(\textcolor{keyword}{const}\ \textcolor{keyword}{decltype}(SymbolT().as.nonTerminal)\ nonTerminal)\ \{}
+\DoxyCodeLine{00476\ }
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ FOLLOW\ is\ already\ calculated}}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>m\_CalculatedFOLLOW)}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>FOLLOW[(size\_t)nonTerminal];}
+\DoxyCodeLine{00480\ }
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ handle\ the\ non-\/presence\ of\ the\ FOLLOW\ set\ for\ this\ production\ vector}}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a39aab496a4f89cef4d3b62ad30d9e77c}{m\_Logger}}.log(LoggerInfo::ERR\_MISSING\_VAL,\ \textcolor{stringliteral}{"{}The\ FOLLOW\ set\ of\ the\ non-\/terminals\ of\ this\ production\ vector\ is\ yet\ to\ be\ calculated."{}});}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{structm0st4fa_1_1_missing_value_exception}{MissingValueException}}(\textcolor{stringliteral}{"{}The\ FOLLOW\ set\ of\ the\ non-\/terminals\ of\ this\ production\ vector\ is\ yet\ to\ be\ calculated."{}});}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ SetType\&\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a11c261bdb92e75a3169026f1ebec3208}{getFOLLOW}}()\ \{}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>FOLLOW;}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00491\ }
+\DoxyCodeLine{00492\ \ \ \ \ \};}
+\DoxyCodeLine{00493\ }
+\DoxyCodeLine{00494\ \ \ \ \ \textcolor{comment}{//\ ALIASES}}
+\DoxyCodeLine{00495\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ProductionT>}
+\DoxyCodeLine{00496\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classm0st4fa_1_1_production_vector}{ProdVec}}\ =\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{ProductionVector<ProductionT>}};}
+\DoxyCodeLine{00497\ \}}
+\DoxyCodeLine{00498\ }
+\DoxyCodeLine{00499\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacem0st4fa}{m0st4fa}}\ \{}
+\DoxyCodeLine{00500\ }
+\DoxyCodeLine{00542\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ProductionT>}
+\DoxyCodeLine{00543\ \ \ \ \ \textcolor{keywordtype}{bool}\ ProductionVector<ProductionT>::calculateFIRST()}
+\DoxyCodeLine{00544\ \ \ \ \ \{}
+\DoxyCodeLine{00545\ }
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ FIRST\ is\ already\ calculated,\ return}}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>m\_CalculatedFIRST)\ \{}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(\textcolor{stringliteral}{"{}FIRST\ set\ for\ this\ production\ vector\ has\ already\ been\ calculated!"{}});}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00551\ }
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }SetPair\ =\ std::pair<std::set<SymbolT>,\ \textcolor{keywordtype}{bool}>;}
+\DoxyCodeLine{00553\ }
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ resize\ the\ FIRST\ set\ to\ accommodate\ an\ entry\ for\ all\ non-\/terminals}}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ this-\/>FIRST.resize((\textcolor{keywordtype}{size\_t})\textcolor{keyword}{decltype}(SymbolT().as.nonTerminal)::NT\_COUNT);}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ added\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00557\ }
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(\textcolor{stringliteral}{"{}\(\backslash\)nCALCULATING\ FIRST\ SET:\(\backslash\)n"{}});}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(std::format(\textcolor{stringliteral}{"{}Productions:\(\backslash\)n\ \{\}"{}},\ (std::string)*\textcolor{keyword}{this}));}
+\DoxyCodeLine{00560\ }
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00562\ }
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ loop\ through\ every\ production}}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ ProdRec\&\ prod\ :\ this-\/>getProdVector())\ \{}
+\DoxyCodeLine{00565\ }
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ loop\ through\ every\ symbol\ of\ the\ production}}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ index\ =\ 1;\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&\ stackElement\ :\ prod.prodBody)\ \{}
+\DoxyCodeLine{00568\ }
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ current\ stack\ element\ of\ the\ production\ is\ not\ a\ grammar\ symbol}}
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stackElement.type\ !=\ \mbox{\hyperlink{namespacem0st4fa_a728a56a7d23cf8ec33aac9f9b420ba04a42c1ebc8f84ef20ad44c7d006106e749}{ProdElementType::PET\_GRAM\_SYMBOL}})}
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ on\ to\ the\ next\ stack\ element\ of\ the\ production}}
+\DoxyCodeLine{00572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00573\ }
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ current\ stack\ element\ is\ a\ grammar\ symbol}}
+\DoxyCodeLine{00575\ }
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ the\ symbol\ and\ its\ first\ set\ (if\ any)}}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ SymbolT\&\ symbol\ =\ stackElement.as.gramSymbol;}
+\DoxyCodeLine{00578\ }
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ continue\ or\ not?}}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ cont\ =\ \_calc\_FIRST\_of\_prod(prod,\ symbol,\ added,\ index);}
+\DoxyCodeLine{00581\ }
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ increment\ the\ index\ of\ the\ current\ element}}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00584\ }
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (-\/not\ cont)}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00587\ }
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00589\ }
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00591\ }
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(std::format(\textcolor{stringliteral}{"{}Is\ there\ any\ new\ terminal\ added\ in\ this\ round?\ \{\}"{}},\ added\ ?\ \textcolor{stringliteral}{"{}true"{}}\ :\ \textcolor{stringliteral}{"{}false"{}}));}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (-\/not\ added)\ \{}
+\DoxyCodeLine{00594\ }
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ (extraRound-\/-\/)}}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ //\ reduce\ the\ number\ of\ rounds\ and\ continue\ to\ the\ next\ iteration}}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ continue;}}
+\DoxyCodeLine{00599\ }
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(\textcolor{stringliteral}{"{}Finished\ creating\ the\ FIRST\ set\ of\ all\ non-\/terminals\ of\ this\ grammar"{}});}
+\DoxyCodeLine{00601\ }
+\DoxyCodeLine{00602\ \textcolor{preprocessor}{\#ifdef\ \_DEBUG\ \ \ }}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ \textcolor{keyword}{const}\ std::set<SymbolT>\&set\ :\ this-\/>FIRST)\ \{}
+\DoxyCodeLine{00604\ }
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ set\ is\ empty,\ continue\ (in\ this\ case\ it\ does\ not\ belong\ to\ a\ non-\/terminal)}}
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (set.empty())\ \{}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00610\ }
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ variable}}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ variable\ =\ (\textcolor{keyword}{decltype}(set.start()-\/>as.nonTerminal))i++;}
+\DoxyCodeLine{00613\ }
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(std::format(\textcolor{stringliteral}{"{}FIRST(\{\})\ =\ \{\}"{}},\ \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{toString}}(variable),\ \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{m0st4fa::toString}}(set)));}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00616\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00617\ }
+\DoxyCodeLine{00618\ }
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00621\ }
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \ \ \ \ added\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00624\ }
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we\ reached\ here,\ that\ means\ that\ FIRST\ has\ been\ calculated}}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>m\_CalculatedFIRST\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00627\ \ \ \ \ \}}
+\DoxyCodeLine{00628\ }
+\DoxyCodeLine{00629\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ProductionT>}
+\DoxyCodeLine{00630\ \ \ \ \ \textcolor{keywordtype}{bool}\ ProductionVector<ProductionT>::\_calc\_FIRST\_of\_prod(\textcolor{keyword}{const}\ ProdRec\&\ prod,\ \textcolor{keyword}{const}\ SymbolT\&\ symbol,\ \textcolor{keywordtype}{bool}\&\ added,\ \textcolor{keywordtype}{size\_t}\ index)}
+\DoxyCodeLine{00631\ \ \ \ \ \{}
+\DoxyCodeLine{00632\ }
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ SymbolT\&\ head\ =\ prod.prodHead;}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ setIndexH\ =\ (size\_t)head.as.nonTerminal;}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ std::set<SymbolT>\&\ fsetH\ =\ this-\/>FIRST[setIndexH];}
+\DoxyCodeLine{00636\ }
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ whether\ the\ first\ set\ contains\ epsilon}}
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ containsEpsilonH\ =\ fsetH.contains(SymbolT::EPSILON);}
+\DoxyCodeLine{00639\ }
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ symbol\ is\ a\ non-\/terminal}}
+\DoxyCodeLine{00641\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!symbol.isTerminal)\ \{}
+\DoxyCodeLine{00642\ }
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ the\ first\ set\ of\ the\ symbol\ \ }}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ setIndexN\ =\ (size\_t)symbol.as.nonTerminal;}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \ \ \ \ std::set<SymbolT>\&\ fsetN\ =\ this-\/>FIRST[setIndexN];}
+\DoxyCodeLine{00646\ }
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ whether\ the\ first\ set\ contains\ epsilon}}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ containsEpsilonN\ =\ fsetN.contains(SymbolT::EPSILON);}
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ symbol\ is\ the\ same\ as\ head}}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (symbol\ ==\ head)\ \{}
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1.\ if\ the\ first\ set\ does\ not\ contain\ epsilon}}
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (-\/not\ containsEpsilonN)}
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ on\ to\ the\ next\ production}}
+\DoxyCodeLine{00662\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00663\ }
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2.\ if\ FIRST\ contains\ epsilon}}
+\DoxyCodeLine{00665\ }
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ on\ to\ the\ next\ grammar\ symbol,\ which\ will\ automatically\ move\ on\ to\ the\ next\ production\ if\ this\ is\ the\ last\ grammar\ symbol}}
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Note:\ epsilon\ is\ already\ added\ (that's\ why\ we\ are\ here\ in\ the\ first\ place)}}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00670\ }
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ symbol\ is\ different\ from\ head}}
+\DoxyCodeLine{00685\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fsetN.empty())}
+\DoxyCodeLine{00686\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00687\ }
+\DoxyCodeLine{00688\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ loop\ through\ each\ symbol\ of\ the\ FIRST\ set\ of\ the\ current\ non-\/terminal}}
+\DoxyCodeLine{00689\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ symbol\ :\ fsetN)\ \{}
+\DoxyCodeLine{00690\ }
+\DoxyCodeLine{00691\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ skip\ to\ the\ next\ symbol\ if\ the\ current\ is\ epsilon\ (optimize\ this\ out\ if\ you\ could)}}
+\DoxyCodeLine{00692\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (symbol\ ==\ SymbolT::EPSILON)}
+\DoxyCodeLine{00693\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00694\ }
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ the\ symbol\ to\ the\ FIRST\ set\ of\ the\ head}}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ BUG:\ the\ symbol\ is\ inserted\ although\ it\ exists}}
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ p\ =\ this-\/>FIRST[setIndexH].insert(symbol);}
+\DoxyCodeLine{00698\ }
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ it\ was\ added,\ set\ the\ boolean}}
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p.second)\ \{}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ added\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00702\ }
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(}
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}Added\ terminal\ \{\}\ to\ FIRST(\{\}),\ which\ is\ now:\ \{\}"{}},}
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (std::string)symbol,}
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (std::string)head,}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{m0st4fa::toString}}(this-\/>FIRST[setIndexH])));}
+\DoxyCodeLine{00708\ }
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00711\ }
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ non-\/terminal\ contains\ epsilon}}
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (containsEpsilonN)\ \{}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ whether\ we\ are\ at\ the\ end\ of\ the\ production}}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ atEnd\ =\ index\ ==\ prod.prodBody.size();}
+\DoxyCodeLine{00716\ }
+\DoxyCodeLine{00717\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we\ are\ not\ at\ the\ end\ of\ the\ production}}
+\DoxyCodeLine{00718\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (-\/not\ atEnd)}
+\DoxyCodeLine{00719\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ continue\ to\ the\ next\ grammar\ symbol}}
+\DoxyCodeLine{00720\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00721\ }
+\DoxyCodeLine{00722\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we\ are\ at\ the\ end\ of\ the\ production}}
+\DoxyCodeLine{00723\ }
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (-\/not\ containsEpsilonH)\ \{}
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ epsilon\ to\ the\ FIRST\ set\ of\ the\ head}}
+\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ p\ =\ this-\/>FIRST[setIndexH].insert(SymbolT::EPSILON);}
+\DoxyCodeLine{00727\ }
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p.second)\ \{}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ added\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00730\ }
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(}
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}Added\ terminal\ \{\}\ to\ FIRST(\{\}),\ which\ is\ now:\ \{\}"{}},}
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (std::string)SymbolT::EPSILON,}
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (std::string)head,}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{m0st4fa::toString}}(this-\/>FIRST[setIndexH])));}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00738\ }
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00740\ }
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ does\ not,\ continue\ to\ the\ next\ grammar\ symbol}}
+\DoxyCodeLine{00742\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00743\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ epsilon\ to\ the\ FIRST\ set\ of\ the\ head}}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ p\ =\ this-\/>FIRST[setIndexH].insert(symbol);\ p.second)\ \{}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ added\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00753\ }
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}Added\ terminal\ \{\}\ to\ FIRST(\{\}),\ which\ is\ now:\ \{\}"{}},}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (std::string)symbol,}
+\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (std::string)head,}
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{m0st4fa::toString}}(this-\/>FIRST[setIndexH])));}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00760\ }
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ continue\ to\ the\ next\ production}}
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00764\ }
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ THIS\ IS\ UNREACHABLE}}
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ go\ to\ the\ next\ production\ by\ default}}
+\DoxyCodeLine{00767\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00768\ \ \ \ \ \}}
+\DoxyCodeLine{00769\ }
+\DoxyCodeLine{00770\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ProductionT>}
+\DoxyCodeLine{00771\ \ \ \ \ \textcolor{keywordtype}{bool}\ ProductionVector<ProductionT>::\_calc\_FOLLOW\_of\_nonTerminal(VariableType\ nonTerminal,\ \textcolor{keywordtype}{size\_t}\ prodIndex,\ \textcolor{keywordtype}{size\_t}\ variableIndex)}
+\DoxyCodeLine{00772\ \ \ \ \ \{}
+\DoxyCodeLine{00773\ }
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ head-\/related\ values}}
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ ProdRec\&\ production\ =\ this-\/>getProdVector().at(prodIndex);}
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ prodBdySz\ =\ production.prodBody.size();}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ SymbolT\&\ head\ =\ production.prodHead;}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ headIndex\ =\ (size\_t)head.as.nonTerminal;}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<SymbolT>\&\ headFollow\ =\ this-\/>FOLLOW.at(headIndex);}
+\DoxyCodeLine{00798\ }
+\DoxyCodeLine{00799\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ current\ symbol\ related\ values}}
+\DoxyCodeLine{00800\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ currSymIndex\ =\ (size\_t)nonTerminal;}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ std::set<SymbolT>\&\ currSymFollow\ =\ this-\/>FOLLOW.at(currSymIndex);}
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ added\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00803\ }
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ cpyToFollow\ =\ [\textcolor{keyword}{this},\ currSymIndex,\ nonTerminal,\ \&currSymFollow,\ \&added](\textcolor{keyword}{const}\ SymbolT\&\ sym)\ \{}
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ p\ =\ currSymFollow.insert(sym);}
+\DoxyCodeLine{00811\ }
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ a\ new\ element\ was\ added\ (exclude\ epsilon)}}
+\DoxyCodeLine{00813\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p.second\ \&\&\ *p.first\ !=\ SymbolT::EPSILON)\ \{}
+\DoxyCodeLine{00814\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ added\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00815\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(}
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}Added\ terminal\ \{\}\ to\ FOLLOW(\{\}),\ which\ is\ now:\ \{\}"{}},}
+\DoxyCodeLine{00817\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (std::string)sym,}
+\DoxyCodeLine{00818\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{toString}}(nonTerminal),}
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{m0st4fa::toString}}(this-\/>FOLLOW[currSymIndex])));}
+\DoxyCodeLine{00820\ }
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00822\ }
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00824\ }
+\DoxyCodeLine{00825\ }
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ test\ if\ this\ non-\/terminal\ is\ the\ last\ of\ its\ production\ body}}
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ lastSymbol\ =\ variableIndex\ ==\ prodBdySz\ -\/\ 1;}
+\DoxyCodeLine{00828\ }
+\DoxyCodeLine{00829\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ this\ is\ the\ last\ symbol\ of\ the\ production\ body}}
+\DoxyCodeLine{00830\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lastSymbol)\ \{}
+\DoxyCodeLine{00831\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ FOLLOW(head)\ to\ FOLLOW(currSymbol)}}
+\DoxyCodeLine{00832\ \ \ \ \ \ \ \ \ \ \ \ \ std::for\_each(headFollow.begin(),\ headFollow.end(),\ cpyToFollow);}
+\DoxyCodeLine{00833\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ added;}
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00835\ }
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ varIndex\ =\ variableIndex\ +\ 1;\ varIndex\ <\ prodBdySz;\ varIndex++)\ \{}
+\DoxyCodeLine{00837\ }
+\DoxyCodeLine{00838\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ the\ current\ symbol\ we\ are\ examining\ in\ the\ production\ is\ a\ grammar\ symbol\ }}
+\DoxyCodeLine{00839\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (production.prodBody.at(varIndex).type\ !=\ \mbox{\hyperlink{namespacem0st4fa_a728a56a7d23cf8ec33aac9f9b420ba04a42c1ebc8f84ef20ad44c7d006106e749}{ProdElementType::PET\_GRAM\_SYMBOL}})\ \{}
+\DoxyCodeLine{00840\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ we\ are\ at\ the\ end\ of\ the\ production}}
+\DoxyCodeLine{00841\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ atEnd\ =\ varIndex\ +\ 1\ ==\ prodBdySz;}
+\DoxyCodeLine{00842\ }
+\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ continue\ to\ the\ next\ symbol\ if\ we\ are\ not\ at\ the\ end\ of\ the\ production}}
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (-\/not\ atEnd)}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00846\ }
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we\ are\ at\ the\ end\ of\ the\ production\ add\ FOLLOW(head)\ to\ FOLLOW(currSym)}}
+\DoxyCodeLine{00848\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::for\_each(headFollow.begin(),\ headFollow.end(),\ cpyToFollow);}
+\DoxyCodeLine{00849\ }
+\DoxyCodeLine{00850\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00851\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00852\ }
+\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ SymbolT\ symbol\ =\ production.prodBody.at(varIndex).as.gramSymbol;}
+\DoxyCodeLine{00854\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ symIndex\ =\ (size\_t)symbol.as.nonTerminal;}
+\DoxyCodeLine{00855\ }
+\DoxyCodeLine{00856\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ symbol\ is\ a\ terminal}}
+\DoxyCodeLine{00857\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (symbol.isTerminal)\ \{}
+\DoxyCodeLine{00858\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ p\ =\ this-\/>FOLLOW.at(currSymIndex).insert(symbol);}
+\DoxyCodeLine{00859\ }
+\DoxyCodeLine{00860\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(}
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}Added\ terminal\ \{\}\ to\ FOLLOW(\{\}),\ which\ is\ now:\ \{\}"{}},}
+\DoxyCodeLine{00862\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (std::string)symbol,}
+\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{toString}}(nonTerminal),}
+\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{m0st4fa::toString}}(this-\/>FOLLOW[currSymIndex])));}
+\DoxyCodeLine{00865\ }
+\DoxyCodeLine{00866\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ whether\ a\ new\ element\ has\ been\ inserted}}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ p.second;}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00869\ }
+\DoxyCodeLine{00870\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ symbol\ is\ a\ non-\/terminal\ }}
+\DoxyCodeLine{00871\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ assumes\ that\ FIRST(symbol)\ is\ already\ calculated}}
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<SymbolT>\&\ symbolFrst\ =\ this-\/>FIRST.at(symIndex);}
+\DoxyCodeLine{00873\ \ \ \ \ \ \ \ \ \ \ \ \ std::for\_each(symbolFrst.begin(),\ symbolFrst.end(),\ cpyToFollow);}
+\DoxyCodeLine{00874\ }
+\DoxyCodeLine{00875\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Try\ erase\ epsilon\ from\ follow:\ returns\ 1\ or\ 0,\ the\ number\ of\ removed\ elements}}
+\DoxyCodeLine{00876\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Note:\ this\ also\ indicates\ whether\ we\ had\ epsilon\ or\ not.}}
+\DoxyCodeLine{00877\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ containsEpsilon\ =\ currSymFollow.erase(SymbolT::EPSILON);}
+\DoxyCodeLine{00878\ }
+\DoxyCodeLine{00879\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ FOLLOW\ set\ of\ the\ curr\ symbol\ does\ not\ contain\ epsilon}}
+\DoxyCodeLine{00880\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (-\/not\ containsEpsilon)}
+\DoxyCodeLine{00881\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ added;}
+\DoxyCodeLine{00882\ }
+\DoxyCodeLine{00888\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ we\ are\ at\ the\ end\ of\ the\ production}}
+\DoxyCodeLine{00889\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ atEnd\ =\ varIndex\ +\ 1\ ==\ prodBdySz;}
+\DoxyCodeLine{00890\ }
+\DoxyCodeLine{00891\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (-\/not\ atEnd)}
+\DoxyCodeLine{00892\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00893\ }
+\DoxyCodeLine{00894\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we\ are\ at\ the\ end\ of\ the\ production\ add\ FOLLOW(head)\ to\ FOLLOW(currSym)}}
+\DoxyCodeLine{00895\ \ \ \ \ \ \ \ \ \ \ \ \ std::for\_each(headFollow.begin(),\ headFollow.end(),\ cpyToFollow);}
+\DoxyCodeLine{00896\ }
+\DoxyCodeLine{00897\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00898\ }
+\DoxyCodeLine{00899\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ added;}
+\DoxyCodeLine{00900\ \ \ \ \ \}}
+\DoxyCodeLine{00901\ }
+\DoxyCodeLine{00902\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ProductionT>}
+\DoxyCodeLine{00903\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3d90ec1b6a1c367155a85773b90c0c33}{ProductionVector<ProductionT>::calculateFOLLOW}}()}
+\DoxyCodeLine{00904\ \ \ \ \ \{}
+\DoxyCodeLine{00905\ }
+\DoxyCodeLine{00906\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ follow\ is\ already\ calculated,\ return}}
+\DoxyCodeLine{00907\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>m\_CalculatedFOLLOW)\ \{}
+\DoxyCodeLine{00908\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(\textcolor{stringliteral}{"{}FOLLOW\ set\ for\ this\ production\ vector\ has\ already\ been\ calculated!"{}});}
+\DoxyCodeLine{00909\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00910\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00911\ }
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ that\ FIRST\ is\ calculated\ before\ proceeding}}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (-\/not\ this-\/>m\_CalculatedFIRST)\ \{}
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.log(LoggerInfo::ERR\_MISSING\_VAL,\ \textcolor{stringliteral}{"{}FIRST\ set\ is\ not\ calculated\ for\ the\ production\ vector:\ FIRST\ set\ must\ be\ calculated\ for\ a\ production\ vector\ before\ proceeding\ to\ calculate\ the\ FOLLOW\ set\ for\ that\ production\ vector."{}});}
+\DoxyCodeLine{00915\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}FIRST\ set\ is\ not\ calculated\ for\ the\ production\ vector!"{}});}
+\DoxyCodeLine{00916\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00917\ }
+\DoxyCodeLine{00948\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ make\ sure\ FOLLOW\ can\ hold\ all\ the\ non-\/terminals}}
+\DoxyCodeLine{00949\ \ \ \ \ \ \ \ \ this-\/>FOLLOW.resize((\textcolor{keywordtype}{size\_t})\textcolor{keyword}{decltype}(SymbolT().as.nonTerminal)::NT\_COUNT);}
+\DoxyCodeLine{00950\ }
+\DoxyCodeLine{00951\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00952\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ added\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00953\ }
+\DoxyCodeLine{00954\ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(\textcolor{stringliteral}{"{}\(\backslash\)nCALCULATING\ FOLLOW\ SET:\(\backslash\)n"{}});}
+\DoxyCodeLine{00955\ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(std::format(\textcolor{stringliteral}{"{}Productions:\(\backslash\)n\ \{\}"{}},\ (std::string)*\textcolor{keyword}{this}));}
+\DoxyCodeLine{00956\ }
+\DoxyCodeLine{00957\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ ProdRec\&\ startProd\ =\ getProdVector().at(0);}
+\DoxyCodeLine{00958\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ SymbolT\&\ startSym\ =\ startProd.prodHead;}
+\DoxyCodeLine{00959\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ startHeadIndex\ =\ (size\_t)startSym.as.nonTerminal;}
+\DoxyCodeLine{00960\ }
+\DoxyCodeLine{00961\ \ \ \ \ \ \ \ \ this-\/>FOLLOW.at(startHeadIndex).insert(SymbolT::END\_MARKER);}
+\DoxyCodeLine{00962\ }
+\DoxyCodeLine{00963\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00964\ }
+\DoxyCodeLine{00975\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ prodIndex\ =\ 0;\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&\ prod\ :\ this-\/>getProdVector())\ \{}
+\DoxyCodeLine{00976\ }
+\DoxyCodeLine{00977\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ symIndex\ =\ 0;\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ stackElement\ :\ prod.prodBody)\ \{}
+\DoxyCodeLine{00978\ }
+\DoxyCodeLine{00979\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ current\ stack\ element\ of\ the\ production\ is\ not\ a\ grammar\ symbol}}
+\DoxyCodeLine{00980\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stackElement.type\ !=\ \mbox{\hyperlink{namespacem0st4fa_a728a56a7d23cf8ec33aac9f9b420ba04a42c1ebc8f84ef20ad44c7d006106e749}{ProdElementType::PET\_GRAM\_SYMBOL}})\ \{}
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ on\ to\ the\ next\ stack\ element\ of\ the\ production}}
+\DoxyCodeLine{00982\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ symIndex++;}
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00984\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00985\ }
+\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ current\ stack\ element\ is\ a\ grammar\ symbol}}
+\DoxyCodeLine{00987\ }
+\DoxyCodeLine{00988\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ the\ symbol\ and\ its\ first\ set\ (if\ any)}}
+\DoxyCodeLine{00989\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ SymbolT\&\ symbol\ =\ stackElement.as.gramSymbol;}
+\DoxyCodeLine{00990\ }
+\DoxyCodeLine{00991\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ symbol\ is\ a\ terminal,\ get\ to\ the\ next\ symbol}}
+\DoxyCodeLine{00992\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (symbol.isTerminal)\ \{}
+\DoxyCodeLine{00993\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ symIndex++;}
+\DoxyCodeLine{00994\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00995\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00996\ }
+\DoxyCodeLine{00997\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ symbol\ is\ a\ non-\/terminal}}
+\DoxyCodeLine{00998\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_added\ =\ this-\/>\_calc\_FOLLOW\_of\_nonTerminal(symbol.as.nonTerminal,\ prodIndex,\ symIndex);}
+\DoxyCodeLine{00999\ }
+\DoxyCodeLine{01000\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ added}}
+\DoxyCodeLine{01001\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_added)}
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ added\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01003\ }
+\DoxyCodeLine{01004\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ increment\ the\ index\ of\ the\ symbol}}
+\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ symIndex++;}
+\DoxyCodeLine{01006\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01007\ }
+\DoxyCodeLine{01008\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prodIndex++;}
+\DoxyCodeLine{01009\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01010\ }
+\DoxyCodeLine{01011\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(std::format(\textcolor{stringliteral}{"{}Is\ there\ any\ new\ terminal\ added\ to\ any\ FOLLOW\ set\ in\ this\ round?\ \{\}"{}},\ added\ ?\ \textcolor{stringliteral}{"{}true"{}}\ :\ \textcolor{stringliteral}{"{}false"{}}));}
+\DoxyCodeLine{01012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (-\/not\ added)\ \{}
+\DoxyCodeLine{01013\ }
+\DoxyCodeLine{01015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ (extraRound-\/-\/)}}
+\DoxyCodeLine{01016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ //\ reduce\ the\ number\ of\ rounds\ and\ continue\ to\ the\ next\ iteration}}
+\DoxyCodeLine{01017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ continue;}}
+\DoxyCodeLine{01018\ }
+\DoxyCodeLine{01019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(\textcolor{stringliteral}{"{}Finished\ creating\ the\ FOLLOW\ set\ of\ all\ non-\/terminals\ of\ this\ grammar"{}});}
+\DoxyCodeLine{01020\ \textcolor{preprocessor}{\#if\ defined(\_DEBUG)}}
+\DoxyCodeLine{01021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ \textcolor{keyword}{const}\ std::set<SymbolT>\&set\ :\ this-\/>FOLLOW)\ \{}
+\DoxyCodeLine{01022\ }
+\DoxyCodeLine{01023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ set\ is\ empty,\ continue\ (in\ this\ case\ it\ does\ not\ belong\ to\ a\ non-\/terminal)}}
+\DoxyCodeLine{01024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (set.empty())\ \{}
+\DoxyCodeLine{01025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{01026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{01027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01028\ }
+\DoxyCodeLine{01029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ variable}}
+\DoxyCodeLine{01030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ variable\ =\ (\textcolor{keyword}{decltype}(set.start()-\/>as.nonTerminal))i++;}
+\DoxyCodeLine{01031\ }
+\DoxyCodeLine{01032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(std::format(\textcolor{stringliteral}{"{}FOLLOW(\{\})\ =\ \{\}"{}},\ \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{toString}}(variable),\ \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{m0st4fa::toString}}(set)));}
+\DoxyCodeLine{01033\ }
+\DoxyCodeLine{01034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01035\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01036\ }
+\DoxyCodeLine{01037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01039\ }
+\DoxyCodeLine{01040\ \ \ \ \ \ \ \ \ \ \ \ \ added\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01041\ }
+\DoxyCodeLine{01042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01043\ }
+\DoxyCodeLine{01044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we\ reached\ here,\ that\ means\ that\ FOLLOW\ has\ been\ calculated}}
+\DoxyCodeLine{01045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>m\_CalculatedFOLLOW\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01046\ \ \ \ \ \}}
+\DoxyCodeLine{01047\ }
+\DoxyCodeLine{01048\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ SymbolT>}
+\DoxyCodeLine{01049\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_aab4d004914ab6b13ded761093d2cf1b2}{GrammaticalSymbolString<SymbolT>::calculateFIRST}}(\textcolor{keyword}{const}\ FRSTVecType\&\ prodVecFIRST)}
+\DoxyCodeLine{01050\ \ \ \ \ \{}
+\DoxyCodeLine{01051\ }
+\DoxyCodeLine{01052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ FIRST\ is\ already\ calculated,\ return}}
+\DoxyCodeLine{01053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>m\_CalculatedFIRST)\ \{}
+\DoxyCodeLine{01054\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(std::format(\textcolor{stringliteral}{"{}FIRST(\{\})\ has\ not\ already\ been\ calculated!"{}},\ (std::string)*\textcolor{keyword}{this}));}
+\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01057\ }
+\DoxyCodeLine{01076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ \textcolor{keyword}{const}\ SymbolType\ \&\ symbol\ :\ this-\/>symbols)\ \{}
+\DoxyCodeLine{01077\ }
+\DoxyCodeLine{01078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isLastSymbol\ =\ i\ ==\ this-\/>symbols.size()\ -\/\ 1;}
+\DoxyCodeLine{01079\ }
+\DoxyCodeLine{01080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ symbol\ is\ a\ terminal}}
+\DoxyCodeLine{01081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (symbol.isTerminal)\ \{}
+\DoxyCodeLine{01082\ }
+\DoxyCodeLine{01083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ whether\ the\ symbol\ is\ epsilon}}
+\DoxyCodeLine{01084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isEpsilon\ =\ symbol\ ==\ SymbolType::EPSILON;}
+\DoxyCodeLine{01085\ }
+\DoxyCodeLine{01086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ symbol\ is\ epsilon\ and\ is\ the\ last\ symbol\ of\ the\ string\ or}}
+\DoxyCodeLine{01087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ symbol\ is\ not\ epsilon,\ whether\ the\ last\ symbol\ or\ not}}
+\DoxyCodeLine{01088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (not\ isEpsilon\ or\ isLastSymbol)}
+\DoxyCodeLine{01089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>FIRST.insert(symbol);}
+\DoxyCodeLine{01090\ }
+\DoxyCodeLine{01091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ this\ symbol\ is\ not\ epsilon}}
+\DoxyCodeLine{01092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (not\ isEpsilon)}
+\DoxyCodeLine{01093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01094\ }
+\DoxyCodeLine{01095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we\ reach\ here,\ continue\ to\ the\ next\ symbol\ (or\ break\ if\ this\ is\ the\ last)}}
+\DoxyCodeLine{01096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{01097\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01098\ }
+\DoxyCodeLine{01099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ symbol\ is\ a\ non-\/terminal}}
+\DoxyCodeLine{01100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ symIndex\ =\ (size\_t)symbol.as.nonTerminal;}
+\DoxyCodeLine{01101\ }
+\DoxyCodeLine{01102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ FIRST(S)}}
+\DoxyCodeLine{01103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ SetType\&\ fset\ =\ prodVecFIRST.at(symIndex);}
+\DoxyCodeLine{01104\ }
+\DoxyCodeLine{01105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ to\ see\ if\ \`{}FIRST(S)`\ is\ empty}}
+\DoxyCodeLine{01106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ in\ this\ case\ there\ is\ probably\ a\ logic\ error\ made\ by\ the\ programmar}}
+\DoxyCodeLine{01107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fset.empty())\ \{}
+\DoxyCodeLine{01108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ msg\ =\ (std::string)\textcolor{stringliteral}{"{}FIRST("{}}\ +\ (std::string)symbol\ +\ \textcolor{stringliteral}{"{})\ is\ empty."{}};}
+\DoxyCodeLine{01109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.log(LoggerInfo::ERR\_MISSING\_VAL,\ msg\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)tThis\ may\ be\ due\ to:\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t1.`A`\ wrong\ FIRST\ set\ (possibly\ one\ of\ a\ different\ grammar).\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t2.\ An\ incomplete\ FIRST\ set."{}});}
+\DoxyCodeLine{01110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::logic\_error(msg);}
+\DoxyCodeLine{01111\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01112\ }
+\DoxyCodeLine{01113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ \`{}FIRST(S)`\ is\ not\ empty,\ add\ it\ to\ FIRST(SS)}}
+\DoxyCodeLine{01114\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>FIRST.insert(fset.begin(),\ fset.end());}
+\DoxyCodeLine{01115\ }
+\DoxyCodeLine{01116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ FIRST(SS)\ contains\ epsilon}}
+\DoxyCodeLine{01117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ containsEpsilon\ =\ this-\/>FIRST.erase(SymbolType::EPSILON);}
+\DoxyCodeLine{01118\ }
+\DoxyCodeLine{01119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ it\ does\ not\ contain\ epsilon,\ we\ are\ done\ with\ FIRST(SS)}}
+\DoxyCodeLine{01120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (not\ containsEpsilon)}
+\DoxyCodeLine{01121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01122\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ FIRST(SS)\ contains\ epsilon}}
+\DoxyCodeLine{01124\ }
+\DoxyCodeLine{01125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ to\ see\ if\ it\ is\ the\ last\ symbol}}
+\DoxyCodeLine{01126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isLastSymbol)}
+\DoxyCodeLine{01127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>FIRST.insert(SymbolType::EPSILON);}
+\DoxyCodeLine{01128\ }
+\DoxyCodeLine{01129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ it\ contains\ epsilon,\ and\ it\ is\ not\ the\ last\ symbol,\ continue\ to\ the\ next\ symbol}}
+\DoxyCodeLine{01130\ \ \ \ \ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{01131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01132\ }
+\DoxyCodeLine{01133\ \textcolor{preprocessor}{\#ifdef\ \_DEBUG}}
+\DoxyCodeLine{01134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>FIRST.empty())\ \{}
+\DoxyCodeLine{01135\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(std::format(\textcolor{stringliteral}{"{}FIRST(\{\})\ is\ empty"{}},\ (std::string)*\textcolor{keyword}{this}));}
+\DoxyCodeLine{01136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{goto}\ epilogue;}
+\DoxyCodeLine{01137\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01138\ }
+\DoxyCodeLine{01139\ \ \ \ \ \ \ \ \ this-\/>m\_Logger.logDebug(std::format(\textcolor{stringliteral}{"{}FIRST(\{\})\ =\ \{\}"{}},\ (std::string)*\textcolor{keyword}{this},\ \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{m0st4fa::toString}}(this-\/>FIRST)));}
+\DoxyCodeLine{01140\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01141\ }
+\DoxyCodeLine{01142\ \ \ \ \ epilogue:}
+\DoxyCodeLine{01143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>m\_CalculatedFIRST\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01144\ \ \ \ \ \}}
+\DoxyCodeLine{01145\ }
+\DoxyCodeLine{01146\ \}}
+
+\end{DoxyCode}

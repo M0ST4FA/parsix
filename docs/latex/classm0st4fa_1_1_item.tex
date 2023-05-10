@@ -1,0 +1,158 @@
+\hypertarget{classm0st4fa_1_1_item}{}\doxysection{m0st4fa\+::Item\texorpdfstring{$<$}{<} ProductionT \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classm0st4fa_1_1_item}\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+
+
+{\ttfamily \#include $<$PItem.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_item_a3860a6fd9fc2c0367512ca5960f6150a}{Item}} ()=default
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_item_a3cde864fe3855dcc85620060b4d81c41}{Item}} (const ProductionT \&\mbox{\hyperlink{classm0st4fa_1_1_item_a646b862ea975f3de4215425d5674bd22}{production}}, pos\+\_\+t dot\+Position, const Look\+Ahead\+Set \&\mbox{\hyperlink{classm0st4fa_1_1_item_a12727c9d2402628bc8afaf6975b23121}{lookaheads}}=\{\})
+\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_ab107f2b5fc2b0825196e59f88262b9fd}{operator==}} (const \mbox{\hyperlink{classm0st4fa_1_1_item}{Item}} \&other) const
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_item_a62e44b4c07bc351f30392b4d7e71b624}{operator std\+::string}} () const
+\item 
+std\+::string \mbox{\hyperlink{classm0st4fa_1_1_item_ae25d6f61e190db9f62e3f8a1d6af6f34}{to\+String}} () const
+\item 
+size\+\_\+t \mbox{\hyperlink{classm0st4fa_1_1_item_aa9e1ff1237414fbeffea4adf256fc27c}{get\+Actual\+Dot\+Position}} () const
+\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_a472c6805cefec77756783fff12d12bbe}{is\+Dot\+Position\+At\+End}} () const
+\item 
+Production\+Element\+Type \mbox{\hyperlink{classm0st4fa_1_1_item_ad072c3f380e296adf7cac2fa4d6d5194}{at\+Dot\+Position}} () const
+\item 
+SymbolT \mbox{\hyperlink{classm0st4fa_1_1_item_a217fac1de0e84ad2c126cb77d9a833ea}{symbol\+At\+Dot\+Position}} () const
+\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_a934f48c89f1347995d93855964e6d948}{has\+Identical\+Core}} (const \mbox{\hyperlink{classm0st4fa_1_1_item}{Item}} \&other) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+ProductionT \mbox{\hyperlink{classm0st4fa_1_1_item_a646b862ea975f3de4215425d5674bd22}{production}}
+\item 
+pos\+\_\+t \mbox{\hyperlink{classm0st4fa_1_1_item_a4f14d267c42660d3ce5e96525804a0d3}{dot\+Pos}} = 0
+\item 
+Look\+Ahead\+Set \mbox{\hyperlink{classm0st4fa_1_1_item_a12727c9d2402628bc8afaf6975b23121}{lookaheads}} \{\}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const \mbox{\hyperlink{classm0st4fa_1_1_item}{Item}} \mbox{\hyperlink{classm0st4fa_1_1_item_aa3c2590fe98df3b6b89143a0e745d56f}{EMPTY\+\_\+\+ITEM}} \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classm0st4fa_1_1_item_a3860a6fd9fc2c0367512ca5960f6150a}\label{classm0st4fa_1_1_item_a3860a6fd9fc2c0367512ca5960f6150a} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!Item@{Item}}
+\index{Item@{Item}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{Item()}{Item()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::\+Item (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classm0st4fa_1_1_item_a3cde864fe3855dcc85620060b4d81c41}\label{classm0st4fa_1_1_item_a3cde864fe3855dcc85620060b4d81c41} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!Item@{Item}}
+\index{Item@{Item}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{Item()}{Item()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::\+Item (\begin{DoxyParamCaption}\item[{const ProductionT \&}]{production,  }\item[{pos\+\_\+t}]{dot\+Position,  }\item[{const Look\+Ahead\+Set \&}]{lookaheads = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classm0st4fa_1_1_item_ad072c3f380e296adf7cac2fa4d6d5194}\label{classm0st4fa_1_1_item_ad072c3f380e296adf7cac2fa4d6d5194} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!atDotPosition@{atDotPosition}}
+\index{atDotPosition@{atDotPosition}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{atDotPosition()}{atDotPosition()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+Production\+Element\+Type \mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::at\+Dot\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+@output returns the production element at the dot position, or otherwise a default-\/constructed production element if the dot is at the end of the production. \Hypertarget{classm0st4fa_1_1_item_aa9e1ff1237414fbeffea4adf256fc27c}\label{classm0st4fa_1_1_item_aa9e1ff1237414fbeffea4adf256fc27c} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!getActualDotPosition@{getActualDotPosition}}
+\index{getActualDotPosition@{getActualDotPosition}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{getActualDotPosition()}{getActualDotPosition()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+size\+\_\+t \mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::get\+Actual\+Dot\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_a934f48c89f1347995d93855964e6d948}\label{classm0st4fa_1_1_item_a934f48c89f1347995d93855964e6d948} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!hasIdenticalCore@{hasIdenticalCore}}
+\index{hasIdenticalCore@{hasIdenticalCore}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{hasIdenticalCore()}{hasIdenticalCore()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::has\+Identical\+Core (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classm0st4fa_1_1_item}{Item}}$<$ ProductionT $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_a472c6805cefec77756783fff12d12bbe}\label{classm0st4fa_1_1_item_a472c6805cefec77756783fff12d12bbe} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!isDotPositionAtEnd@{isDotPositionAtEnd}}
+\index{isDotPositionAtEnd@{isDotPositionAtEnd}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{isDotPositionAtEnd()}{isDotPositionAtEnd()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::is\+Dot\+Position\+At\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_a62e44b4c07bc351f30392b4d7e71b624}\label{classm0st4fa_1_1_item_a62e44b4c07bc351f30392b4d7e71b624} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!operator std::string@{operator std::string}}
+\index{operator std::string@{operator std::string}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{operator std::string()}{operator std::string()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::operator std\+::string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_ab107f2b5fc2b0825196e59f88262b9fd}\label{classm0st4fa_1_1_item_ab107f2b5fc2b0825196e59f88262b9fd} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classm0st4fa_1_1_item}{Item}}$<$ ProductionT $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+true if both items have the same first component, and identical lookahead sets. 
+\end{DoxyReturn}
+\Hypertarget{classm0st4fa_1_1_item_a217fac1de0e84ad2c126cb77d9a833ea}\label{classm0st4fa_1_1_item_a217fac1de0e84ad2c126cb77d9a833ea} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!symbolAtDotPosition@{symbolAtDotPosition}}
+\index{symbolAtDotPosition@{symbolAtDotPosition}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{symbolAtDotPosition()}{symbolAtDotPosition()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+SymbolT \mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::symbol\+At\+Dot\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+@output returns the symbol at the dot position, or otherwise a default-\/constructed symbol if the dot is at the end of the production. \Hypertarget{classm0st4fa_1_1_item_ae25d6f61e190db9f62e3f8a1d6af6f34}\label{classm0st4fa_1_1_item_ae25d6f61e190db9f62e3f8a1d6af6f34} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!toString@{toString}}
+\index{toString@{toString}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+std\+::string \mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classm0st4fa_1_1_item_a4f14d267c42660d3ce5e96525804a0d3}\label{classm0st4fa_1_1_item_a4f14d267c42660d3ce5e96525804a0d3} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!dotPos@{dotPos}}
+\index{dotPos@{dotPos}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{dotPos}{dotPos}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+pos\+\_\+t \mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::dot\+Pos = 0}
+
+Dot position rules\+: 0 =\texorpdfstring{$>$}{>} the dot is at the beginning of the body, just before the first symbol. This also means the dot is before the 0th element. n, n \texorpdfstring{$>$}{>} 0 \&\& n \texorpdfstring{$<$}{<} prod\+Size =\texorpdfstring{$>$}{>} the dot is before the nth element. prod\+Size =\texorpdfstring{$>$}{>} the dot is at the end of the production, after the last symbol. The dot position does no take non-\/grammar-\/symbol elements in mind. \Hypertarget{classm0st4fa_1_1_item_aa3c2590fe98df3b6b89143a0e745d56f}\label{classm0st4fa_1_1_item_aa3c2590fe98df3b6b89143a0e745d56f} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!EMPTY\_ITEM@{EMPTY\_ITEM}}
+\index{EMPTY\_ITEM@{EMPTY\_ITEM}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{EMPTY\_ITEM}{EMPTY\_ITEM}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+const \mbox{\hyperlink{classm0st4fa_1_1_item}{Item}}$<$ ProductionT $>$ \mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::\+EMPTY\+\_\+\+ITEM \{\}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classm0st4fa_1_1_item_a12727c9d2402628bc8afaf6975b23121}\label{classm0st4fa_1_1_item_a12727c9d2402628bc8afaf6975b23121} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!lookaheads@{lookaheads}}
+\index{lookaheads@{lookaheads}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{lookaheads}{lookaheads}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+Look\+Ahead\+Set \mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::lookaheads \{\}}
+
+\Hypertarget{classm0st4fa_1_1_item_a646b862ea975f3de4215425d5674bd22}\label{classm0st4fa_1_1_item_a646b862ea975f3de4215425d5674bd22} 
+\index{m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}!production@{production}}
+\index{production@{production}!m0st4fa::Item$<$ ProductionT $>$@{m0st4fa::Item$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{production}{production}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+ProductionT \mbox{\hyperlink{classm0st4fa_1_1_item}{m0st4fa\+::\+Item}}$<$ ProductionT $>$\+::production}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_p_item_8h}{PItem.\+h}}\end{DoxyCompactItemize}

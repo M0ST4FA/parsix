@@ -1,0 +1,67 @@
+\hypertarget{_p_stack_8h}{}\doxysection{PStack.\+h File Reference}
+\label{_p_stack_8h}\index{PStack.h@{PStack.h}}
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$type\+\_\+traits$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include \"{}PEnum.\+h\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structm0st4fa_1_1_l_l_stack_element}{m0st4fa\+::\+LLStack\+Element$<$ Symbol\+T, Synthesized\+T, Action\+T $>$}}
+\item 
+struct \mbox{\hyperlink{structm0st4fa_1_1_l_l_synthesized_record}{m0st4fa\+::\+LLSynthesized\+Record$<$ Data\+T $>$}}
+\begin{DoxyCompactList}\small\item\em A simple base class for synthesized records from which you can derive more complex classes. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record}{m0st4fa\+::\+LLAction\+Record$<$ Data\+T $>$}}
+\begin{DoxyCompactList}\small\item\em A simple base class for action records from which you can derive more complex classes. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structm0st4fa_1_1_l_r_production_element}{m0st4fa\+::\+LRProduction\+Element$<$ Symbol\+T $>$}}
+\item 
+struct \mbox{\hyperlink{structm0st4fa_1_1_l_r_state}{m0st4fa\+::\+LRState$<$ Data\+T, Token\+T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacem0st4fa}{m0st4fa}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Concepts}
+\begin{DoxyCompactItemize}
+\item 
+concept \mbox{\hyperlink{conceptm0st4fa_1_1_stack_element_constraints}{m0st4fa\+::\+Stack\+Element\+Constraints}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_p_stack_8h_a6b0203795a8eb617de72b1096e727167}{EXTRACT\+\_\+\+TERMINAL}}(stack\+Element)~(size\+\_\+t)stack\+Element.\+as.\+gram\+Symbol.\+as.\+terminal
+\item 
+\#define \mbox{\hyperlink{_p_stack_8h_ae6fc7ee892e10e56462af772bad1668e}{EXTRACT\+\_\+\+VARIABLE}}(stack\+Element)~(size\+\_\+t)stack\+Element.\+as.\+gram\+Symbol.\+as.\+non\+Terminal
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Stack\+ElementT $>$ }\\using \mbox{\hyperlink{namespacem0st4fa_a46d72194b07903d608359effbdcb434c}{m0st4fa\+::\+Stack\+Type}} = std\+::vector$<$ Stack\+ElementT $>$
+\item 
+using \mbox{\hyperlink{namespacem0st4fa_a9c679708ae603916670f76e7307a9453}{m0st4fa\+::lrstate\+\_\+t}} = size\+\_\+t
+\item 
+{\footnotesize template$<$typename DataT , typename TokenT $>$ }\\using \mbox{\hyperlink{namespacem0st4fa_ad733a0009a6612c936e5d61fb9931971}{m0st4fa\+::\+LRStack\+Type}} = \mbox{\hyperlink{namespacem0st4fa_a46d72194b07903d608359effbdcb434c}{Stack\+Type}}$<$ \mbox{\hyperlink{structm0st4fa_1_1_l_r_state}{LRState}}$<$ DataT, TokenT $>$ $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename SymbolT , typename SynthesizedT , typename ActionT $>$ }\\std\+::string \mbox{\hyperlink{namespacem0st4fa_a43b088bd5b47a356b3ee4de58ada107d}{m0st4fa\+::to\+String}} (typename \mbox{\hyperlink{structm0st4fa_1_1_l_l_stack_element}{LLStack\+Element}}$<$ SymbolT, SynthesizedT, ActionT $>$\+::\+Stack\+Element\+Type type)
+\item 
+{\footnotesize template$<$typename SymbolT , typename SynthesizedT , typename ActionT $>$ }\\std\+::ostream \& \mbox{\hyperlink{namespacem0st4fa_a4f421bc4b88c77e6235fd2de522b7645}{m0st4fa\+::operator$<$$<$}} (std\+::ostream \&os, typename \mbox{\hyperlink{structm0st4fa_1_1_l_l_stack_element}{LLStack\+Element}}$<$ SymbolT, SynthesizedT, ActionT $>$\+::\+Stack\+Element\+Type type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_p_stack_8h_a6b0203795a8eb617de72b1096e727167}\label{_p_stack_8h_a6b0203795a8eb617de72b1096e727167} 
+\index{PStack.h@{PStack.h}!EXTRACT\_TERMINAL@{EXTRACT\_TERMINAL}}
+\index{EXTRACT\_TERMINAL@{EXTRACT\_TERMINAL}!PStack.h@{PStack.h}}
+\doxysubsubsection{\texorpdfstring{EXTRACT\_TERMINAL}{EXTRACT\_TERMINAL}}
+{\footnotesize\ttfamily \#define EXTRACT\+\_\+\+TERMINAL(\begin{DoxyParamCaption}\item[{}]{stack\+Element }\end{DoxyParamCaption})~(size\+\_\+t)stack\+Element.\+as.\+gram\+Symbol.\+as.\+terminal}
+
+\Hypertarget{_p_stack_8h_ae6fc7ee892e10e56462af772bad1668e}\label{_p_stack_8h_ae6fc7ee892e10e56462af772bad1668e} 
+\index{PStack.h@{PStack.h}!EXTRACT\_VARIABLE@{EXTRACT\_VARIABLE}}
+\index{EXTRACT\_VARIABLE@{EXTRACT\_VARIABLE}!PStack.h@{PStack.h}}
+\doxysubsubsection{\texorpdfstring{EXTRACT\_VARIABLE}{EXTRACT\_VARIABLE}}
+{\footnotesize\ttfamily \#define EXTRACT\+\_\+\+VARIABLE(\begin{DoxyParamCaption}\item[{}]{stack\+Element }\end{DoxyParamCaption})~(size\+\_\+t)stack\+Element.\+as.\+gram\+Symbol.\+as.\+non\+Terminal}
+

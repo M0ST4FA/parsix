@@ -1,0 +1,87 @@
+\hypertarget{_p_table_8h}{}\doxysection{PTable.\+h File Reference}
+\label{_p_table_8h}\index{PTable.h@{PTable.h}}
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$format$>$}\newline
+{\ttfamily \#include \"{}PStack.\+h\"{}}\newline
+{\ttfamily \#include \"{}PProduction.\+h\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structm0st4fa_1_1_l_l_table_entry}{m0st4fa\+::\+LLTable\+Entry}}
+\item 
+struct \mbox{\hyperlink{structm0st4fa_1_1_l_l_parsing_table}{m0st4fa\+::\+LLParsing\+Table$<$ Grammar\+T, Variable\+Count, Terminal\+Count $>$}}
+\item 
+struct \mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry}{m0st4fa\+::\+LRTable\+Entry}}
+\item 
+struct \mbox{\hyperlink{structm0st4fa_1_1_l_r_parsing_table}{m0st4fa\+::\+LRParsing\+Table$<$ Grammar\+T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacem0st4fa}{m0st4fa}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_p_table_8h_ac0fc1b36b39abf8aa0794f92e6e1c777}{TE\+\_\+\+SHIFT}}(state)~\mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry}{m0st4fa\+::\+LRTable\+Entry}}\{false, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7ab931003b08d6a2c909b3019fb66e8e3c}{m0st4fa\+::\+LRTable\+Entry\+Type\+::\+TET\+\_\+\+ACTION\+\_\+\+SHIFT}}, state\}
+\item 
+\#define \mbox{\hyperlink{_p_table_8h_abb8822344aa40c4960261a8491768fac}{TE\+\_\+\+REDUCE}}(prod\+Num)~\mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry}{m0st4fa\+::\+LRTable\+Entry}}\{false, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7a467962630d56f4a8097340ec2aa4bb68}{m0st4fa\+::\+LRTable\+Entry\+Type\+::\+TET\+\_\+\+ACTION\+\_\+\+REDUCE}}, prod\+Num\}
+\item 
+\#define \mbox{\hyperlink{_p_table_8h_adefc67af5ae6fd6a09e4bb0260e9e109}{TE\+\_\+\+GOTO}}(state)~\mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry}{m0st4fa\+::\+LRTable\+Entry}}\{false, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7a5ff670534557668fc4e739f5d2995a90}{m0st4fa\+::\+LRTable\+Entry\+Type\+::\+TET\+\_\+\+GOTO}}, state\}
+\item 
+\#define \mbox{\hyperlink{_p_table_8h_a4ebdd6a1c713c2ee70223c58736bd696}{TE\+\_\+\+ACCEPT}}()~\mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry}{m0st4fa\+::\+LRTable\+Entry}}\{false, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7aedf0aec4eb58f4227927f04e3416b978}{m0st4fa\+::\+LRTable\+Entry\+Type\+::\+TET\+\_\+\+ACCEPT}}\}
+\item 
+\#define \mbox{\hyperlink{_p_table_8h_aacb1e9ac153b99f41260e73a5a0a0f15}{TE\+\_\+\+ERROR}}()~\mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry}{m0st4fa\+::\+LRTable\+Entry}}\{false, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7a0c005862ccfa7b4e287ef2ea8f431d63}{m0st4fa\+::\+LRTable\+Entry\+Type\+::\+TET\+\_\+\+ERROR}}\}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7}{m0st4fa\+::\+LRTable\+Entry\+Type}} \{ \newline
+\mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7ab931003b08d6a2c909b3019fb66e8e3c}{m0st4fa\+::\+TET\+\_\+\+ACTION\+\_\+\+SHIFT}}
+, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7a467962630d56f4a8097340ec2aa4bb68}{m0st4fa\+::\+TET\+\_\+\+ACTION\+\_\+\+REDUCE}}
+, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7a5ff670534557668fc4e739f5d2995a90}{m0st4fa\+::\+TET\+\_\+\+GOTO}}
+, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7aedf0aec4eb58f4227927f04e3416b978}{m0st4fa\+::\+TET\+\_\+\+ACCEPT}}
+, \newline
+\mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7a0c005862ccfa7b4e287ef2ea8f431d63}{m0st4fa\+::\+TET\+\_\+\+ERROR}}
+, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7af4c75cb001d8624cba734de1da8af03c}{m0st4fa\+::\+TET\+\_\+\+COUNT}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{namespacem0st4fa_a225603522e224064fa449c7fbf3f4a93}{m0st4fa\+::to\+String}} (const \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7}{LRTable\+Entry\+Type}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_p_table_8h_a4ebdd6a1c713c2ee70223c58736bd696}\label{_p_table_8h_a4ebdd6a1c713c2ee70223c58736bd696} 
+\index{PTable.h@{PTable.h}!TE\_ACCEPT@{TE\_ACCEPT}}
+\index{TE\_ACCEPT@{TE\_ACCEPT}!PTable.h@{PTable.h}}
+\doxysubsubsection{\texorpdfstring{TE\_ACCEPT}{TE\_ACCEPT}}
+{\footnotesize\ttfamily \#define TE\+\_\+\+ACCEPT(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry}{m0st4fa\+::\+LRTable\+Entry}}\{false, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7aedf0aec4eb58f4227927f04e3416b978}{m0st4fa\+::\+LRTable\+Entry\+Type\+::\+TET\+\_\+\+ACCEPT}}\}}
+
+\Hypertarget{_p_table_8h_aacb1e9ac153b99f41260e73a5a0a0f15}\label{_p_table_8h_aacb1e9ac153b99f41260e73a5a0a0f15} 
+\index{PTable.h@{PTable.h}!TE\_ERROR@{TE\_ERROR}}
+\index{TE\_ERROR@{TE\_ERROR}!PTable.h@{PTable.h}}
+\doxysubsubsection{\texorpdfstring{TE\_ERROR}{TE\_ERROR}}
+{\footnotesize\ttfamily \#define TE\+\_\+\+ERROR(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry}{m0st4fa\+::\+LRTable\+Entry}}\{false, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7a0c005862ccfa7b4e287ef2ea8f431d63}{m0st4fa\+::\+LRTable\+Entry\+Type\+::\+TET\+\_\+\+ERROR}}\}}
+
+\Hypertarget{_p_table_8h_adefc67af5ae6fd6a09e4bb0260e9e109}\label{_p_table_8h_adefc67af5ae6fd6a09e4bb0260e9e109} 
+\index{PTable.h@{PTable.h}!TE\_GOTO@{TE\_GOTO}}
+\index{TE\_GOTO@{TE\_GOTO}!PTable.h@{PTable.h}}
+\doxysubsubsection{\texorpdfstring{TE\_GOTO}{TE\_GOTO}}
+{\footnotesize\ttfamily \#define TE\+\_\+\+GOTO(\begin{DoxyParamCaption}\item[{}]{state }\end{DoxyParamCaption})~\mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry}{m0st4fa\+::\+LRTable\+Entry}}\{false, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7a5ff670534557668fc4e739f5d2995a90}{m0st4fa\+::\+LRTable\+Entry\+Type\+::\+TET\+\_\+\+GOTO}}, state\}}
+
+\Hypertarget{_p_table_8h_abb8822344aa40c4960261a8491768fac}\label{_p_table_8h_abb8822344aa40c4960261a8491768fac} 
+\index{PTable.h@{PTable.h}!TE\_REDUCE@{TE\_REDUCE}}
+\index{TE\_REDUCE@{TE\_REDUCE}!PTable.h@{PTable.h}}
+\doxysubsubsection{\texorpdfstring{TE\_REDUCE}{TE\_REDUCE}}
+{\footnotesize\ttfamily \#define TE\+\_\+\+REDUCE(\begin{DoxyParamCaption}\item[{}]{prod\+Num }\end{DoxyParamCaption})~\mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry}{m0st4fa\+::\+LRTable\+Entry}}\{false, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7a467962630d56f4a8097340ec2aa4bb68}{m0st4fa\+::\+LRTable\+Entry\+Type\+::\+TET\+\_\+\+ACTION\+\_\+\+REDUCE}}, prod\+Num\}}
+
+\Hypertarget{_p_table_8h_ac0fc1b36b39abf8aa0794f92e6e1c777}\label{_p_table_8h_ac0fc1b36b39abf8aa0794f92e6e1c777} 
+\index{PTable.h@{PTable.h}!TE\_SHIFT@{TE\_SHIFT}}
+\index{TE\_SHIFT@{TE\_SHIFT}!PTable.h@{PTable.h}}
+\doxysubsubsection{\texorpdfstring{TE\_SHIFT}{TE\_SHIFT}}
+{\footnotesize\ttfamily \#define TE\+\_\+\+SHIFT(\begin{DoxyParamCaption}\item[{}]{state }\end{DoxyParamCaption})~\mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry}{m0st4fa\+::\+LRTable\+Entry}}\{false, \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7ab931003b08d6a2c909b3019fb66e8e3c}{m0st4fa\+::\+LRTable\+Entry\+Type\+::\+TET\+\_\+\+ACTION\+\_\+\+SHIFT}}, state\}}
+

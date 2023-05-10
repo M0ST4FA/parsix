@@ -1,0 +1,96 @@
+\hypertarget{structm0st4fa_1_1_l_r_table_entry}{}\doxysection{m0st4fa\+::LRTable\+Entry Struct Reference}
+\label{structm0st4fa_1_1_l_r_table_entry}\index{m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}}
+
+
+{\ttfamily \#include $<$PTable.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry_a33d8fc9f8f98789862a741fb074a5739}{operator std\+::string}} () const
+\item 
+bool \mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry_ab513931453d67997cf081d4ea841511f}{operator==}} (const \mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry}{LRTable\+Entry}} \&other) const
+\item 
+std\+::string \mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry_a8d5582a38ca746ceb1b288758bd53fa6}{to\+String}} () const
+\item 
+bool \mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry_adc6bd72997328c403d2c49bc0a1c40f1}{is\+Error}} () const
+\item 
+bool \mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry_a21025fa98a4ea5e3237b9107c52777a0}{is\+Accept}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry_a61398157a519535ca7cd2ba709bfded5}{is\+Empty}} = true
+\item 
+\mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7}{LRTable\+Entry\+Type}} \mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry_a488ae8d5a718a0c351f679f0a14aabde}{type}} = \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7a0c005862ccfa7b4e287ef2ea8f431d63}{LRTable\+Entry\+Type\+::\+TET\+\_\+\+ERROR}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry_a6b0db693c24cf8fb28df4419df0dccf0}{number}} = SIZE\+\_\+\+MAX
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structm0st4fa_1_1_l_r_table_entry_a21025fa98a4ea5e3237b9107c52777a0}\label{structm0st4fa_1_1_l_r_table_entry_a21025fa98a4ea5e3237b9107c52777a0} 
+\index{m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}!isAccept@{isAccept}}
+\index{isAccept@{isAccept}!m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}}
+\doxysubsubsection{\texorpdfstring{isAccept()}{isAccept()}}
+{\footnotesize\ttfamily bool m0st4fa\+::\+LRTable\+Entry\+::is\+Accept (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Whether the entry is of type {\ttfamily TET\+\_\+\+ACCEPT}; i.\+e. whether it is an accept entry. 
+\end{DoxyReturn}
+\Hypertarget{structm0st4fa_1_1_l_r_table_entry_adc6bd72997328c403d2c49bc0a1c40f1}\label{structm0st4fa_1_1_l_r_table_entry_adc6bd72997328c403d2c49bc0a1c40f1} 
+\index{m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}!isError@{isError}}
+\index{isError@{isError}!m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}}
+\doxysubsubsection{\texorpdfstring{isError()}{isError()}}
+{\footnotesize\ttfamily bool m0st4fa\+::\+LRTable\+Entry\+::is\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Whether the entry is of type {\ttfamily TET\+\_\+\+ERROR}; i.\+e. whether it is an error entry. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Being empty is considered erroneous. 
+\end{DoxyNote}
+\Hypertarget{structm0st4fa_1_1_l_r_table_entry_a33d8fc9f8f98789862a741fb074a5739}\label{structm0st4fa_1_1_l_r_table_entry_a33d8fc9f8f98789862a741fb074a5739} 
+\index{m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}!operator std::string@{operator std::string}}
+\index{operator std::string@{operator std::string}!m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}}
+\doxysubsubsection{\texorpdfstring{operator std::string()}{operator std::string()}}
+{\footnotesize\ttfamily m0st4fa\+::\+LRTable\+Entry\+::operator std\+::string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structm0st4fa_1_1_l_r_table_entry_ab513931453d67997cf081d4ea841511f}\label{structm0st4fa_1_1_l_r_table_entry_ab513931453d67997cf081d4ea841511f} 
+\index{m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}!operator==@{operator==}}
+\index{operator==@{operator==}!m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool m0st4fa\+::\+LRTable\+Entry\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structm0st4fa_1_1_l_r_table_entry}{LRTable\+Entry}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structm0st4fa_1_1_l_r_table_entry_a8d5582a38ca746ceb1b288758bd53fa6}\label{structm0st4fa_1_1_l_r_table_entry_a8d5582a38ca746ceb1b288758bd53fa6} 
+\index{m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}!toString@{toString}}
+\index{toString@{toString}!m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string m0st4fa\+::\+LRTable\+Entry\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structm0st4fa_1_1_l_r_table_entry_a61398157a519535ca7cd2ba709bfded5}\label{structm0st4fa_1_1_l_r_table_entry_a61398157a519535ca7cd2ba709bfded5} 
+\index{m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}}
+\doxysubsubsection{\texorpdfstring{isEmpty}{isEmpty}}
+{\footnotesize\ttfamily bool m0st4fa\+::\+LRTable\+Entry\+::is\+Empty = true}
+
+\Hypertarget{structm0st4fa_1_1_l_r_table_entry_a6b0db693c24cf8fb28df4419df0dccf0}\label{structm0st4fa_1_1_l_r_table_entry_a6b0db693c24cf8fb28df4419df0dccf0} 
+\index{m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}!number@{number}}
+\index{number@{number}!m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}}
+\doxysubsubsection{\texorpdfstring{number}{number}}
+{\footnotesize\ttfamily size\+\_\+t m0st4fa\+::\+LRTable\+Entry\+::number = SIZE\+\_\+\+MAX}
+
+\Hypertarget{structm0st4fa_1_1_l_r_table_entry_a488ae8d5a718a0c351f679f0a14aabde}\label{structm0st4fa_1_1_l_r_table_entry_a488ae8d5a718a0c351f679f0a14aabde} 
+\index{m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}!type@{type}}
+\index{type@{type}!m0st4fa::LRTableEntry@{m0st4fa::LRTableEntry}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7}{LRTable\+Entry\+Type}} m0st4fa\+::\+LRTable\+Entry\+::type = \mbox{\hyperlink{namespacem0st4fa_a9ce8791575aa3fa689e96e0b999248a7a0c005862ccfa7b4e287ef2ea8f431d63}{LRTable\+Entry\+Type\+::\+TET\+\_\+\+ERROR}}}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_p_table_8h}{PTable.\+h}}\end{DoxyCompactItemize}

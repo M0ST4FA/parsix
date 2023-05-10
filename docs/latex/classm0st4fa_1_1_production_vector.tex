@@ -1,0 +1,363 @@
+\hypertarget{classm0st4fa_1_1_production_vector}{}\doxysection{m0st4fa\+::Production\+Vector\texorpdfstring{$<$}{<} ProductionT \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classm0st4fa_1_1_production_vector}\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+
+
+Represents a vector (think of it as a set, really) of productions.  
+
+
+
+
+{\ttfamily \#include $<$PProduction.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_production_vector_a2edf705c6c62605cacef65b6cd80bf62}{Production\+Vector}} ()=default
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_production_vector_aee1f3df7c7b89a710f03a38aa2a1004c}{explicit}} (true) \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{Production\+Vector}}(const Vec\+Type \&vec)
+\item 
+const Vec\+Type \& \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a0e1dd45ac9d11074f9c3ab6e2b3efd16}{get\+Prod\+Vector}} ()
+\item 
+Vec\+Type \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a763215209c3260eb11218aa52856cc02}{get\+Prod\+Vector\+Value}} ()
+\item 
+void \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a2814cfd772f03bfaa474784243f6572d}{push\+Production}} (const Prod\+Rec \&prod)
+\item 
+const Prod\+Rec \& \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a7a7e9a049901bd6a4ce97c876f699bf9}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+t i) const
+\item 
+const Prod\+Rec \& \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a9d9eda2c74ae36ad919f427e3534a7b9}{at}} (size\+\_\+t i) const
+\item 
+const auto \& \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a70ca64406cb13d4b6c61f261c26279d2}{get\+Vector}} () const
+\item 
+auto \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3d72d4ee9a572ed1a392c6a8cfe66b33}{begin}} () const
+\item 
+auto \mbox{\hyperlink{classm0st4fa_1_1_production_vector_ab0c8a483b239e5287e47d83dcbdaeede}{end}} () const
+\item 
+size\+\_\+t \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a0576e2d853791d54dbe22d8e6dedb0eb}{size}} () const
+\item 
+void \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a4fb463305c7b276ec6e8fefc781c076a}{clear}} ()
+\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a5ae4c60abea89dcf6573921d21c884aa}{empty}} () const
+\item 
+void \mbox{\hyperlink{classm0st4fa_1_1_production_vector_ad425c26ad36ab3e83bc788d718163788}{push\+\_\+back}} (const ProductionT \&production)
+\item 
+void \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a2d19ec55e9f01ccd7d1e37e78893cf97}{pop\+\_\+back}} ()
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_production_vector_aee1f3df7c7b89a710f03a38aa2a1004c}{explicit}}(false) operator std bool \mbox{\hyperlink{classm0st4fa_1_1_production_vector_ad3844e204aa6ac18fa8a574fd3d21d87}{FIRSTCalculated}} ()
+\begin{DoxyCompactList}\small\item\em Calculates (if not already calculated) the FIRST set of {\ttfamily non\+Terminal} using productions in this production vector. \end{DoxyCompactList}\item 
+std\+::set$<$ SymbolT $>$ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a94194be9ecc6157931ac83116f4187f9}{get\+FIRST}} (decltype(SymbolT().as.\+non\+Terminal) non\+Terminal) const
+\item 
+const Set\+Type \& \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a5ae3d2046b92ddfb71fd92ac915bb0af}{get\+FIRST}} () const
+\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3d90ec1b6a1c367155a85773b90c0c33}{calculate\+FOLLOW}} ()
+\begin{DoxyCompactList}\small\item\em Calculates (if not already calculated) the FOLLOW set of {\ttfamily non\+Terminal} using productions in this production vector. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a03f7b1f06686ead540fc7b11891b16e3}{FOLLOWCalculated}} ()
+\item 
+std\+::set$<$ SymbolT $>$ \mbox{\hyperlink{classm0st4fa_1_1_production_vector_ab0cf1339ea2d18ae121cb979ccf9252a}{get\+FOLLOW}} (const decltype(SymbolT().as.\+non\+Terminal) non\+Terminal)
+\item 
+const Set\+Type \& \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a11c261bdb92e75a3169026f1ebec3208}{get\+FOLLOW}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vec\+Type \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}{m\+\_\+\+Vector}} \{\}
+\item 
+Logger \mbox{\hyperlink{classm0st4fa_1_1_production_vector_a39aab496a4f89cef4d3b62ad30d9e77c}{m\+\_\+\+Logger}} \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename ProductionT$>$\newline
+class m0st4fa\+::\+Production\+Vector$<$ Production\+T $>$}
+Represents a vector (think of it as a set, really) of productions. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classm0st4fa_1_1_production_vector_a2edf705c6c62605cacef65b6cd80bf62}\label{classm0st4fa_1_1_production_vector_a2edf705c6c62605cacef65b6cd80bf62} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!ProductionVector@{ProductionVector}}
+\index{ProductionVector@{ProductionVector}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{ProductionVector()}{ProductionVector()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::\+Production\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classm0st4fa_1_1_production_vector_a9d9eda2c74ae36ad919f427e3534a7b9}\label{classm0st4fa_1_1_production_vector_a9d9eda2c74ae36ad919f427e3534a7b9} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!at@{at}}
+\index{at@{at}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+const Prod\+Rec \& \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::at (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_a3d72d4ee9a572ed1a392c6a8cfe66b33}\label{classm0st4fa_1_1_production_vector_a3d72d4ee9a572ed1a392c6a8cfe66b33} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!begin@{begin}}
+\index{begin@{begin}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+auto \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_a3d90ec1b6a1c367155a85773b90c0c33}\label{classm0st4fa_1_1_production_vector_a3d90ec1b6a1c367155a85773b90c0c33} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!calculateFOLLOW@{calculateFOLLOW}}
+\index{calculateFOLLOW@{calculateFOLLOW}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{calculateFOLLOW()}{calculateFOLLOW()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::calculate\+FOLLOW}
+
+
+
+Calculates (if not already calculated) the FOLLOW set of {\ttfamily non\+Terminal} using productions in this production vector. 
+
+This function checks for whether FOLLOW({\ttfamily non\+Terminal}) is already calculated. If it is, it returns it, otherwise, it calculates it and then chaches it to speed up further access, as the process is time-\/ and resource-\/consuming.~\newline
+FOLLOW({\ttfamily non\+Terminal}) is calculated using productions of this vector. This is done using the typical algorithm\+:
+\begin{DoxyEnumerate}
+\item Go through every production and search for {\ttfamily non\+Terminal}.~\newline
+
+\item Add FIRST({\ttfamily S}), assuming {\ttfamily S} is the rest of the production after it.~\newline
+
+\item If {\ttfamily S} is epsilon, then add FOLLOW({\ttfamily H}) assuming {\ttfamily H} is the head of the production being examined. 
+\begin{DoxyParams}{Parameters}
+{\em non\+Terminal} & The non-\/terminal whose FIRST set is to be calculated. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if FIRST is calculated, otherwise, calculates FIRST and then returns {\ttfamily true}. 
+\end{DoxyReturn}
+
+\end{DoxyEnumerate}\hypertarget{PProduction.h_autotoc_md5}{}\doxysubsection{\texorpdfstring{General Algorithm\+:}{General Algorithm:}}\label{PProduction.h_autotoc_md5}
+
+\begin{DoxyItemize}
+\item Loop through every production of the grammar until you cannot add another terminal to the FOLLOW set of any non-\/terminal.
+\item Variable added asserts whether we added any terminal in the last iteration to the FOLLOW set of any non-\/terminal.
+\item For every production {\ttfamily P} and its head {\ttfamily H}\+:
+\begin{DoxyItemize}
+\item For every grammar symbol {\ttfamily S} of the body of {\ttfamily P}\+:
+\begin{DoxyItemize}
+\item If {\ttfamily S} is a terminal, get to the next grammar symbol.
+\item If {\ttfamily S} is a non-\/terminal call {\ttfamily get\+FOLLOWOf\+Non\+Terminal}.
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{PProduction.h_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{Algorithm for get\+FOLLOWOf\+Non\+Terminal()\+:}{Algorithm for getFOLLOWOfNonTerminal():}}\label{PProduction.h_autotoc_md6}
+\hypertarget{PProduction.h_autotoc_md7}{}\doxysubparagraph{\texorpdfstring{input\+:}{input:}}\label{PProduction.h_autotoc_md7}
+
+\begin{DoxyItemize}
+\item Non-\/terminal {\ttfamily N}.
+\item Index {\ttfamily I1} of the current production {\ttfamily P} within the production vector.
+\item Index of {\ttfamily N} within this production. 
+\end{DoxyItemize}\hypertarget{PProduction.h_autotoc_md8}{}\doxysubparagraph{\texorpdfstring{output\+:}{output:}}\label{PProduction.h_autotoc_md8}
+
+\begin{DoxyItemize}
+\item Augments FOLLOW(\+N) using currently available information. 
+\end{DoxyItemize}\hypertarget{PProduction.h_autotoc_md9}{}\doxysubparagraph{\texorpdfstring{method\+:}{method:}}\label{PProduction.h_autotoc_md9}
+
+\begin{DoxyItemize}
+\item For every symbol {\ttfamily S} after {\ttfamily N} in production {\ttfamily P} whose index is {\ttfamily I2}\+:
+\begin{DoxyItemize}
+\item If {\ttfamily S} is a terminal, add {\ttfamily S} to {\ttfamily FOLLOW(\+N)} and return.
+\item If {\ttfamily S} is a non-\/terminal, add FIRST({\ttfamily S}) to {\ttfamily FOLLOW(\+N)}, then check whether {\ttfamily FOLLOW(\+N)} contains epsilon\+:
+\begin{DoxyItemize}
+\item If {\ttfamily FOLLOW(\+N)} contains epsilon\+:
+\begin{DoxyItemize}
+\item remove epsilon.
+\begin{DoxyItemize}
+\item Check if we are at the end of {\ttfamily P}\+:
+\begin{DoxyItemize}
+\item If we are, add {\ttfamily FOLLOW(\+H)} to FOLLOW({\ttfamily S}).
+\item If we are not, continue to the next symbol.
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item If {\ttfamily FOLLOW(\+N)} doesn\textquotesingle{}t contain epsilon, return.
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}\Hypertarget{classm0st4fa_1_1_production_vector_a4fb463305c7b276ec6e8fefc781c076a}\label{classm0st4fa_1_1_production_vector_a4fb463305c7b276ec6e8fefc781c076a} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!clear@{clear}}
+\index{clear@{clear}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+void \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_a5ae4c60abea89dcf6573921d21c884aa}\label{classm0st4fa_1_1_production_vector_a5ae4c60abea89dcf6573921d21c884aa} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!empty@{empty}}
+\index{empty@{empty}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_ab0c8a483b239e5287e47d83dcbdaeede}\label{classm0st4fa_1_1_production_vector_ab0c8a483b239e5287e47d83dcbdaeede} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!end@{end}}
+\index{end@{end}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+auto \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_aee1f3df7c7b89a710f03a38aa2a1004c}\label{classm0st4fa_1_1_production_vector_aee1f3df7c7b89a710f03a38aa2a1004c} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!explicit@{explicit}}
+\index{explicit@{explicit}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{explicit()}{explicit()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::explicit (\begin{DoxyParamCaption}\item[{true}]{ }\end{DoxyParamCaption}) const \&\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_ad3844e204aa6ac18fa8a574fd3d21d87}\label{classm0st4fa_1_1_production_vector_ad3844e204aa6ac18fa8a574fd3d21d87} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!FIRSTCalculated@{FIRSTCalculated}}
+\index{FIRSTCalculated@{FIRSTCalculated}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{FIRSTCalculated()}{FIRSTCalculated()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_production_vector_aee1f3df7c7b89a710f03a38aa2a1004c}{explicit}}(false) operator std bool \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::\+FIRSTCalculated (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calculates (if not already calculated) the FIRST set of {\ttfamily non\+Terminal} using productions in this production vector. 
+
+This function checks for whether FIRST({\ttfamily non\+Terminal}) is already calculated. If it is, it returns it, otherwise, it calculates it and then chaches it to speed up further access, as the process is time-\/ and resource-\/consuming.~\newline
+FIRST({\ttfamily non\+Terminal}) is calculated using productions of this vector. This is done using the typical algorithm\+: go through every production {\ttfamily P} whose head is {\ttfamily non\+Terminal} and body is {\ttfamily B} and return FIRST({\ttfamily B}). 
+\begin{DoxyParams}{Parameters}
+{\em non\+Terminal} & The non-\/terminal whose FIRST set is to be calculated. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if FIRST is calculated, otherwise, calculates FIRST and then returns {\ttfamily true}. 
+\end{DoxyReturn}
+\Hypertarget{classm0st4fa_1_1_production_vector_a03f7b1f06686ead540fc7b11891b16e3}\label{classm0st4fa_1_1_production_vector_a03f7b1f06686ead540fc7b11891b16e3} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!FOLLOWCalculated@{FOLLOWCalculated}}
+\index{FOLLOWCalculated@{FOLLOWCalculated}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{FOLLOWCalculated()}{FOLLOWCalculated()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::\+FOLLOWCalculated (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_a5ae3d2046b92ddfb71fd92ac915bb0af}\label{classm0st4fa_1_1_production_vector_a5ae3d2046b92ddfb71fd92ac915bb0af} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!getFIRST@{getFIRST}}
+\index{getFIRST@{getFIRST}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{getFIRST()}{getFIRST()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+const Set\+Type \& \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::get\+FIRST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Returns a reference to the entire FIRST set (calculated so far) for this production vector. 
+\end{DoxyReturn}
+\Hypertarget{classm0st4fa_1_1_production_vector_a94194be9ecc6157931ac83116f4187f9}\label{classm0st4fa_1_1_production_vector_a94194be9ecc6157931ac83116f4187f9} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!getFIRST@{getFIRST}}
+\index{getFIRST@{getFIRST}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{getFIRST()}{getFIRST()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+std\+::set$<$ SymbolT $>$ \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::get\+FIRST (\begin{DoxyParamCaption}\item[{decltype(SymbolT().as.\+non\+Terminal)}]{non\+Terminal }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em non\+Terminal} & The non-\/terminal whose FIRST set is to be returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+FIRST({\ttfamily non\+Terminal}). 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{structm0st4fa_1_1_missing_value_exception}{Missing\+Value\+Exception}} & It is thrown in case FIRST({\ttfamily non\+Terminal}) is not yet calculated. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classm0st4fa_1_1_production_vector_a11c261bdb92e75a3169026f1ebec3208}\label{classm0st4fa_1_1_production_vector_a11c261bdb92e75a3169026f1ebec3208} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!getFOLLOW@{getFOLLOW}}
+\index{getFOLLOW@{getFOLLOW}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{getFOLLOW()}{getFOLLOW()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+const Set\+Type \& \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::get\+FOLLOW (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Returns a reference to the entire FOLLOW set (calculated so far) for this production vector. 
+\end{DoxyReturn}
+\Hypertarget{classm0st4fa_1_1_production_vector_ab0cf1339ea2d18ae121cb979ccf9252a}\label{classm0st4fa_1_1_production_vector_ab0cf1339ea2d18ae121cb979ccf9252a} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!getFOLLOW@{getFOLLOW}}
+\index{getFOLLOW@{getFOLLOW}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{getFOLLOW()}{getFOLLOW()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+std\+::set$<$ SymbolT $>$ \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::get\+FOLLOW (\begin{DoxyParamCaption}\item[{const decltype(SymbolT().as.\+non\+Terminal)}]{non\+Terminal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em non\+Terminal} & The non-\/terminal whose FOLLOW set is be returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+FOLLOW({\ttfamily non\+Terminal}). 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{structm0st4fa_1_1_missing_value_exception}{Missing\+Value\+Exception}} & It is thrown in case FOLLOW({\ttfamily non\+Terminal}) is not yet calculated. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classm0st4fa_1_1_production_vector_a0e1dd45ac9d11074f9c3ab6e2b3efd16}\label{classm0st4fa_1_1_production_vector_a0e1dd45ac9d11074f9c3ab6e2b3efd16} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!getProdVector@{getProdVector}}
+\index{getProdVector@{getProdVector}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{getProdVector()}{getProdVector()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+const Vec\+Type \& \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::get\+Prod\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_a763215209c3260eb11218aa52856cc02}\label{classm0st4fa_1_1_production_vector_a763215209c3260eb11218aa52856cc02} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!getProdVectorValue@{getProdVectorValue}}
+\index{getProdVectorValue@{getProdVectorValue}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{getProdVectorValue()}{getProdVectorValue()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+Vec\+Type \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::get\+Prod\+Vector\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_a70ca64406cb13d4b6c61f261c26279d2}\label{classm0st4fa_1_1_production_vector_a70ca64406cb13d4b6c61f261c26279d2} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!getVector@{getVector}}
+\index{getVector@{getVector}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{getVector()}{getVector()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+const auto \& \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::get\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_a7a7e9a049901bd6a4ce97c876f699bf9}\label{classm0st4fa_1_1_production_vector_a7a7e9a049901bd6a4ce97c876f699bf9} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+const Prod\+Rec \& \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_a2d19ec55e9f01ccd7d1e37e78893cf97}\label{classm0st4fa_1_1_production_vector_a2d19ec55e9f01ccd7d1e37e78893cf97} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!pop\_back@{pop\_back}}
+\index{pop\_back@{pop\_back}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+void \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_ad425c26ad36ab3e83bc788d718163788}\label{classm0st4fa_1_1_production_vector_ad425c26ad36ab3e83bc788d718163788} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+void \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{const ProductionT \&}]{production }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_a2814cfd772f03bfaa474784243f6572d}\label{classm0st4fa_1_1_production_vector_a2814cfd772f03bfaa474784243f6572d} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!pushProduction@{pushProduction}}
+\index{pushProduction@{pushProduction}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{pushProduction()}{pushProduction()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+void \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::push\+Production (\begin{DoxyParamCaption}\item[{const Prod\+Rec \&}]{prod }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_a0576e2d853791d54dbe22d8e6dedb0eb}\label{classm0st4fa_1_1_production_vector_a0576e2d853791d54dbe22d8e6dedb0eb} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!size@{size}}
+\index{size@{size}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+size\+\_\+t \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classm0st4fa_1_1_production_vector_a39aab496a4f89cef4d3b62ad30d9e77c}\label{classm0st4fa_1_1_production_vector_a39aab496a4f89cef4d3b62ad30d9e77c} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!m\_Logger@{m\_Logger}}
+\index{m\_Logger@{m\_Logger}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{m\_Logger}{m\_Logger}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+Logger \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::m\+\_\+\+Logger \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d}\label{classm0st4fa_1_1_production_vector_a3fc8297cd0a4eb5a12b3156f13ca1a6d} 
+\index{m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}!m\_Vector@{m\_Vector}}
+\index{m\_Vector@{m\_Vector}!m0st4fa::ProductionVector$<$ ProductionT $>$@{m0st4fa::ProductionVector$<$ ProductionT $>$}}
+\doxysubsubsection{\texorpdfstring{m\_Vector}{m\_Vector}}
+{\footnotesize\ttfamily template$<$typename ProductionT $>$ \\
+Vec\+Type \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{m0st4fa\+::\+Production\+Vector}}$<$ ProductionT $>$\+::m\+\_\+\+Vector \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_p_production_8h}{PProduction.\+h}}\end{DoxyCompactItemize}

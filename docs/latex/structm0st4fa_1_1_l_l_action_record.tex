@@ -1,0 +1,79 @@
+\hypertarget{structm0st4fa_1_1_l_l_action_record}{}\doxysection{m0st4fa\+::LLAction\+Record\texorpdfstring{$<$}{<} DataT \texorpdfstring{$>$}{>} Struct Template Reference}
+\label{structm0st4fa_1_1_l_l_action_record}\index{m0st4fa::LLActionRecord$<$ DataT $>$@{m0st4fa::LLActionRecord$<$ DataT $>$}}
+
+
+A simple base class for action records from which you can derive more complex classes.  
+
+
+
+
+{\ttfamily \#include $<$PStack.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record_a9423ebe9988b38ec26d6392bd40ac067}{operator std\+::string}} () const
+\item 
+std\+::string \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record_a262552b277d7c14a3e646c43c28e04c5}{to\+String}} () const
+\item 
+bool \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record_a14b9c9b7b4285b9caaa67e7a6b028b71}{operator==}} (const \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record}{LLAction\+Record}} \&other) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+DataT \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record_ab537ae22b85c67c652ded665cc958f3b}{data}}
+\item 
+void $\ast$ \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record_abc9b53f677615d40b9cb32f261e1d643}{action}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename DataT$>$\newline
+requires requires (DataT \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record_ab537ae22b85c67c652ded665cc958f3b}{data}}) \{ std\+::string(\mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record_ab537ae22b85c67c652ded665cc958f3b}{data}}); \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record_ab537ae22b85c67c652ded665cc958f3b}{data}} == \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record_ab537ae22b85c67c652ded665cc958f3b}{data}}; \}\newline
+struct m0st4fa\+::\+LLAction\+Record$<$ Data\+T $>$}
+A simple base class for action records from which you can derive more complex classes. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structm0st4fa_1_1_l_l_action_record_a9423ebe9988b38ec26d6392bd40ac067}\label{structm0st4fa_1_1_l_l_action_record_a9423ebe9988b38ec26d6392bd40ac067} 
+\index{m0st4fa::LLActionRecord$<$ DataT $>$@{m0st4fa::LLActionRecord$<$ DataT $>$}!operator std::string@{operator std::string}}
+\index{operator std::string@{operator std::string}!m0st4fa::LLActionRecord$<$ DataT $>$@{m0st4fa::LLActionRecord$<$ DataT $>$}}
+\doxysubsubsection{\texorpdfstring{operator std::string()}{operator std::string()}}
+{\footnotesize\ttfamily template$<$typename DataT $>$ \\
+\mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record}{m0st4fa\+::\+LLAction\+Record}}$<$ DataT $>$\+::operator std\+::string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structm0st4fa_1_1_l_l_action_record_a14b9c9b7b4285b9caaa67e7a6b028b71}\label{structm0st4fa_1_1_l_l_action_record_a14b9c9b7b4285b9caaa67e7a6b028b71} 
+\index{m0st4fa::LLActionRecord$<$ DataT $>$@{m0st4fa::LLActionRecord$<$ DataT $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!m0st4fa::LLActionRecord$<$ DataT $>$@{m0st4fa::LLActionRecord$<$ DataT $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$typename DataT $>$ \\
+bool \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record}{m0st4fa\+::\+LLAction\+Record}}$<$ DataT $>$\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record}{LLAction\+Record}}$<$ DataT $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structm0st4fa_1_1_l_l_action_record_a262552b277d7c14a3e646c43c28e04c5}\label{structm0st4fa_1_1_l_l_action_record_a262552b277d7c14a3e646c43c28e04c5} 
+\index{m0st4fa::LLActionRecord$<$ DataT $>$@{m0st4fa::LLActionRecord$<$ DataT $>$}!toString@{toString}}
+\index{toString@{toString}!m0st4fa::LLActionRecord$<$ DataT $>$@{m0st4fa::LLActionRecord$<$ DataT $>$}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily template$<$typename DataT $>$ \\
+std\+::string \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record}{m0st4fa\+::\+LLAction\+Record}}$<$ DataT $>$\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structm0st4fa_1_1_l_l_action_record_abc9b53f677615d40b9cb32f261e1d643}\label{structm0st4fa_1_1_l_l_action_record_abc9b53f677615d40b9cb32f261e1d643} 
+\index{m0st4fa::LLActionRecord$<$ DataT $>$@{m0st4fa::LLActionRecord$<$ DataT $>$}!action@{action}}
+\index{action@{action}!m0st4fa::LLActionRecord$<$ DataT $>$@{m0st4fa::LLActionRecord$<$ DataT $>$}}
+\doxysubsubsection{\texorpdfstring{action}{action}}
+{\footnotesize\ttfamily template$<$typename DataT $>$ \\
+void$\ast$ \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record}{m0st4fa\+::\+LLAction\+Record}}$<$ DataT $>$\+::action = nullptr}
+
+This is expected to be a pointer to an action taking a Stack and Data as input \Hypertarget{structm0st4fa_1_1_l_l_action_record_ab537ae22b85c67c652ded665cc958f3b}\label{structm0st4fa_1_1_l_l_action_record_ab537ae22b85c67c652ded665cc958f3b} 
+\index{m0st4fa::LLActionRecord$<$ DataT $>$@{m0st4fa::LLActionRecord$<$ DataT $>$}!data@{data}}
+\index{data@{data}!m0st4fa::LLActionRecord$<$ DataT $>$@{m0st4fa::LLActionRecord$<$ DataT $>$}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily template$<$typename DataT $>$ \\
+DataT \mbox{\hyperlink{structm0st4fa_1_1_l_l_action_record}{m0st4fa\+::\+LLAction\+Record}}$<$ DataT $>$\+::data}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_p_stack_8h}{PStack.\+h}}\end{DoxyCompactItemize}

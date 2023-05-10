@@ -1,0 +1,120 @@
+\hypertarget{classm0st4fa_1_1_parser}{}\doxysection{m0st4fa\+::Parser\texorpdfstring{$<$}{<} Lexical\+AnalyzerT, SymbolT, Parsing\+TableT, FSMTableT, InputT \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classm0st4fa_1_1_parser}\index{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}}
+
+
+{\ttfamily \#include $<$Parser.\+h$>$}
+
+Inheritance diagram for m0st4fa\+::Parser\texorpdfstring{$<$}{<} Lexical\+AnalyzerT, SymbolT, Parsing\+TableT, FSMTableT, InputT \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.904685cm]{classm0st4fa_1_1_parser}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_parser_abbbaaf20300ec0a42514149c3e9df894}{Parser}} ()=default
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_parser_ae4816e83b9981b8e03470a12ee4015b2}{Parser}} (Lexical\+AnalyzerT \&lexer, const Parsing\+TableT \&parsing\+Table, const SymbolT \&start\+Symbol)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string\+\_\+view \mbox{\hyperlink{classm0st4fa_1_1_parser_ab650055c8f911dab5686e2207e8e01d6}{get\+\_\+source\+\_\+code}} () const
+\item 
+Token\+Type \mbox{\hyperlink{classm0st4fa_1_1_parser_a50baaace773ba3ad204057557383ff87}{get\+\_\+next\+\_\+token}} () const
+\item 
+SymbolT \mbox{\hyperlink{classm0st4fa_1_1_parser_a3b58616dafb1718b3756d17115ca3dc3}{get\+\_\+start\+\_\+symbol}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Parsing\+TableT \mbox{\hyperlink{classm0st4fa_1_1_parser_ac238b151fa4253850fcdb23e403105c5}{p\+\_\+\+Table}}
+\item 
+Logger \mbox{\hyperlink{classm0st4fa_1_1_parser_a1d8e00c859e161b25063b88692c5af18}{p\+\_\+\+Logger}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{classm0st4fa_1_1_parser_afdc41afb728d0ce2d8e77c53f2739254}{ERR\+\_\+\+RECOVERY\+\_\+\+LIMIT}} = 5
+\begin{DoxyCompactList}\small\item\em Set the maximum number of errors that you recover from. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Lexical\+AnalyzerT, typename SymbolT, typename Parsing\+TableT, typename FSMTableT = FSMTable, typename InputT = std\+::string\+\_\+view$>$\newline
+requires Parser\+Requirments$<$Parsing\+TableT$>$\newline
+class m0st4fa\+::\+Parser$<$ Lexical\+Analyzer\+T, Symbol\+T, Parsing\+Table\+T, FSMTable\+T, Input\+T $>$}
+@input Input buffer w (managed by the lexical analyzer) and parsing table M for grammar G. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classm0st4fa_1_1_parser_abbbaaf20300ec0a42514149c3e9df894}\label{classm0st4fa_1_1_parser_abbbaaf20300ec0a42514149c3e9df894} 
+\index{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}!Parser@{Parser}}
+\index{Parser@{Parser}!m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{Parser()}{Parser()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Lexical\+AnalyzerT , typename SymbolT , typename Parsing\+TableT , typename FSMTableT  = FSMTable, typename InputT  = std\+::string\+\_\+view$>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_parser}{m0st4fa\+::\+Parser}}$<$ Lexical\+AnalyzerT, SymbolT, Parsing\+TableT, FSMTableT, InputT $>$\+::\+Parser (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classm0st4fa_1_1_parser_ae4816e83b9981b8e03470a12ee4015b2}\label{classm0st4fa_1_1_parser_ae4816e83b9981b8e03470a12ee4015b2} 
+\index{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}!Parser@{Parser}}
+\index{Parser@{Parser}!m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{Parser()}{Parser()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Lexical\+AnalyzerT , typename SymbolT , typename Parsing\+TableT , typename FSMTableT  = FSMTable, typename InputT  = std\+::string\+\_\+view$>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_parser}{m0st4fa\+::\+Parser}}$<$ Lexical\+AnalyzerT, SymbolT, Parsing\+TableT, FSMTableT, InputT $>$\+::\+Parser (\begin{DoxyParamCaption}\item[{Lexical\+AnalyzerT \&}]{lexer,  }\item[{const Parsing\+TableT \&}]{parsing\+Table,  }\item[{const SymbolT \&}]{start\+Symbol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classm0st4fa_1_1_parser_a50baaace773ba3ad204057557383ff87}\label{classm0st4fa_1_1_parser_a50baaace773ba3ad204057557383ff87} 
+\index{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}!get\_next\_token@{get\_next\_token}}
+\index{get\_next\_token@{get\_next\_token}!m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{get\_next\_token()}{get\_next\_token()}}
+{\footnotesize\ttfamily template$<$typename Lexical\+AnalyzerT , typename SymbolT , typename Parsing\+TableT , typename FSMTableT  = FSMTable, typename InputT  = std\+::string\+\_\+view$>$ \\
+Token\+Type \mbox{\hyperlink{classm0st4fa_1_1_parser}{m0st4fa\+::\+Parser}}$<$ Lexical\+AnalyzerT, SymbolT, Parsing\+TableT, FSMTableT, InputT $>$\+::get\+\_\+next\+\_\+token (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+\Hypertarget{classm0st4fa_1_1_parser_ab650055c8f911dab5686e2207e8e01d6}\label{classm0st4fa_1_1_parser_ab650055c8f911dab5686e2207e8e01d6} 
+\index{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}!get\_source\_code@{get\_source\_code}}
+\index{get\_source\_code@{get\_source\_code}!m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{get\_source\_code()}{get\_source\_code()}}
+{\footnotesize\ttfamily template$<$typename Lexical\+AnalyzerT , typename SymbolT , typename Parsing\+TableT , typename FSMTableT  = FSMTable, typename InputT  = std\+::string\+\_\+view$>$ \\
+std\+::string\+\_\+view \mbox{\hyperlink{classm0st4fa_1_1_parser}{m0st4fa\+::\+Parser}}$<$ Lexical\+AnalyzerT, SymbolT, Parsing\+TableT, FSMTableT, InputT $>$\+::get\+\_\+source\+\_\+code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+\Hypertarget{classm0st4fa_1_1_parser_a3b58616dafb1718b3756d17115ca3dc3}\label{classm0st4fa_1_1_parser_a3b58616dafb1718b3756d17115ca3dc3} 
+\index{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}!get\_start\_symbol@{get\_start\_symbol}}
+\index{get\_start\_symbol@{get\_start\_symbol}!m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{get\_start\_symbol()}{get\_start\_symbol()}}
+{\footnotesize\ttfamily template$<$typename Lexical\+AnalyzerT , typename SymbolT , typename Parsing\+TableT , typename FSMTableT  = FSMTable, typename InputT  = std\+::string\+\_\+view$>$ \\
+SymbolT \mbox{\hyperlink{classm0st4fa_1_1_parser}{m0st4fa\+::\+Parser}}$<$ Lexical\+AnalyzerT, SymbolT, Parsing\+TableT, FSMTableT, InputT $>$\+::get\+\_\+start\+\_\+symbol (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classm0st4fa_1_1_parser_afdc41afb728d0ce2d8e77c53f2739254}\label{classm0st4fa_1_1_parser_afdc41afb728d0ce2d8e77c53f2739254} 
+\index{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}!ERR\_RECOVERY\_LIMIT@{ERR\_RECOVERY\_LIMIT}}
+\index{ERR\_RECOVERY\_LIMIT@{ERR\_RECOVERY\_LIMIT}!m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{ERR\_RECOVERY\_LIMIT}{ERR\_RECOVERY\_LIMIT}}
+{\footnotesize\ttfamily template$<$typename Lexical\+AnalyzerT , typename SymbolT , typename Parsing\+TableT , typename FSMTableT  = FSMTable, typename InputT  = std\+::string\+\_\+view$>$ \\
+constexpr size\+\_\+t \mbox{\hyperlink{classm0st4fa_1_1_parser}{m0st4fa\+::\+Parser}}$<$ Lexical\+AnalyzerT, SymbolT, Parsing\+TableT, FSMTableT, InputT $>$\+::\+ERR\+\_\+\+RECOVERY\+\_\+\+LIMIT = 5\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [protected]}}
+
+
+
+Set the maximum number of errors that you recover from. 
+
+\Hypertarget{classm0st4fa_1_1_parser_a1d8e00c859e161b25063b88692c5af18}\label{classm0st4fa_1_1_parser_a1d8e00c859e161b25063b88692c5af18} 
+\index{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}!p\_Logger@{p\_Logger}}
+\index{p\_Logger@{p\_Logger}!m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{p\_Logger}{p\_Logger}}
+{\footnotesize\ttfamily template$<$typename Lexical\+AnalyzerT , typename SymbolT , typename Parsing\+TableT , typename FSMTableT  = FSMTable, typename InputT  = std\+::string\+\_\+view$>$ \\
+Logger \mbox{\hyperlink{classm0st4fa_1_1_parser}{m0st4fa\+::\+Parser}}$<$ Lexical\+AnalyzerT, SymbolT, Parsing\+TableT, FSMTableT, InputT $>$\+::p\+\_\+\+Logger\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classm0st4fa_1_1_parser_ac238b151fa4253850fcdb23e403105c5}\label{classm0st4fa_1_1_parser_ac238b151fa4253850fcdb23e403105c5} 
+\index{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}!p\_Table@{p\_Table}}
+\index{p\_Table@{p\_Table}!m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::Parser$<$ LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{p\_Table}{p\_Table}}
+{\footnotesize\ttfamily template$<$typename Lexical\+AnalyzerT , typename SymbolT , typename Parsing\+TableT , typename FSMTableT  = FSMTable, typename InputT  = std\+::string\+\_\+view$>$ \\
+Parsing\+TableT \mbox{\hyperlink{classm0st4fa_1_1_parser}{m0st4fa\+::\+Parser}}$<$ Lexical\+AnalyzerT, SymbolT, Parsing\+TableT, FSMTableT, InputT $>$\+::p\+\_\+\+Table\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_parser_8h}{Parser.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,299 @@
+\hypertarget{classm0st4fa_1_1_item_set}{}\doxysection{m0st4fa\+::Item\+Set\texorpdfstring{$<$}{<} ItemT \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classm0st4fa_1_1_item_set}\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+
+
+{\ttfamily \#include $<$PItem.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_item_set_af79d57b4955f2b3b78b35de27f410979}{Item\+Set}} ()=default
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_item_set_a49e3362d35f7ee0b20083edfd0916fd4}{Item\+Set}} (const std\+::initializer\+\_\+list$<$ ItemT $>$ \&items)
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_item_set_ae25b749772a019c3265e2618393f143e}{Item\+Set}} (const std\+::vector$<$ ItemT $>$ items)
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_item_set_a6258e1696923f7d1a57580e36dcc2f43}{Item\+Set}} (const \mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}} \&other)
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_item_set_a6aa97918eaee1c5ddc8697d177db3dcb}{Item\+Set}} (\mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}} \&\&other)
+\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set_a7979b07ee513c758f8f3b22ce638afb8}{operator==}} (const \mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set_ab160af618edad38c1543fde0a1275645}{operator$<$}} (const \mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}} \&rhs) const
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_item_set_a080cdfee8d8459a5626e80fafc613363}{operator std\+::string}} () const
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_item_set_a32ddd59fff27ded483d25203a781cb15}{operator std\+::vector}} () const
+\item 
+std\+::string \mbox{\hyperlink{classm0st4fa_1_1_item_set_a989c7a8a6f56d832878ae58345be1a0b}{to\+String}} () const
+\item 
+std\+::vector$<$ ItemT $>$ \mbox{\hyperlink{classm0st4fa_1_1_item_set_a1524ffe25372972779ecfc1ab4fcf422}{get\+Item\+Vector}} () const
+\item 
+const ItemT \& \mbox{\hyperlink{classm0st4fa_1_1_item_set_a87c6b0680a8007b906c015460daf0e41}{at}} (size\+\_\+t index) const
+\item 
+auto \mbox{\hyperlink{classm0st4fa_1_1_item_set_ad57ad5addc173c99d1c54f386f7977fe}{begin}} ()
+\item 
+auto \mbox{\hyperlink{classm0st4fa_1_1_item_set_abf091d2c782e7a6ca66e6bc812a9f2bb}{end}} ()
+\item 
+auto \mbox{\hyperlink{classm0st4fa_1_1_item_set_af773421dcdfdb212ba6c437a4ee34180}{begin}} () const
+\item 
+auto \mbox{\hyperlink{classm0st4fa_1_1_item_set_ab702fcebcb4aa3be1583a2cb432dc6e4}{end}} () const
+\item 
+size\+\_\+t \mbox{\hyperlink{classm0st4fa_1_1_item_set_aef59afa75fff418fd37fd2a48c96ea08}{size}} () const
+\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set_a1564db89166eea62f60fdbffa8060baa}{empty}} () const
+\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set_a642964c44ba0f376a7a08c14915893a1}{insert}} (const ItemT \&)
+\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set_a17e42364af7782a3a78804e4be4f7cff}{merge}} (const \mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}} \&)
+\item 
+ItemT \mbox{\hyperlink{classm0st4fa_1_1_item_set_a6e02905c715b9407b1c0cf097157333e}{get}} (const Production\+Type \&, size\+\_\+t) const
+\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set_a73dea718d6fc79303c53c87ca5db6c78}{contains}} (const ItemT \&) const
+\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set_aeb7323ac9d1b201aea63b995c1327207}{has\+Identical\+Core}} (const \mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}} \&) const
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}} \mbox{\hyperlink{classm0st4fa_1_1_item_set_a063d4b917c85430eb5756f4761fd0c5f}{CLOSURE}} (\mbox{\hyperlink{classm0st4fa_1_1_production_vector}{Prod\+Vec\+Type}} $\ast$const)
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}} \mbox{\hyperlink{classm0st4fa_1_1_item_set_ace1ec8ba42859eae2b9ef325c819f5e9}{GOTO}} (const Symbol\+Type \&, \mbox{\hyperlink{classm0st4fa_1_1_production_vector}{Prod\+Vec\+Type}} $\ast$const)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ ItemT $>$\+::iterator \mbox{\hyperlink{classm0st4fa_1_1_item_set_a7a992572a0c4798db2b76ec8a1b7bff5}{get\+\_\+item\+\_\+it}} (const Production\+Type \&production, size\+\_\+t dot\+Position, bool fromm\+\_\+\+Set=true)
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_item_set_a454c2eba981bb250f27037507ad0d0aa}{Item\+Set}} (const std\+::vector$<$ ItemT $>$ items, bool same\+Closure)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Logger \mbox{\hyperlink{classm0st4fa_1_1_item_set_ab40aee4274268c650edad1651da5cbeb}{p\+\_\+\+Logger}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classm0st4fa_1_1_item_set_a454c2eba981bb250f27037507ad0d0aa}\label{classm0st4fa_1_1_item_set_a454c2eba981bb250f27037507ad0d0aa} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!ItemSet@{ItemSet}}
+\index{ItemSet@{ItemSet}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{ItemSet()}{ItemSet()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::\+Item\+Set (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ ItemT $>$}]{items,  }\item[{bool}]{same\+Closure }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_af79d57b4955f2b3b78b35de27f410979}\label{classm0st4fa_1_1_item_set_af79d57b4955f2b3b78b35de27f410979} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!ItemSet@{ItemSet}}
+\index{ItemSet@{ItemSet}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{ItemSet()}{ItemSet()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::\+Item\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_a49e3362d35f7ee0b20083edfd0916fd4}\label{classm0st4fa_1_1_item_set_a49e3362d35f7ee0b20083edfd0916fd4} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!ItemSet@{ItemSet}}
+\index{ItemSet@{ItemSet}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{ItemSet()}{ItemSet()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::\+Item\+Set (\begin{DoxyParamCaption}\item[{const std\+::initializer\+\_\+list$<$ ItemT $>$ \&}]{items }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_ae25b749772a019c3265e2618393f143e}\label{classm0st4fa_1_1_item_set_ae25b749772a019c3265e2618393f143e} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!ItemSet@{ItemSet}}
+\index{ItemSet@{ItemSet}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{ItemSet()}{ItemSet()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::\+Item\+Set (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ ItemT $>$}]{items }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_a6258e1696923f7d1a57580e36dcc2f43}\label{classm0st4fa_1_1_item_set_a6258e1696923f7d1a57580e36dcc2f43} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!ItemSet@{ItemSet}}
+\index{ItemSet@{ItemSet}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{ItemSet()}{ItemSet()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::\+Item\+Set (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}}$<$ ItemT $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_a6aa97918eaee1c5ddc8697d177db3dcb}\label{classm0st4fa_1_1_item_set_a6aa97918eaee1c5ddc8697d177db3dcb} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!ItemSet@{ItemSet}}
+\index{ItemSet@{ItemSet}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{ItemSet()}{ItemSet()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::\+Item\+Set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}}$<$ ItemT $>$ \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classm0st4fa_1_1_item_set_a87c6b0680a8007b906c015460daf0e41}\label{classm0st4fa_1_1_item_set_a87c6b0680a8007b906c015460daf0e41} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!at@{at}}
+\index{at@{at}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+const ItemT \& \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::at (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_ad57ad5addc173c99d1c54f386f7977fe}\label{classm0st4fa_1_1_item_set_ad57ad5addc173c99d1c54f386f7977fe} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!begin@{begin}}
+\index{begin@{begin}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+auto \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_af773421dcdfdb212ba6c437a4ee34180}\label{classm0st4fa_1_1_item_set_af773421dcdfdb212ba6c437a4ee34180} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!begin@{begin}}
+\index{begin@{begin}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+auto \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_a063d4b917c85430eb5756f4761fd0c5f}\label{classm0st4fa_1_1_item_set_a063d4b917c85430eb5756f4761fd0c5f} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!CLOSURE@{CLOSURE}}
+\index{CLOSURE@{CLOSURE}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{CLOSURE()}{CLOSURE()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}}$<$ ItemT $>$ \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::\+CLOSURE (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classm0st4fa_1_1_production_vector}{Prod\+Vec\+Type}} $\ast$ const}]{grammar\+Ptr }\end{DoxyParamCaption})}
+
+@input the grammar to be used to get all the production for a non-\/terminal when the dot is before that non-\/terminal. \begin{DoxyReturn}{Returns}
+the CLOSURE set of this item set. 
+\end{DoxyReturn}
+\Hypertarget{classm0st4fa_1_1_item_set_a73dea718d6fc79303c53c87ca5db6c78}\label{classm0st4fa_1_1_item_set_a73dea718d6fc79303c53c87ca5db6c78} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!contains@{contains}}
+\index{contains@{contains}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::contains (\begin{DoxyParamCaption}\item[{const ItemT \&}]{item }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+check whether this item exists in this item set. {\ttfamily exists} means the first component is the same, and the second is a subset. \begin{DoxyReturn}{Returns}
+true if such an \doxylink{classm0st4fa_1_1_item}{Item} is found, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{classm0st4fa_1_1_item_set_a1564db89166eea62f60fdbffa8060baa}\label{classm0st4fa_1_1_item_set_a1564db89166eea62f60fdbffa8060baa} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!empty@{empty}}
+\index{empty@{empty}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_abf091d2c782e7a6ca66e6bc812a9f2bb}\label{classm0st4fa_1_1_item_set_abf091d2c782e7a6ca66e6bc812a9f2bb} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!end@{end}}
+\index{end@{end}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+auto \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_ab702fcebcb4aa3be1583a2cb432dc6e4}\label{classm0st4fa_1_1_item_set_ab702fcebcb4aa3be1583a2cb432dc6e4} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!end@{end}}
+\index{end@{end}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+auto \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_a6e02905c715b9407b1c0cf097157333e}\label{classm0st4fa_1_1_item_set_a6e02905c715b9407b1c0cf097157333e} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!get@{get}}
+\index{get@{get}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+ItemT \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::get (\begin{DoxyParamCaption}\item[{const Production\+Type \&}]{production,  }\item[{size\+\_\+t}]{dot\+Position }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+get all the items with this first component in this item set, if any. \begin{DoxyReturn}{Returns}
+emtpy \doxylink{classm0st4fa_1_1_item}{Item} if none is found, else a nonempty \doxylink{classm0st4fa_1_1_item}{Item}. 
+\end{DoxyReturn}
+\Hypertarget{classm0st4fa_1_1_item_set_a7a992572a0c4798db2b76ec8a1b7bff5}\label{classm0st4fa_1_1_item_set_a7a992572a0c4798db2b76ec8a1b7bff5} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!get\_item\_it@{get\_item\_it}}
+\index{get\_item\_it@{get\_item\_it}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{get\_item\_it()}{get\_item\_it()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+std\+::vector$<$ ItemT $>$\+::iterator \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::get\+\_\+item\+\_\+it (\begin{DoxyParamCaption}\item[{const Production\+Type \&}]{production,  }\item[{size\+\_\+t}]{dot\+Position,  }\item[{bool}]{fromm\+\_\+\+Set = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_a1524ffe25372972779ecfc1ab4fcf422}\label{classm0st4fa_1_1_item_set_a1524ffe25372972779ecfc1ab4fcf422} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!getItemVector@{getItemVector}}
+\index{getItemVector@{getItemVector}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{getItemVector()}{getItemVector()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+std\+::vector$<$ ItemT $>$ \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::get\+Item\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_ace1ec8ba42859eae2b9ef325c819f5e9}\label{classm0st4fa_1_1_item_set_ace1ec8ba42859eae2b9ef325c819f5e9} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!GOTO@{GOTO}}
+\index{GOTO@{GOTO}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{GOTO()}{GOTO()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}}$<$ ItemT $>$ \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::\+GOTO (\begin{DoxyParamCaption}\item[{const Symbol\+Type \&}]{symbol,  }\item[{\mbox{\hyperlink{classm0st4fa_1_1_production_vector}{Prod\+Vec\+Type}} $\ast$ const}]{grammar\+Ptr }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the GOTO set of this item set on a particular symbol. 
+\end{DoxyReturn}
+\Hypertarget{classm0st4fa_1_1_item_set_aeb7323ac9d1b201aea63b995c1327207}\label{classm0st4fa_1_1_item_set_aeb7323ac9d1b201aea63b995c1327207} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!hasIdenticalCore@{hasIdenticalCore}}
+\index{hasIdenticalCore@{hasIdenticalCore}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{hasIdenticalCore()}{hasIdenticalCore()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::has\+Identical\+Core (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}}$<$ ItemT $>$ \&}]{other }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classm0st4fa_1_1_item_set_a642964c44ba0f376a7a08c14915893a1}\label{classm0st4fa_1_1_item_set_a642964c44ba0f376a7a08c14915893a1} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!insert@{insert}}
+\index{insert@{insert}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::insert (\begin{DoxyParamCaption}\item[{const ItemT \&}]{item }\end{DoxyParamCaption})}
+
+insert a new item into the item set. if an item with the first component is already present, it just inserts the lookahead. \begin{DoxyReturn}{Returns}
+whether a new item was inserted. 
+\end{DoxyReturn}
+\Hypertarget{classm0st4fa_1_1_item_set_a17e42364af7782a3a78804e4be4f7cff}\label{classm0st4fa_1_1_item_set_a17e42364af7782a3a78804e4be4f7cff} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!merge@{merge}}
+\index{merge@{merge}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{merge()}{merge()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::merge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}}$<$ ItemT $>$ \&}]{other }\end{DoxyParamCaption})}
+
+\Hypertarget{classm0st4fa_1_1_item_set_a080cdfee8d8459a5626e80fafc613363}\label{classm0st4fa_1_1_item_set_a080cdfee8d8459a5626e80fafc613363} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!operator std::string@{operator std::string}}
+\index{operator std::string@{operator std::string}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{operator std::string()}{operator std::string()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::operator std\+::string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_a32ddd59fff27ded483d25203a781cb15}\label{classm0st4fa_1_1_item_set_a32ddd59fff27ded483d25203a781cb15} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!operator std::vector@{operator std::vector}}
+\index{operator std::vector@{operator std::vector}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{operator std::vector()}{operator std::vector()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::operator std\+::vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_ab160af618edad38c1543fde0a1275645}\label{classm0st4fa_1_1_item_set_ab160af618edad38c1543fde0a1275645} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}}$<$ ItemT $>$ \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_a7979b07ee513c758f8f3b22ce638afb8}\label{classm0st4fa_1_1_item_set_a7979b07ee513c758f8f3b22ce638afb8} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classm0st4fa_1_1_item_set}{Item\+Set}}$<$ ItemT $>$ \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+true iff the two \doxylink{classm0st4fa_1_1_item}{Item} sets are identical. 
+\end{DoxyReturn}
+\Hypertarget{classm0st4fa_1_1_item_set_aef59afa75fff418fd37fd2a48c96ea08}\label{classm0st4fa_1_1_item_set_aef59afa75fff418fd37fd2a48c96ea08} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!size@{size}}
+\index{size@{size}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+size\+\_\+t \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_item_set_a989c7a8a6f56d832878ae58345be1a0b}\label{classm0st4fa_1_1_item_set_a989c7a8a6f56d832878ae58345be1a0b} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!toString@{toString}}
+\index{toString@{toString}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+std\+::string \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classm0st4fa_1_1_item_set_ab40aee4274268c650edad1651da5cbeb}\label{classm0st4fa_1_1_item_set_ab40aee4274268c650edad1651da5cbeb} 
+\index{m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}!p\_Logger@{p\_Logger}}
+\index{p\_Logger@{p\_Logger}!m0st4fa::ItemSet$<$ ItemT $>$@{m0st4fa::ItemSet$<$ ItemT $>$}}
+\doxysubsubsection{\texorpdfstring{p\_Logger}{p\_Logger}}
+{\footnotesize\ttfamily template$<$typename ItemT $>$ \\
+Logger \mbox{\hyperlink{classm0st4fa_1_1_item_set}{m0st4fa\+::\+Item\+Set}}$<$ ItemT $>$\+::p\+\_\+\+Logger\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_p_item_8h}{PItem.\+h}}\end{DoxyCompactItemize}

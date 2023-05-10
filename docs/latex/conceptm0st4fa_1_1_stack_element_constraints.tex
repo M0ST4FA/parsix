@@ -1,0 +1,13 @@
+\hypertarget{conceptm0st4fa_1_1_stack_element_constraints}{}\doxysection{m0st4fa\+::Stack\+Element\+Constraints Concept Reference}
+\label{conceptm0st4fa_1_1_stack_element_constraints}\index{m0st4fa::StackElementConstraints@{m0st4fa::StackElementConstraints}}
+
+
+{\ttfamily \#include $<$PStack.\+h$>$}
+
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ SymbolT,\ \textcolor{keyword}{typename}\ SynthesizedT,\ \textcolor{keyword}{typename}\ ActionT>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptm0st4fa_1_1_stack_element_constraints}{m0st4fa::StackElementConstraints}}\ =\ \ \textcolor{keyword}{requires}\ (SymbolT\ sym1,\ SymbolT\ sym2)\ \{\ sym1\ =\ sym2;\ \}\ \&\&\ std::is\_trivially\_destructible\_v<SynthesizedT>\ \&\&\ std::is\_trivially\_destructible\_v<ActionT>}
+
+\end{DoxyCode}

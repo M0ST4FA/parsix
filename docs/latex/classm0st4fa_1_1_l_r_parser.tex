@@ -1,0 +1,118 @@
+\hypertarget{classm0st4fa_1_1_l_r_parser}{}\doxysection{m0st4fa\+::LRParser\texorpdfstring{$<$}{<} GrammarT, Lexical\+AnalyzerT, SymbolT, StateT, Parsing\+TableT, FSMTableT, InputT \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classm0st4fa_1_1_l_r_parser}\index{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$}}
+
+
+{\ttfamily \#include $<$LRParser.\+hpp$>$}
+
+Inheritance diagram for m0st4fa\+::LRParser\texorpdfstring{$<$}{<} GrammarT, Lexical\+AnalyzerT, SymbolT, StateT, Parsing\+TableT, FSMTableT, InputT \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.809370cm]{classm0st4fa_1_1_l_r_parser}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_l_r_parser_ac7cfdc194c78480aa1ab1a82fc589f6c}{LRParser}} ()=default
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_l_r_parser_a37d09ee498247a3f714dfa7a576966b9}{LRParser}} (Lexical\+AnalyzerT \&lexer, const Parsing\+TableT \&parsing\+Table, const SymbolT \&start\+Symbol)
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_l_r_parser_af2ea45351afd44206a6f10bf0f1f2a40}{LRParser}} (const \mbox{\hyperlink{classm0st4fa_1_1_l_r_parser}{LRParser}} \&other)=default
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_l_r_parser}{LRParser}} \& \mbox{\hyperlink{classm0st4fa_1_1_l_r_parser_a68e7196c96e24c5b04d541a89dc46507}{operator=}} (const \mbox{\hyperlink{classm0st4fa_1_1_l_r_parser}{LRParser}} \&rhs)
+\item 
+{\footnotesize template$<$typename Parser\+ResultT  = Parser\+Result$>$ }\\Parser\+ResultT \mbox{\hyperlink{classm0st4fa_1_1_l_r_parser_ae6f0de9c848736afb3952beada4c2fd8}{parse}} (const Parser\+ResultT \&, \mbox{\hyperlink{namespacem0st4fa_ad189383b5832a5e0d841c6427769985b}{Error\+Recovery\+Type}}=\mbox{\hyperlink{namespacem0st4fa_ad189383b5832a5e0d841c6427769985ba45bec99244903a5c7ebc17edeafbeebf}{Error\+Recovery\+Type\+::\+ERT\+\_\+\+NONE}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classm0st4fa_1_1_parser}{m0st4fa\+::\+Parser$<$ Lexical\+Analyzer\+T, Symbol\+T, Parsing\+Table\+T, FSMTable\+T, Input\+T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_parser_abbbaaf20300ec0a42514149c3e9df894}{Parser}} ()=default
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_parser_ae4816e83b9981b8e03470a12ee4015b2}{Parser}} (Lexical\+AnalyzerT \&lexer, const Parsing\+TableT \&parsing\+Table, const SymbolT \&start\+Symbol)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const StateT \mbox{\hyperlink{classm0st4fa_1_1_l_r_parser_a2f6de08078556fdae83441cdd6a26865}{START\+\_\+\+STATE}} \{ 0 \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{classm0st4fa_1_1_parser}{m0st4fa\+::\+Parser$<$ Lexical\+Analyzer\+T, Symbol\+T, Parsing\+Table\+T, FSMTable\+T, Input\+T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{classm0st4fa_1_1_parser_afdc41afb728d0ce2d8e77c53f2739254}{ERR\+\_\+\+RECOVERY\+\_\+\+LIMIT}} = 5
+\begin{DoxyCompactList}\small\item\em Set the maximum number of errors that you recover from. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classm0st4fa_1_1_parser}{m0st4fa\+::\+Parser$<$ Lexical\+Analyzer\+T, Symbol\+T, Parsing\+Table\+T, FSMTable\+T, Input\+T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string\+\_\+view \mbox{\hyperlink{classm0st4fa_1_1_parser_ab650055c8f911dab5686e2207e8e01d6}{get\+\_\+source\+\_\+code}} () const
+\item 
+Token\+Type \mbox{\hyperlink{classm0st4fa_1_1_parser_a50baaace773ba3ad204057557383ff87}{get\+\_\+next\+\_\+token}} () const
+\item 
+SymbolT \mbox{\hyperlink{classm0st4fa_1_1_parser_a3b58616dafb1718b3756d17115ca3dc3}{get\+\_\+start\+\_\+symbol}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classm0st4fa_1_1_parser}{m0st4fa\+::\+Parser$<$ Lexical\+Analyzer\+T, Symbol\+T, Parsing\+Table\+T, FSMTable\+T, Input\+T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+Parsing\+TableT \mbox{\hyperlink{classm0st4fa_1_1_parser_ac238b151fa4253850fcdb23e403105c5}{p\+\_\+\+Table}}
+\item 
+Logger \mbox{\hyperlink{classm0st4fa_1_1_parser_a1d8e00c859e161b25063b88692c5af18}{p\+\_\+\+Logger}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classm0st4fa_1_1_l_r_parser_ac7cfdc194c78480aa1ab1a82fc589f6c}\label{classm0st4fa_1_1_l_r_parser_ac7cfdc194c78480aa1ab1a82fc589f6c} 
+\index{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$}!LRParser@{LRParser}}
+\index{LRParser@{LRParser}!m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{LRParser()}{LRParser()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename GrammarT , typename Lexical\+AnalyzerT , typename SymbolT , typename StateT , typename Parsing\+TableT , typename FSMTableT  = FSMTable$<$$>$, typename InputT  = std\+::string$>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_l_r_parser}{m0st4fa\+::\+LRParser}}$<$ GrammarT, Lexical\+AnalyzerT, SymbolT, StateT, Parsing\+TableT, FSMTableT, InputT $>$\+::\+LRParser (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classm0st4fa_1_1_l_r_parser_a37d09ee498247a3f714dfa7a576966b9}\label{classm0st4fa_1_1_l_r_parser_a37d09ee498247a3f714dfa7a576966b9} 
+\index{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$}!LRParser@{LRParser}}
+\index{LRParser@{LRParser}!m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{LRParser()}{LRParser()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename GrammarT , typename Lexical\+AnalyzerT , typename SymbolT , typename StateT , typename Parsing\+TableT , typename FSMTableT  = FSMTable$<$$>$, typename InputT  = std\+::string$>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_l_r_parser}{m0st4fa\+::\+LRParser}}$<$ GrammarT, Lexical\+AnalyzerT, SymbolT, StateT, Parsing\+TableT, FSMTableT, InputT $>$\+::\+LRParser (\begin{DoxyParamCaption}\item[{Lexical\+AnalyzerT \&}]{lexer,  }\item[{const Parsing\+TableT \&}]{parsing\+Table,  }\item[{const SymbolT \&}]{start\+Symbol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_l_r_parser_af2ea45351afd44206a6f10bf0f1f2a40}\label{classm0st4fa_1_1_l_r_parser_af2ea45351afd44206a6f10bf0f1f2a40} 
+\index{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$}!LRParser@{LRParser}}
+\index{LRParser@{LRParser}!m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{LRParser()}{LRParser()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename GrammarT , typename Lexical\+AnalyzerT , typename SymbolT , typename StateT , typename Parsing\+TableT , typename FSMTableT  = FSMTable$<$$>$, typename InputT  = std\+::string$>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_l_r_parser}{m0st4fa\+::\+LRParser}}$<$ GrammarT, Lexical\+AnalyzerT, SymbolT, StateT, Parsing\+TableT, FSMTableT, InputT $>$\+::\+LRParser (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classm0st4fa_1_1_l_r_parser}{LRParser}}$<$ GrammarT, Lexical\+AnalyzerT, SymbolT, StateT, Parsing\+TableT, FSMTableT, InputT $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classm0st4fa_1_1_l_r_parser_a68e7196c96e24c5b04d541a89dc46507}\label{classm0st4fa_1_1_l_r_parser_a68e7196c96e24c5b04d541a89dc46507} 
+\index{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename GrammarT , typename Lexical\+AnalyzerT , typename SymbolT , typename StateT , typename Parsing\+TableT , typename FSMTableT  = FSMTable$<$$>$, typename InputT  = std\+::string$>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_l_r_parser}{LRParser}} \& \mbox{\hyperlink{classm0st4fa_1_1_l_r_parser}{m0st4fa\+::\+LRParser}}$<$ GrammarT, Lexical\+AnalyzerT, SymbolT, StateT, Parsing\+TableT, FSMTableT, InputT $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classm0st4fa_1_1_l_r_parser}{LRParser}}$<$ GrammarT, Lexical\+AnalyzerT, SymbolT, StateT, Parsing\+TableT, FSMTableT, InputT $>$ \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_l_r_parser_ae6f0de9c848736afb3952beada4c2fd8}\label{classm0st4fa_1_1_l_r_parser_ae6f0de9c848736afb3952beada4c2fd8} 
+\index{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$}!parse@{parse}}
+\index{parse@{parse}!m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily template$<$typename GrammarT , typename Lexical\+AnalyzerT , typename SymbolT , typename StateT , typename Parsing\+TableT , typename FSMTableT , typename InputT $>$ \\
+template$<$typename Parser\+ResultT $>$ \\
+Parser\+ResultT \mbox{\hyperlink{classm0st4fa_1_1_l_r_parser}{m0st4fa\+::\+LRParser}}$<$ GrammarT, Lexical\+AnalyzerT, SymbolT, StateT, Parsing\+TableT, FSMTableT, InputT $>$\+::parse (\begin{DoxyParamCaption}\item[{const Parser\+ResultT \&}]{init\+Result,  }\item[{\mbox{\hyperlink{namespacem0st4fa_ad189383b5832a5e0d841c6427769985b}{Error\+Recovery\+Type}}}]{error\+Recovery\+Type = {\ttfamily \mbox{\hyperlink{namespacem0st4fa_ad189383b5832a5e0d841c6427769985ba45bec99244903a5c7ebc17edeafbeebf}{Error\+Recovery\+Type\+::\+ERT\+\_\+\+NONE}}} }\end{DoxyParamCaption})}
+
+Algorithm Initialize the stack to contain only the start state. Loop inifinitly until\+: the parser accepts or an error is produced. For every state I on top of the stack and token T from the input\+: A = ACTION\mbox{[}I\mbox{]}\mbox{[}T.\+as\+Terminal\mbox{]} and switch on A\+: If A == SHIFT J\+: Push J on top of the stack and get next input. Else if A == REDUCE J\+: Call \+\_\+reduce(\+J). Else ERROR.
+
+\+\_\+reduce(\+J)\+: Get to production P indexed J and do the following\+: If P contains an action, execute the action before reduction. Get the length L of the production body, and remove from top of the stack L states. Assume the state on top of the stack is now state I, and the head of production J is nonterminal H\+: Push GOTO\mbox{[}I\mbox{]}\mbox{[}H.\+as.\+non\+Terminal\mbox{]} on top of the stack. Check for whether the new top state is an error. \+\_\+error\+\_\+recovery(error\+Recovery\+Type)\+: TBD.
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classm0st4fa_1_1_l_r_parser_a2f6de08078556fdae83441cdd6a26865}\label{classm0st4fa_1_1_l_r_parser_a2f6de08078556fdae83441cdd6a26865} 
+\index{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$}!START\_STATE@{START\_STATE}}
+\index{START\_STATE@{START\_STATE}!m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$@{m0st4fa::LRParser$<$ GrammarT, LexicalAnalyzerT, SymbolT, StateT, ParsingTableT, FSMTableT, InputT $>$}}
+\doxysubsubsection{\texorpdfstring{START\_STATE}{START\_STATE}}
+{\footnotesize\ttfamily template$<$typename GrammarT , typename Lexical\+AnalyzerT , typename SymbolT , typename StateT , typename Parsing\+TableT , typename FSMTableT , typename InputT $>$ \\
+const StateT \mbox{\hyperlink{classm0st4fa_1_1_l_r_parser}{m0st4fa\+::\+LRParser}}$<$ GrammarT, Lexical\+AnalyzerT, SymbolT, StateT, Parsing\+TableT, FSMTableT, InputT $>$\+::\+START\+\_\+\+STATE \{ 0 \}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_l_r_parser_8hpp}{LRParser.\+hpp}}\end{DoxyCompactItemize}

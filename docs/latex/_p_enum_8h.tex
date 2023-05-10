@@ -1,0 +1,39 @@
+\hypertarget{_p_enum_8h}{}\doxysection{PEnum.\+h File Reference}
+\label{_p_enum_8h}\index{PEnum.h@{PEnum.h}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$ostream$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacem0st4fa}{m0st4fa}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum struct \mbox{\hyperlink{namespacem0st4fa_ad189383b5832a5e0d841c6427769985b}{m0st4fa\+::\+Error\+Recovery\+Type}} \{ \newline
+\mbox{\hyperlink{namespacem0st4fa_ad189383b5832a5e0d841c6427769985ba45bec99244903a5c7ebc17edeafbeebf}{m0st4fa\+::\+ERT\+\_\+\+NONE}} = 0
+, \mbox{\hyperlink{namespacem0st4fa_ad189383b5832a5e0d841c6427769985babc99a67757c7e551ab9a18435633c115}{m0st4fa\+::\+ERT\+\_\+\+PANIC\+\_\+\+MODE}}
+, \mbox{\hyperlink{namespacem0st4fa_ad189383b5832a5e0d841c6427769985ba82655a5badf98c8320960a1667c6f0e9}{m0st4fa\+::\+ERT\+\_\+\+PHRASE\+\_\+\+LEVE}}
+, \mbox{\hyperlink{namespacem0st4fa_ad189383b5832a5e0d841c6427769985ba429f48efe183786b4a428a3c14dbcd2b}{m0st4fa\+::\+ERT\+\_\+\+GLOBAL}}
+, \newline
+\mbox{\hyperlink{namespacem0st4fa_ad189383b5832a5e0d841c6427769985ba9e4eefe4a7e861dbece7026844f35843}{m0st4fa\+::\+ERT\+\_\+\+ABORT}}
+, \mbox{\hyperlink{namespacem0st4fa_ad189383b5832a5e0d841c6427769985ba4147d108bf51309660bc7347d1812ab5}{m0st4fa\+::\+ERT\+\_\+\+NUM}}
+ \}
+\begin{DoxyCompactList}\small\item\em The type of error recovery the parser will do. Most of them are not implemented yet; only panic mode is implemented. The effect of {\ttfamily ERT\+\_\+\+NONE} is close to {\ttfamily ERT\+\_\+\+PANIC\+\_\+\+MODE} because of how the parser is architected. {\ttfamily ERT\+\_\+\+PANIC\+\_\+\+MODE} is more powerful though\+: whereas {\ttfamily ERT\+\_\+\+NONE} can only sync in case we find a token from FIRST, {\ttfamily ERT\+\_\+\+PANIC\+\_\+\+MODE} can do a lot more, and is not limited to this only. \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{namespacem0st4fa_a728a56a7d23cf8ec33aac9f9b420ba04}{m0st4fa\+::\+Prod\+Element\+Type}} \{ \mbox{\hyperlink{namespacem0st4fa_a728a56a7d23cf8ec33aac9f9b420ba04a42c1ebc8f84ef20ad44c7d006106e749}{m0st4fa\+::\+PET\+\_\+\+GRAM\+\_\+\+SYMBOL}}
+, \mbox{\hyperlink{namespacem0st4fa_a728a56a7d23cf8ec33aac9f9b420ba04a9481daa12ff1ba8e612529a1f8d9e313}{m0st4fa\+::\+PET\+\_\+\+SYNTH\+\_\+\+RECORD}}
+, \mbox{\hyperlink{namespacem0st4fa_a728a56a7d23cf8ec33aac9f9b420ba04a66ac71fe8e7f6134785f0112e619bfec}{m0st4fa\+::\+PET\+\_\+\+ACTION\+\_\+\+RECORD}}
+, \mbox{\hyperlink{namespacem0st4fa_a728a56a7d23cf8ec33aac9f9b420ba04a83aa62e17a88706c6da8371cd33300b5}{m0st4fa\+::\+PET\+\_\+\+COUNT}}
+ \}
+\begin{DoxyCompactList}\small\item\em The type of an element within a production body. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{namespacem0st4fa_ae4642ce5b0d7f60d05db482d125b0182}{m0st4fa\+::to\+String}} (\mbox{\hyperlink{namespacem0st4fa_ad189383b5832a5e0d841c6427769985b}{Error\+Recovery\+Type}} type)
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacem0st4fa_a953562dc5a196e68049cec40a11b4894}{m0st4fa\+::operator$<$$<$}} (std\+::ostream \&os, \mbox{\hyperlink{namespacem0st4fa_ad189383b5832a5e0d841c6427769985b}{Error\+Recovery\+Type}} type)
+\item 
+std\+::string \mbox{\hyperlink{namespacem0st4fa_a02bad5a6a9d6adbe6a703d702f5ccb45}{m0st4fa\+::to\+String}} (\mbox{\hyperlink{namespacem0st4fa_a728a56a7d23cf8ec33aac9f9b420ba04}{Prod\+Element\+Type}} type)
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacem0st4fa_a4e1503fdfa094cb34f22806b31e42105}{m0st4fa\+::operator$<$$<$}} (std\+::ostream \&os, \mbox{\hyperlink{namespacem0st4fa_a728a56a7d23cf8ec33aac9f9b420ba04}{Prod\+Element\+Type}} type)
+\end{DoxyCompactItemize}

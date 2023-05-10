@@ -1,0 +1,150 @@
+\hypertarget{structm0st4fa_1_1_grammatical_symbol}{}\doxysection{m0st4fa\+::Grammatical\+Symbol\texorpdfstring{$<$}{<} TerminalT, VariableT \texorpdfstring{$>$}{>} Struct Template Reference}
+\label{structm0st4fa_1_1_grammatical_symbol}\index{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}}
+
+
+Represents a single grammar symbol.  
+
+
+
+
+{\ttfamily \#include $<$PProduction.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename TokenT $>$ \newline
+requires requires (TokenT tok) \{ tok.\+name; \}}\\bool \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_af4aa29306d576c34f01d97804e351501}{operator==}} (const TokenT \&token) const
+\item 
+bool \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_abda009a3c5b5aa62313b52711824e4f8}{operator==}} (const \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{Grammatical\+Symbol}} \&other) const
+\item 
+bool \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a64fa2ba6c1c4d4fe81fa9aa8ce098cad}{operator$<$}} (const \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{Grammatical\+Symbol}} \&other) const
+\item 
+\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a4fb21673ecc73de75706a963f183785c}{operator std\+::string}} () const
+\item 
+std\+::string \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_acc14ff918398a4a217ba7f60f9cb25dc}{to\+String}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_ab0cc22cd176732cb3cc9ec7d52988d2d}{is\+Terminal}} = false
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>TerminalT \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a5b1ac2eb6a13caa53869499a0136dfd9}{terminal}}\\
+\>VariableT \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_ad324e9c556a6f4fe05cb90257a6b5eb9}{nonTerminal}}\\
+\} \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}{as}}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{Grammatical\+Symbol}} \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a20ccf8a32c75436367f927658de63020}{EPSILON}} = \{ true, \{.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a5b1ac2eb6a13caa53869499a0136dfd9}{terminal}} = Terminal\+T\+::\+T\+\_\+\+EPSILON\} \}
+\item 
+static const \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{Grammatical\+Symbol}} \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a450a38790a0ed9eb39da48059b0de97f}{END\+\_\+\+MARKER}} = \{ true, \{.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a5b1ac2eb6a13caa53869499a0136dfd9}{terminal}} = Terminal\+T\+::\+T\+\_\+\+EOF\} \}
+\begin{DoxyCompactList}\small\item\em Represents the file (or source) end marker (i.\+e. that marks the end of the file or source). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename TerminalT, typename VariableT$>$\newline
+struct m0st4fa\+::\+Grammatical\+Symbol$<$ Terminal\+T, Variable\+T $>$}
+Represents a single grammar symbol. 
+
+\hypertarget{structm0st4fa_1_1_grammatical_symbol_autotoc_md0}{}\doxysubsubsection{\texorpdfstring{Usage\+:@n}{Usage:@n}}\label{structm0st4fa_1_1_grammatical_symbol_autotoc_md0}
+
+\begin{DoxyItemize}
+\item Use {\ttfamily is\+Terminal} to check whether the symbol is terminal or not.
+\item If it is a terminal, access it as {\ttfamily .as.\+terminal}; otherwise, access it as {\ttfamily .as.\+non\+Terminal}. 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structm0st4fa_1_1_grammatical_symbol_a4fb21673ecc73de75706a963f183785c}\label{structm0st4fa_1_1_grammatical_symbol_a4fb21673ecc73de75706a963f183785c} 
+\index{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}!operator std::string@{operator std::string}}
+\index{operator std::string@{operator std::string}!m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}}
+\doxysubsubsection{\texorpdfstring{operator std::string()}{operator std::string()}}
+{\footnotesize\ttfamily template$<$typename TerminalT , typename VariableT $>$ \\
+\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{m0st4fa\+::\+Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$\+::operator std\+::string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structm0st4fa_1_1_grammatical_symbol_a64fa2ba6c1c4d4fe81fa9aa8ce098cad}\label{structm0st4fa_1_1_grammatical_symbol_a64fa2ba6c1c4d4fe81fa9aa8ce098cad} 
+\index{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily template$<$typename TerminalT , typename VariableT $>$ \\
+bool \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{m0st4fa\+::\+Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structm0st4fa_1_1_grammatical_symbol_abda009a3c5b5aa62313b52711824e4f8}\label{structm0st4fa_1_1_grammatical_symbol_abda009a3c5b5aa62313b52711824e4f8} 
+\index{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename TerminalT , typename VariableT $>$ \\
+bool \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{m0st4fa\+::\+Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structm0st4fa_1_1_grammatical_symbol_af4aa29306d576c34f01d97804e351501}\label{structm0st4fa_1_1_grammatical_symbol_af4aa29306d576c34f01d97804e351501} 
+\index{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename TerminalT , typename VariableT $>$ \\
+template$<$typename TokenT $>$ \newline
+requires requires (TokenT tok) \{ tok.\+name; \}\\
+bool \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{m0st4fa\+::\+Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$\+::operator== (\begin{DoxyParamCaption}\item[{const TokenT \&}]{token }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structm0st4fa_1_1_grammatical_symbol_acc14ff918398a4a217ba7f60f9cb25dc}\label{structm0st4fa_1_1_grammatical_symbol_acc14ff918398a4a217ba7f60f9cb25dc} 
+\index{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}!toString@{toString}}
+\index{toString@{toString}!m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily template$<$typename TerminalT , typename VariableT $>$ \\
+std\+::string \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{m0st4fa\+::\+Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403}\label{structm0st4fa_1_1_grammatical_symbol_a769adf205b3feb4cf43f7a30eba5a403} 
+\index{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}!as@{as}}
+\index{as@{as}!m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}}
+\doxysubsubsection{\texorpdfstring{[union]}{[union]}}
+{\footnotesize\ttfamily union  \{ ... \}  \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{m0st4fa\+::\+Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$\+::as}
+
+\Hypertarget{structm0st4fa_1_1_grammatical_symbol_a450a38790a0ed9eb39da48059b0de97f}\label{structm0st4fa_1_1_grammatical_symbol_a450a38790a0ed9eb39da48059b0de97f} 
+\index{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}!END\_MARKER@{END\_MARKER}}
+\index{END\_MARKER@{END\_MARKER}!m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}}
+\doxysubsubsection{\texorpdfstring{END\_MARKER}{END\_MARKER}}
+{\footnotesize\ttfamily template$<$typename TerminalT , typename VariableT $>$ \\
+const \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{m0st4fa\+::\+Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$\+::\+END\+\_\+\+MARKER = \{ true, \{.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a5b1ac2eb6a13caa53869499a0136dfd9}{terminal}} = Terminal\+T\+::\+T\+\_\+\+EOF\} \}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Represents the file (or source) end marker (i.\+e. that marks the end of the file or source). 
+
+\Hypertarget{structm0st4fa_1_1_grammatical_symbol_a20ccf8a32c75436367f927658de63020}\label{structm0st4fa_1_1_grammatical_symbol_a20ccf8a32c75436367f927658de63020} 
+\index{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}!EPSILON@{EPSILON}}
+\index{EPSILON@{EPSILON}!m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}}
+\doxysubsubsection{\texorpdfstring{EPSILON}{EPSILON}}
+{\footnotesize\ttfamily template$<$typename TerminalT , typename VariableT $>$ \\
+const \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$ \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{m0st4fa\+::\+Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$\+::\+EPSILON = \{ true, \{.\mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol_a5b1ac2eb6a13caa53869499a0136dfd9}{terminal}} = Terminal\+T\+::\+T\+\_\+\+EPSILON\} \}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{structm0st4fa_1_1_grammatical_symbol_ab0cc22cd176732cb3cc9ec7d52988d2d}\label{structm0st4fa_1_1_grammatical_symbol_ab0cc22cd176732cb3cc9ec7d52988d2d} 
+\index{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}!isTerminal@{isTerminal}}
+\index{isTerminal@{isTerminal}!m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}}
+\doxysubsubsection{\texorpdfstring{isTerminal}{isTerminal}}
+{\footnotesize\ttfamily template$<$typename TerminalT , typename VariableT $>$ \\
+bool \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{m0st4fa\+::\+Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$\+::is\+Terminal = false}
+
+\Hypertarget{structm0st4fa_1_1_grammatical_symbol_ad324e9c556a6f4fe05cb90257a6b5eb9}\label{structm0st4fa_1_1_grammatical_symbol_ad324e9c556a6f4fe05cb90257a6b5eb9} 
+\index{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}!nonTerminal@{nonTerminal}}
+\index{nonTerminal@{nonTerminal}!m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}}
+\doxysubsubsection{\texorpdfstring{nonTerminal}{nonTerminal}}
+{\footnotesize\ttfamily template$<$typename TerminalT , typename VariableT $>$ \\
+VariableT \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{m0st4fa\+::\+Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$\+::non\+Terminal}
+
+\Hypertarget{structm0st4fa_1_1_grammatical_symbol_a5b1ac2eb6a13caa53869499a0136dfd9}\label{structm0st4fa_1_1_grammatical_symbol_a5b1ac2eb6a13caa53869499a0136dfd9} 
+\index{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}!terminal@{terminal}}
+\index{terminal@{terminal}!m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$@{m0st4fa::GrammaticalSymbol$<$ TerminalT, VariableT $>$}}
+\doxysubsubsection{\texorpdfstring{terminal}{terminal}}
+{\footnotesize\ttfamily template$<$typename TerminalT , typename VariableT $>$ \\
+TerminalT \mbox{\hyperlink{structm0st4fa_1_1_grammatical_symbol}{m0st4fa\+::\+Grammatical\+Symbol}}$<$ TerminalT, VariableT $>$\+::terminal}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_p_production_8h}{PProduction.\+h}}\end{DoxyCompactItemize}

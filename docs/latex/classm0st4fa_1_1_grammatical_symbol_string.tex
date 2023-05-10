@@ -1,0 +1,179 @@
+\hypertarget{classm0st4fa_1_1_grammatical_symbol_string}{}\doxysection{m0st4fa\+::Grammatical\+Symbol\+String\texorpdfstring{$<$}{<} SymbolT \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classm0st4fa_1_1_grammatical_symbol_string}\index{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}}
+
+
+Represents a string (or ordered tuple) of grammar symbols.  
+
+
+
+
+{\ttfamily \#include $<$PProduction.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a29b75433e3909b2d8a6e395eaaa412c4}{Grammatical\+Symbol\+String}} ()=default
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_add55763687d4bae4b94a1f76df0b064d}{Grammatical\+Symbol\+String}} (const std\+::initializer\+\_\+list$<$ Symbol\+Type $>$ \&\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a49d8be396ba54551813a001c5f62ef2a}{symbols}})
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_aabde4cc54d60b421b848846f4a2af984}{Grammatical\+Symbol\+String}} (const Sym\+Vec\+It\+Type begin, const Sym\+Vec\+It\+Type end)
+\item 
+\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a1e0966290db57f40900acb9c1bd39bd1}{operator std\+::string}} () const
+\item 
+std\+::string \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a3b34ad24bb130bb1c795104fedb17ca4}{to\+String}} () const
+\item 
+void \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_ac24ebae3e5d95e2cb637287860a910fa}{push\+\_\+back}} (const Symbol\+Type \&symbol)
+\item 
+void \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a78e23fcc4c3a30ec262e83af02fec79e}{pop\+\_\+back}} ()
+\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_aab4d004914ab6b13ded761093d2cf1b2}{calculate\+FIRST}} (const FRSTVec\+Type \&)
+\begin{DoxyCompactList}\small\item\em Calculates the FIRST set for this grammar symbol string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a0012a7045adccdf1971074cf44aa6f8f}{FIRSTCalculated}} ()
+\item 
+const Set\+Type \& \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a333715649c6ecc8a863125f6b7a0f633}{get\+FIRST}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Sym\+Vec\+Type \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string_a49d8be396ba54551813a001c5f62ef2a}{symbols}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename SymbolT$>$\newline
+class m0st4fa\+::\+Grammatical\+Symbol\+String$<$ Symbol\+T $>$}
+Represents a string (or ordered tuple) of grammar symbols. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classm0st4fa_1_1_grammatical_symbol_string_a29b75433e3909b2d8a6e395eaaa412c4}\label{classm0st4fa_1_1_grammatical_symbol_string_a29b75433e3909b2d8a6e395eaaa412c4} 
+\index{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}!GrammaticalSymbolString@{GrammaticalSymbolString}}
+\index{GrammaticalSymbolString@{GrammaticalSymbolString}!m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}}
+\doxysubsubsection{\texorpdfstring{GrammaticalSymbolString()}{GrammaticalSymbolString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename SymbolT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{m0st4fa\+::\+Grammatical\+Symbol\+String}}$<$ SymbolT $>$\+::\+Grammatical\+Symbol\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classm0st4fa_1_1_grammatical_symbol_string_add55763687d4bae4b94a1f76df0b064d}\label{classm0st4fa_1_1_grammatical_symbol_string_add55763687d4bae4b94a1f76df0b064d} 
+\index{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}!GrammaticalSymbolString@{GrammaticalSymbolString}}
+\index{GrammaticalSymbolString@{GrammaticalSymbolString}!m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}}
+\doxysubsubsection{\texorpdfstring{GrammaticalSymbolString()}{GrammaticalSymbolString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename SymbolT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{m0st4fa\+::\+Grammatical\+Symbol\+String}}$<$ SymbolT $>$\+::\+Grammatical\+Symbol\+String (\begin{DoxyParamCaption}\item[{const std\+::initializer\+\_\+list$<$ Symbol\+Type $>$ \&}]{symbols }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_grammatical_symbol_string_aabde4cc54d60b421b848846f4a2af984}\label{classm0st4fa_1_1_grammatical_symbol_string_aabde4cc54d60b421b848846f4a2af984} 
+\index{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}!GrammaticalSymbolString@{GrammaticalSymbolString}}
+\index{GrammaticalSymbolString@{GrammaticalSymbolString}!m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}}
+\doxysubsubsection{\texorpdfstring{GrammaticalSymbolString()}{GrammaticalSymbolString()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename SymbolT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{m0st4fa\+::\+Grammatical\+Symbol\+String}}$<$ SymbolT $>$\+::\+Grammatical\+Symbol\+String (\begin{DoxyParamCaption}\item[{const Sym\+Vec\+It\+Type}]{begin,  }\item[{const Sym\+Vec\+It\+Type}]{end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classm0st4fa_1_1_grammatical_symbol_string_aab4d004914ab6b13ded761093d2cf1b2}\label{classm0st4fa_1_1_grammatical_symbol_string_aab4d004914ab6b13ded761093d2cf1b2} 
+\index{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}!calculateFIRST@{calculateFIRST}}
+\index{calculateFIRST@{calculateFIRST}!m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}}
+\doxysubsubsection{\texorpdfstring{calculateFIRST()}{calculateFIRST()}}
+{\footnotesize\ttfamily template$<$typename SymbolT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{m0st4fa\+::\+Grammatical\+Symbol\+String}}$<$ SymbolT $>$\+::calculate\+FIRST (\begin{DoxyParamCaption}\item[{const FRSTVec\+Type \&}]{prod\+Vec\+FIRST }\end{DoxyParamCaption})}
+
+
+
+Calculates the FIRST set for this grammar symbol string. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em prod\+Vec\+FIRST} & The FIRST set of a particular grammar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns whether FIRST has been calculated successfully or not. 
+\end{DoxyReturn}
+\hypertarget{PProduction.h_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{Algorithm\+:}{Algorithm:}}\label{PProduction.h_autotoc_md10}
+For every grammar symbol {\ttfamily GS} of the string {\ttfamily S}\+:
+\begin{DoxyItemize}
+\item If {\ttfamily S} is a non-\/terminal\+:
+\item Get FIRST(\+GS) and add it to {\ttfamily FIRST(\+S)}.
+\item Check whether FIRST(\+GS) has epsilon and remove the epsilon, if any\+:
+\begin{DoxyItemize}
+\item If FIRST(\+GS) has epsilon check to see if this is the last symbol of the string\+:
+\begin{DoxyItemize}
+\item If it does, add epsilon to FIRST(\+GS)
+\item If it doesn\textquotesingle{}t, continue to the next symbol.
+\end{DoxyItemize}
+\item If {\ttfamily FIRST(\+S)} does not have epsilon, we are done with {\ttfamily FIRST(\+S)}.
+\end{DoxyItemize}
+\item If {\ttfamily S} is a terminal, check to see if it is epsilon\+:
+\begin{DoxyItemize}
+\item If it is epsilon, check to see if this is the last symbol of the string\+:
+\begin{DoxyItemize}
+\item If it is, add epsilon to FIRST(\+GS).
+\item If it is not, continue to the next symbol.
+\end{DoxyItemize}
+\item If it is not epsilon\+:
+\begin{DoxyItemize}
+\item Add the terminal to FIRST(\+GS) and break.
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}\Hypertarget{classm0st4fa_1_1_grammatical_symbol_string_a0012a7045adccdf1971074cf44aa6f8f}\label{classm0st4fa_1_1_grammatical_symbol_string_a0012a7045adccdf1971074cf44aa6f8f} 
+\index{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}!FIRSTCalculated@{FIRSTCalculated}}
+\index{FIRSTCalculated@{FIRSTCalculated}!m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}}
+\doxysubsubsection{\texorpdfstring{FIRSTCalculated()}{FIRSTCalculated()}}
+{\footnotesize\ttfamily template$<$typename SymbolT $>$ \\
+bool \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{m0st4fa\+::\+Grammatical\+Symbol\+String}}$<$ SymbolT $>$\+::\+FIRSTCalculated (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Returns whether FIRST is already calculated for this string of symbols. 
+\end{DoxyReturn}
+\Hypertarget{classm0st4fa_1_1_grammatical_symbol_string_a333715649c6ecc8a863125f6b7a0f633}\label{classm0st4fa_1_1_grammatical_symbol_string_a333715649c6ecc8a863125f6b7a0f633} 
+\index{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}!getFIRST@{getFIRST}}
+\index{getFIRST@{getFIRST}!m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}}
+\doxysubsubsection{\texorpdfstring{getFIRST()}{getFIRST()}}
+{\footnotesize\ttfamily template$<$typename SymbolT $>$ \\
+const Set\+Type \& \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{m0st4fa\+::\+Grammatical\+Symbol\+String}}$<$ SymbolT $>$\+::get\+FIRST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+Returns FIRST. 
+\end{DoxyReturn}
+\Hypertarget{classm0st4fa_1_1_grammatical_symbol_string_a1e0966290db57f40900acb9c1bd39bd1}\label{classm0st4fa_1_1_grammatical_symbol_string_a1e0966290db57f40900acb9c1bd39bd1} 
+\index{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}!operator std::string@{operator std::string}}
+\index{operator std::string@{operator std::string}!m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}}
+\doxysubsubsection{\texorpdfstring{operator std::string()}{operator std::string()}}
+{\footnotesize\ttfamily template$<$typename SymbolT $>$ \\
+\mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{m0st4fa\+::\+Grammatical\+Symbol\+String}}$<$ SymbolT $>$\+::operator std\+::string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_grammatical_symbol_string_a78e23fcc4c3a30ec262e83af02fec79e}\label{classm0st4fa_1_1_grammatical_symbol_string_a78e23fcc4c3a30ec262e83af02fec79e} 
+\index{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}!pop\_back@{pop\_back}}
+\index{pop\_back@{pop\_back}!m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}}
+\doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}}
+{\footnotesize\ttfamily template$<$typename SymbolT $>$ \\
+void \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{m0st4fa\+::\+Grammatical\+Symbol\+String}}$<$ SymbolT $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_grammatical_symbol_string_ac24ebae3e5d95e2cb637287860a910fa}\label{classm0st4fa_1_1_grammatical_symbol_string_ac24ebae3e5d95e2cb637287860a910fa} 
+\index{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
+{\footnotesize\ttfamily template$<$typename SymbolT $>$ \\
+void \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{m0st4fa\+::\+Grammatical\+Symbol\+String}}$<$ SymbolT $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{const Symbol\+Type \&}]{symbol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classm0st4fa_1_1_grammatical_symbol_string_a3b34ad24bb130bb1c795104fedb17ca4}\label{classm0st4fa_1_1_grammatical_symbol_string_a3b34ad24bb130bb1c795104fedb17ca4} 
+\index{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}!toString@{toString}}
+\index{toString@{toString}!m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily template$<$typename SymbolT $>$ \\
+std\+::string \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{m0st4fa\+::\+Grammatical\+Symbol\+String}}$<$ SymbolT $>$\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classm0st4fa_1_1_grammatical_symbol_string_a49d8be396ba54551813a001c5f62ef2a}\label{classm0st4fa_1_1_grammatical_symbol_string_a49d8be396ba54551813a001c5f62ef2a} 
+\index{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}!symbols@{symbols}}
+\index{symbols@{symbols}!m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$@{m0st4fa::GrammaticalSymbolString$<$ SymbolT $>$}}
+\doxysubsubsection{\texorpdfstring{symbols}{symbols}}
+{\footnotesize\ttfamily template$<$typename SymbolT $>$ \\
+Sym\+Vec\+Type \mbox{\hyperlink{classm0st4fa_1_1_grammatical_symbol_string}{m0st4fa\+::\+Grammatical\+Symbol\+String}}$<$ SymbolT $>$\+::symbols}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_p_production_8h}{PProduction.\+h}}\end{DoxyCompactItemize}
