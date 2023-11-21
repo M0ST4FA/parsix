@@ -21,6 +21,9 @@ protected:
 	using DFAType = m0st4fa::DeterFiniteAutomatan<TranFn>;
 	using Result = m0st4fa::FSMResult;
 
+	using Logger = m0st4fa::Logger;
+	using LoggerInfo = m0st4fa::LoggerInfo;
+
 	template<typename T = FSMTableType>
 	static constexpr void initTranFn_ab(T& fun) {
 		// corresponding regex: /aa(a*ba?)+b(a|b)*/

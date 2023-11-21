@@ -1,0 +1,3 @@
+[submodule "external/lexana"]
+	path = external/lexana
+	url = https://github.com/M0sT4FA/lexana

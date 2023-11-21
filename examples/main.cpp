@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
-#include "../DFA.h"
-#include "../LLParser.hpp"
+#include "fsm/DFA.h"
+#include "parsix/LLParser.h"
 
 
 int main(int argc, char** argv) {

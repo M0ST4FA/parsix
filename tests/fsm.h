@@ -13,7 +13,7 @@ class FSMTests : public testing::Test, public FSMSharedInfo {
 	using Base = FSMSharedInfo;
 
 protected:
-	//using FSMStateType = m0st4fa::FSMStateType;
+	using FSMStateType = m0st4fa::FSMStateType;
 	using FSMStateSetType = m0st4fa::FSMStateSetType;
 	using TableType = m0st4fa::FSMTable;
 	using TranFn = m0st4fa::TransFn<TableType>;
