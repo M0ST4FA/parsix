@@ -4,25 +4,21 @@
 #include <map>
 #include <algorithm>
 
-#include "../DFA.h"
-#include "../LADataStructs.h"
-#include "../LexicalAnalyzer.h"
-#include "../common.h"
-#include "../Logger.h"
+#include "fsm/DFA.h"
+#include "utility/common.h"
+#include "utility/Logger.h"
 #include "universal.h"
+#include <lexana/LADataStructs.h>
 
 struct FSMSharedInfo {
 
 protected:
 
-	using FSMStateSetType = m0st4fa::FSMStateSetType;
-	using FSMTableType = m0st4fa::FSMTable;
-	using TranFn = m0st4fa::TransFn<FSMTableType>;
-	using DFAType = m0st4fa::DeterFiniteAutomatan<TranFn>;
-	using Result = m0st4fa::FSMResult;
-
-	using Logger = m0st4fa::Logger;
-	using LoggerInfo = m0st4fa::LoggerInfo;
+	using FSMStateSetType = m0st4fa::fsm::FSMStateSetType;
+	using FSMTableType = m0st4fa::fsm::FSMTable;
+	using TranFn = m0st4fa::fsm::TransFn<FSMTableType>;
+	using DFAType = m0st4fa::fsm::DeterFiniteAutomaton<TranFn>;
+	using Result = m0st4fa::fsm::FSMResult;
 
 	template<typename T = FSMTableType>
 	static constexpr void initTranFn_ab(T& fun) {
@@ -74,7 +70,7 @@ protected:
 };
 
 struct LASharedInfo {
-	
+
 
 protected:
 
@@ -88,14 +84,14 @@ protected:
 		T_EOF,
 		T_EPSILON
 	};
-	friend std::string toString(const Terminal);
-	friend std::string stringfy(const Terminal term) {
+	friend std::string toString(Terminal);
+	friend std::string stringfy(Terminal term) {
 		return toString(term);
 	}
 
-	using TokenType = m0st4fa::Token<Terminal, std::string_view>;
+	using TokenType = m0st4fa::lexana::Token<Terminal, std::string_view>;
 
-	static TokenType fact_ab(m0st4fa::FSMStateType state, std::string_view lexeme) {
+	static TokenType fact_ab(m0st4fa::fsm::FSMStateType state, std::string_view lexeme) {
 		switch (state) {
 		case 4:
 			return { T_A, lexeme };
@@ -106,7 +102,7 @@ protected:
 		}
 	};
 
-	static TokenType fact_a(m0st4fa::FSMStateType state, std::string_view lexeme) {
+	static TokenType fact_a(m0st4fa::fsm::FSMStateType state, std::string_view lexeme) {
 		switch (state) {
 		case 2:
 			return { T_A, lexeme };
@@ -117,7 +113,7 @@ protected:
 		}
 	};
 
-	static TokenType fact_id_eq_num(m0st4fa::FSMStateType state, std::string_view lexeme) {
+	static TokenType fact_id_eq_num(m0st4fa::fsm::FSMStateType state, std::string_view lexeme) {
 		switch (state) {
 		case 2:
 			return { T_ID, lexeme };

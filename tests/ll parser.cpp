@@ -1,8 +1,8 @@
 #include "gtest/gtest.h"
 #include "ll parser.h"
-#include "../LLParser.hpp"
+#include "parsix/LLParser.h"
 
-using m0st4fa::LexicalAnalyzer;
+using m0st4fa::lexana::LexicalAnalyzer;
 using m0st4fa::LLParser;
 using m0st4fa::ProductionVector;
 
@@ -24,7 +24,7 @@ protected:
 			return TokenType{ Terminal::T_NUM, lexeme };
 
 		default:
-			Logger{}.log(LoggerInfo::FATAL_ERROR, std::format("state {} is not recognized as a final state in function `tokenFactory_id`.", state));
+			m0st4fa::Logger{}.log(m0st4fa::LoggerInfo::FATAL_ERROR, std::format("state {} is not recognized as a final state in function `tokenFactory_id`.", state));
 			std::abort();
 		}
 

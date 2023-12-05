@@ -4,17 +4,17 @@ module;
 #include <iostream>
 #include <map>
 
-#include "FiniteStateMachine.h"
-#include "LexicalAnalyzer.h"
-#include "Parser.h"
-#include "common.h"
+#include "fsm/FiniteStateMachine.h"
+#include "lexana/LexicalAnalyzer.h"
+#include "parsix/Parser.h"
+#include "utility/common.h"
 
 module Tests;
 
-using m0st4fa::Token;
+using m0st4fa::lexana::Token;
 using m0st4fa::ProdElementType;
-using m0st4fa::FSMStateType;
-using m0st4fa::FSMStateSetType;
+using m0st4fa::fsm::FSMStateType;
+using m0st4fa::fsm::FSMStateSetType;
 
 void synDataAct(LLStackType& stack, SynData& data) {
 	
@@ -38,7 +38,7 @@ void actDataAct(LLStackType& stack, ActData& data) {
 	printf("[Action at index: %zu] Assigned data to synthesized record at index: %zu\n\n", currIndex, actIndex);
 }
 
-GrammarType grammer_expression() {
+GrammarType grammar_expression() {
 	using StackElement = m0st4fa::LLStackElement<Symbol, Synthesized, Action>;
 	using Production = m0st4fa::ProductionRecord<Symbol, StackElement>;
 
@@ -233,7 +233,7 @@ void define_table_llparser(m0st4fa::LLParsingTable<GrammarType>& table)
 	using StackElement = m0st4fa::LLStackElement<Symbol, Synthesized, Action>;
 	using Production = m0st4fa::ProductionRecord<Symbol, StackElement>;
 
-	GrammarType grammer = grammer_expression();
+	GrammarType grammer = grammar_expression();
 
 	Production prod;
 	StackElement se_E = { ProdElementType::PET_GRAM_SYMBOL, Symbol {false, {.nonTerminal = _NON_TERMINAL::NT_E}} };

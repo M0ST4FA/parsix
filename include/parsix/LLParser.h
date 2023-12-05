@@ -22,7 +22,7 @@ namespace m0st4fa {
 		using ParserBase = Parser<LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT>;
 		using TokenType = decltype(LexicalAnalyzerT{}.getNextToken());
 
-		// a parsing table entry should contain indecies into this vector of productions
+		// a parsing table entry should contain indices into this vector of productions
 		GrammarT& m_ProdRecords;
 		mutable std::vector<StackElementType> m_Stack;
 		mutable StackElementType m_CurrTopElement;
@@ -54,7 +54,7 @@ namespace m0st4fa {
 				)
 			{
 				if (numOfDetectedErrs == ParserBase::ERR_RECOVERY_LIMIT) {
-					LoggerInfo errInfo = { .level = LOG_LEVEL::LL_ERROR, .info = {.errorType = ERROR_TYPE::ET_ERR_RECOVERY_LIMIT_EXCEEDED } };
+					LoggerInfo errInfo = { .level = LOG_LEVEL::LL_ERROR };
 
 					this->p_Logger.log(errInfo, std::format("Exceeded error recovery limit\nNote: error recovery limit {}", ParserBase::ERR_RECOVERY_LIMIT));
 
@@ -64,7 +64,7 @@ namespace m0st4fa {
 
 			// handle invalid arguments
 			if (errRecovType == ErrorRecoveryType::ERT_NUM) {
-				LoggerInfo info = { .level = LOG_LEVEL::LL_ERROR, .info {.errorType = ERROR_TYPE::ET_INVALID_ARGUMENT} };
+				LoggerInfo info = { .level = LOG_LEVEL::LL_ERROR };
 
 				this->p_Logger.log(info, "[ERR_RECOVERY]: Invalid argument.");
 
@@ -115,9 +115,9 @@ namespace m0st4fa {
 		*/
 		void check_prod_body(const ProductionType&) const;
 		void print_sync_msg(const std::pair<size_t, size_t> pos) const {
-			static constexpr LoggerInfo info = { .level = LOG_LEVEL::LL_INFO, .info = {.noVal = 0} };
+			static constexpr LoggerInfo info = { .level = LOG_LEVEL::LL_INFO };
 
-			std::string msg = std::format("({}, {}) Syncronized successfully. Current input token {}",
+			std::string msg = std::format("({}, {}) Synchronized successfully. Current input token {}",
 				pos.first,
 				pos.second,
 				(std::string)m_CurrInputToken);
@@ -175,7 +175,7 @@ namespace m0st4fa {
 		/** Basic algorithm:
 		* Loop until the stack is empty.
 		* Consider the current symbol on top of the stack and the current input.
-		* Make the parsing descision based on these two tokens.
+		* Make the parsing decision based on these two tokens.
 		* Whenever a symbol is matched, it is popped off the stack.
 		* The purpose is to pop the start symbol off the stack (to match it, leaving the stack empty) and not produce any errors.
 		*/
@@ -192,8 +192,8 @@ namespace m0st4fa {
 				continue;
 
 				/**
-				* When you come to execute the action on a record, recall that the synthesized record is already poped off the stack.
-				* This affects the stack size as well as indecies you use to access other records.
+				* When you come to execute the action on a record, recall that the synthesized record is already popped off the stack.
+				* This affects the stack size as well as indices you use to access other records.
 				*/
 			case ProdElementType::PET_SYNTH_RECORD: {
 				// extract the record
@@ -234,7 +234,7 @@ namespace m0st4fa {
 	void LLParser<GrammarT, LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT>::parse_grammar_symbol(ErrorRecoveryType errRecoveryType) {
 		using StackElement = StackElementType;
 
-		LoggerInfo info{ .level = LOG_LEVEL::LL_INFO, .info {.noVal = 0} };
+		LoggerInfo info{ .level = LOG_LEVEL::LL_INFO };
 		const SymbolT topSymbol = m_CurrTopElement.as.gramSymbol;
 
 		// if the symbol at the top of the stack is a terminal symbol
@@ -265,7 +265,7 @@ namespace m0st4fa {
 			if (tableEntry.isError) {
 				// TODO: do more robust logic based on the boolean returned from the function
 				error_recovery(errRecoveryType);
-				return; // assuming we have syncronized and are ready to continue parsing
+				return; // assuming we have synchronized and are ready to continue parsing
 			}
 
 			// if the table entry is not an error
@@ -303,11 +303,11 @@ namespace m0st4fa {
 		const SymbolT topSymbol = m_CurrTopElement.as.gramSymbol;
 
 		// set up the logger state
-		LoggerInfo info{ .level = LOG_LEVEL::LL_INFO, .info {.noVal = 0} };
-		LoggerInfo errInfo{ .level = LOG_LEVEL::LL_ERROR, .info {.errorType = ERROR_TYPE::ET_UNEXCPECTED_TOKEN } };
+		LoggerInfo info{ .level = LOG_LEVEL::LL_INFO };
+		LoggerInfo errInfo{ .level = LOG_LEVEL::LL_ERROR };
 
 		this->p_Logger.log(errInfo, std::format(
-			"({}, {}) Didn't excpect token {:s}",
+			"({}, {}) Didn't expect token {:s}",
 			this->getLexicalAnalyzer().getLine(),
 			this->getLexicalAnalyzer().getCol(),
 			(std::string)this->m_CurrInputToken
@@ -338,12 +338,12 @@ namespace m0st4fa {
 
 				// if we've reached the end of the input and could not sync with this token
 				if (m_CurrInputToken == TokenType{}) {
-					// pop this element since there is no way to syncronize using it
+					// pop this element since there is no way to synchronize using it
 					m_Stack.pop_back();
 
 					// if the stack is empty, return to the caller
 					if (m_Stack.empty()) {
-						this->p_Logger.log(info, std::format("[ERROR_RECOVERY] ({}, {}) Failed to syncronize: current input: {:s}",
+						this->p_Logger.log(info, std::format("[ERROR_RECOVERY] ({}, {}) Failed to synchronize: current input: {:s}",
 							this->getLexicalAnalyzer().getLine(),
 							this->getLexicalAnalyzer().getCol(),
 							(std::string)currInputToken
@@ -361,7 +361,7 @@ namespace m0st4fa {
 	/** Actions:
 	* If the non-terminal has an epsilon production, make it the default.
 	* If there is a token whose associated table entry has an error action, execute it.
-	* If we find a token that is in the first set of the currunt token, expand by it.
+	* If we find a token that is in the first set of the current token, expand by it.
 	*/
 	template<typename GrammarT, typename LexicalAnalyzerT,
 		typename SymbolT,
@@ -370,7 +370,7 @@ namespace m0st4fa {
 	bool LLParser<GrammarT, LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT>::panic_mode_try_sync_variable(TokenType& currInputToken) {
 		using StackType = StackType<StackElementType>;
 
-		LoggerInfo info{ .level = LOG_LEVEL::LL_INFO, .info {.noVal = 0} };
+		LoggerInfo info{ .level = LOG_LEVEL::LL_INFO };
 
 		// Check for whether the non-terminal has an epsilon production and use it to reduce that non-terminal.
 		LLTableEntry tableEntry = this->p_Table[EXTRACT_VARIABLE(this->m_CurrTopElement)][(size_t)TokenType::EPSILON.name];
@@ -406,7 +406,7 @@ namespace m0st4fa {
 		tableEntry = this->p_Table[EXTRACT_VARIABLE(this->m_CurrTopElement)][(size_t)currInputToken.name];
 
 		/**
-		* Assume the syncronization set of each non-terminal contains the first set of that non-terminal.
+		* Assume the synchronization set of each non-terminal contains the first set of that non-terminal.
 		* For the rest of the tokens, the action to take would be specified in the table entry.
 		*/
 
@@ -419,7 +419,7 @@ namespace m0st4fa {
 			if (tableEntry.action) {
 				auto action = static_cast<bool (*)(StackType, StackElementType, TokenType)>(tableEntry.action);
 
-				// if the action results in a syncronization
+				// if the action results in a synchronization
 				if (action(m_Stack, m_CurrTopElement, currInputToken)) {
 					m_CurrInputToken = this->getLexicalAnalyzer().get_next_token();
 
@@ -429,24 +429,24 @@ namespace m0st4fa {
 				}
 			}
 
-			// if the entry has no action or the action has failed to syncronize
+			// if the entry has no action or the action has failed to synchronize
 
-			// get the next input and try again to syncronize
+			// get the next input and try again to synchronize
 			m_CurrInputToken = this->getLexicalAnalyzer().get_next_token();
 			return false;
 		}
 
-		//---------------------------------------------Syncronized-------------------------------------------
+		//---------------------------------------------Synchronized-------------------------------------------
 		/**
-		* Upon reaching here, this means the parser has synronized with the current token.
+		* Upon reaching here, this means the parser has synchronized with the current token.
 		* Since we've just peaked to see whether we can sync with it or not, now we need to fetch it so that parsing can continue from it.
 		*/
 		m_CurrInputToken = this->getLexicalAnalyzer().get_next_token();
 		print_sync_msg(this->getLexicalAnalyzer().getPosition());
 
 		/**
-		* If the table entry is not an error, then we have syncronized correctly using FIRST set and possibly using FOLLOW set.
-		* Since the state is now syncronized, we have to return to the parser to continue parsing the source.
+		* If the table entry is not an error, then we have synchronized correctly using FIRST set and possibly using FOLLOW set.
+		* Since the state is now synchronized, we have to return to the parser to continue parsing the source.
 		*/
 
 		return true;
@@ -457,7 +457,7 @@ namespace m0st4fa {
 		typename ParsingTableT, typename FSMTableT,
 		typename InputT>
 	void LLParser<GrammarT, LexicalAnalyzerT, SymbolT, ParsingTableT, FSMTableT, InputT>::check_prod_body(const ProductionType& prod) const {
-		LoggerInfo errorInfo{ .level = LOG_LEVEL::LL_ERROR, .info {.errorType = ERROR_TYPE::ET_PROD_BODY_EMPTY } };
+		LoggerInfo errorInfo{ .level = LOG_LEVEL::LL_ERROR };
 
 		const auto& prodBody = prod.prodBody;
 

@@ -3,9 +3,9 @@
 #include <iostream>
 #include <map>
 
-#include "../FiniteStateMachine.h"
-#include "../DFA.h"
-#include "../common.h"
+#include "fsm/FiniteStateMachine.h"
+#include "fsm/DFA.h"
+#include "utility/common.h"
 #include "universal.h"
 
 template<typename FSMType>

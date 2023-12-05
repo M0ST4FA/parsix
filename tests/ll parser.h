@@ -1,12 +1,13 @@
 #pragma once
 
-#include "../PDataStructs.h"
-#include "../LADataStructs.h"
+#include "parsix/PDataStructs.h"
+#include "lexana/LADataStructs.h"
 #include "fsm.h"
+
 
 struct LLParserInfo : public ::testing::Test, public FSMSharedInfo, public LASharedInfo {
 
-	Logger logger;
+	m0st4fa::Logger logger;
 
 	struct SynData {
 		const char* str = "[SynData] Hello world from Synthesized Data";

@@ -4,17 +4,17 @@ module;
 #include <iostream>
 #include <map>
 
-#include "FiniteStateMachine.h"
-#include "LLParser.hpp"
+#include "fsm/FiniteStateMachine.h"
+#include "parsix/LLParser.h"
 
 export module Tests;
 
 // FSM ------------------------------------------------------------
-export using m0st4fa::TransitionFunction;
-export using m0st4fa::DFAType;
-export using m0st4fa::FSMTable;
-export using m0st4fa::FSMStateSetType;
-export using m0st4fa::FSMStateType;
+export using m0st4fa::fsm::TransitionFunction;
+export using m0st4fa::fsm::DFA;
+export using m0st4fa::fsm::FSMTable;
+export using m0st4fa::fsm::FSMStateSetType;
+export using m0st4fa::fsm::FSMStateType;
 
 export template<typename T>
 constexpr void initTranFn_ab(T& fun) {
@@ -138,8 +138,8 @@ export struct ActData {
 };
 export using Synthesized = m0st4fa::LLSynthesizedRecord<SynData>;
 export using Action = m0st4fa::LLActionRecord<ActData>;
-export using TokenType = m0st4fa::Token<_TERMINAL>;
-export using LexicalAnalyzerType = m0st4fa::LexicalAnalyzer<TokenType>;
+export using TokenType = m0st4fa::lexana::Token<_TERMINAL>;
+export using LexicalAnalyzerType = m0st4fa::lexana::LexicalAnalyzer<TokenType>;
 
 export using LLStackElementType = m0st4fa::LLStackElement<Symbol, m0st4fa::LLSynthesizedRecord<SynData>, m0st4fa::LLActionRecord<ActData>>;
 export using LLStackType = m0st4fa::StackType<LLStackElementType>;
@@ -173,7 +173,7 @@ export using LLParserType = m0st4fa::LLParser<GrammarType, LexicalAnalyzerType, 
 // FUNCTION SIGNATURES
 
 // LL PARSER FUNCTIONS
-export GrammarType grammer_expression();
+export GrammarType grammar_expression();
 export void define_table_llparser(m0st4fa::LLParsingTable<GrammarType, _TERMINAL, _NON_TERMINAL>&);
 
 // LR PARSER FUNCTIONS
@@ -181,8 +181,8 @@ export LRGrammarType grammar_expression_LR();
 export void define_table_lrparser(m0st4fa::LRParsingTable<LRGrammarType>&);
 
 // FSM FOR PARSERS
-export void initFSMTable_parser(m0st4fa::FSMTable&);
-export m0st4fa::Token<_TERMINAL> token_fact_parser(FSMStateType, std::string_view);
+export void initFSMTable_parser(m0st4fa::fsm::FSMTable&);
+export m0st4fa::lexana::Token<_TERMINAL> token_fact_parser(FSMStateType, std::string_view);
 
 // ACTIONS
 export void synDataAct(LLStackType&, SynData&);
