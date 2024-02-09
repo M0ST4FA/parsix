@@ -6,22 +6,24 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'parsix'
+project = '@PROJECT_NAME@'
 copyright = '2023, M0sT4fa'
 author = 'M0sT4fa'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = ['breathe', 'sphinx.ext.graphviz', 'sphinx.ext.autosectionlabel']
 
+breathe_projects = {"@PROJECT_NAME@": "@DOXYGEN_OUTPUT_DIRECTORY@xml"}
+breathe_default_project = '@PROJECT_NAME@'
 templates_path = ['_templates']
-exclude_patterns = []
-
-
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+autosectionlabel_prefix_document = True
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
-html_static_path = ['_static']
+# html_theme = 'sphinx_rtd_theme'
+html_theme = 'furo'
+html_static_path = ["_static"]

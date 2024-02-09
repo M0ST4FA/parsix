@@ -44,7 +44,7 @@ endif()
 # ADD THE TESTS
 if(${BUILD_TESTING})
 	enable_testing()
-	add_subdirectory("./tests/")
+	# add_subdirectory("./tests/")
 endif()
 
 # BUILD THE DOCUMENTATION

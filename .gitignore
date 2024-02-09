@@ -1,0 +1,5 @@
+packages*
+*.ps1
+READ.md
+docs/Sphinx/source/conf.py
+docs/Sphinx/build
