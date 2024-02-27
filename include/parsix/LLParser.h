@@ -6,7 +6,7 @@
 // local includes
 #include "parsix/Parser.h"
 
-namespace m0st4fa {
+namespace m0st4fa::parsix {
 	template <typename GrammarT,
 		typename LexicalAnalyzerT,
 		typename SymbolT,

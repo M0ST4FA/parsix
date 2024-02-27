@@ -1,7 +1,12 @@
 #include "parsix/enum.h"
 
-namespace m0st4fa {
+namespace m0st4fa::parsix {
 
+	/**
+	 * @brief Converts an ErrorRecoveryType enumerator to a string.
+	 * @param[in] type An object of ErrorRecoveryType type.
+	 * @returns A string representation of `type`.
+	 */
 	std::string toString(ErrorRecoveryType type) {
 		static constexpr const char* const names[] = {
 			"NONE",
@@ -16,10 +21,22 @@ namespace m0st4fa {
 
 		return name;
 	}
+
+	/**
+	 * @brief Prints an ErrorRecoveryType enumerator to the standard output stream.
+	 * @param[in] os The output stream to which the object is printed.
+	 * @param[in] type The ErrorRecoveryType object to be printed.
+	 * @return The output stream to which `type` was printed.
+	 */
 	std::ostream& operator<<(std::ostream& os, ErrorRecoveryType type) {
 		return os << toString(type);
 	};
 
+	/**
+	 * @brief Converts a ProdElementType enumerator to a string.
+	 * @param[in] type An object of ProdElementType type.
+	 * @returns A string representation of `type`.
+	 */
 	std::string toString(ProdElementType type) {
 		static_assert((size_t)ProdElementType::PET_COUNT == 3);
 		static constexpr const char* const names[] = {
@@ -33,6 +50,13 @@ namespace m0st4fa {
 
 		return name;
 	}
+
+	/**
+	 * @brief Prints an ProdElementType enumerator to the standard output stream.
+	 * @param[in] os The output stream to which the object is printed.
+	 * @param[in] type The ProdElementType object to be printed.
+	 * @return The output stream to which `type` was printed.
+	 */
 	std::ostream& operator<<(std::ostream& os, ProdElementType type) {
 		return os << toString(type);
 	};

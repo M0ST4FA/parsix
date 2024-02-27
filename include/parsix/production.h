@@ -11,7 +11,7 @@
 #include "utility/Logger.h"
 #include "utility/common.h"
 
-namespace m0st4fa {
+namespace m0st4fa::parsix {
 
 	template <typename SymbolT>
 	class GrammaticalSymbolString;
@@ -444,7 +444,7 @@ namespace m0st4fa {
 
 			// handle the non-presence of the FIRST set for this production vector
 			this->m_Logger.log(LoggerInfo::ERR_MISSING_VAL, "The FIRST set of the non-terminals of this production vector is yet to be calculated.");
-			throw m0st4fa::MissingValueException( "The FIRST set of the non-terminals of this production vector is yet to be calculated." );
+			throw MissingValueException( "The FIRST set of the non-terminals of this production vector is yet to be calculated." );
 		};
 
 		/**
@@ -496,7 +496,7 @@ namespace m0st4fa {
 	using ProdVec = ProductionVector<ProductionT>;
 }
 
-namespace m0st4fa {
+namespace m0st4fa::parsix {
 
 	/** 1st Algorithm, assuming non-terminal `E` and a boolean isCalculated
 	* If isCaculated, return; else proceed.

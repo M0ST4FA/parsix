@@ -6,10 +6,16 @@
 Welcome to parsix's Documentation!
 ==================================
 
+API
+---
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
+   API/string
+   API/enum
+   API/exception
+   API/item
 
 
 Indices and tables

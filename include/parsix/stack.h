@@ -11,7 +11,7 @@
 #define EXTRACT_VARIABLE(stackElement) (size_t)stackElement.as.gramSymbol.as.nonTerminal
 
 // SHARED (LL AND LR)
-namespace m0st4fa {
+namespace m0st4fa::parsix {
 
 	template <typename StackElementT>
 	using StackType = std::vector<StackElementT>;
@@ -19,7 +19,7 @@ namespace m0st4fa {
 }
 
 // LL PARSING
-namespace m0st4fa {
+namespace m0st4fa::parsix {
 
 	// FORWARD DECLARATIONS
 	template <typename DataT>
@@ -221,7 +221,7 @@ namespace m0st4fa {
 }
 
 // LR PARSING 
-namespace m0st4fa {
+namespace m0st4fa::parsix {
 
 	template<typename DataT, typename TokenT>
 	struct LRState;

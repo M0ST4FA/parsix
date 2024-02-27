@@ -75,7 +75,7 @@
       },
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "BUILD_DOCUMENTATION": false,
+        "BUILD_DOCUMENTATION": true,
         "BUILD_TESTING": false,
         "BUILD_EXAMPLES": true
       }
