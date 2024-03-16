@@ -12,6 +12,9 @@ API
 .. toctree::
    :maxdepth: 2
 
+   API/parser
+   API/llparser
+   API/lrparser
    API/string
    API/enum
    API/exception
