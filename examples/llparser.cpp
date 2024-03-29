@@ -85,5 +85,4 @@ int main(int argc, char** argv) {
 	DFAType automaton{ {2, 4, 9}, transFunction };
 	// here, the set of final states is {2} and `transFunction` is our transition function.
 
-
 }

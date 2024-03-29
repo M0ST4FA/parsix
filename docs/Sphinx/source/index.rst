@@ -19,6 +19,8 @@ API
    API/enum
    API/exception
    API/item
+   API/symbols
+   API/production
 
 
 Indices and tables
