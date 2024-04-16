@@ -15,7 +15,14 @@ namespace m0st4fa::parsix {
 
 	template <typename SymbolT, typename ProductionElementT>
 	class ProductionRecord {
+		/**
+		 * @brief The type of the parsing stack.
+		 */
 		using StackType = StackType<ProductionElementT>;
+
+		/**
+		 * @brief The type of a string of grammatical symbols (symbol string.)
+		 */
 		using SymbolStringType = GrammaticalSymbolString<SymbolT>;
 
 		/**
