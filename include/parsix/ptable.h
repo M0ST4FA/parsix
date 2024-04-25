@@ -6,7 +6,7 @@
 #include "parsix/production.h"
 
 // LL PARSER
-namespace m0st4fa {
+namespace m0st4fa::parsix {
 
 	/**
 	 * @brief Represents a table entry in an LL parsing table.
@@ -231,7 +231,7 @@ namespace m0st4fa {
 }
 
 // LR PARSER
-namespace m0st4fa {
+namespace m0st4fa::parsix {
 
 	// LR TABLE ENTRY
 
@@ -493,7 +493,7 @@ namespace m0st4fa {
 		/**
 		 * @brief Gets the Action entry at this `state` and this `terminal`.
 		 * @param[in] state The state used as the first index of the table.
-		 * @param[in] symbol The symbol used as the second index of the table.
+		 * @param[in] terminal The terminal used as the second index of the table.
 		 * @returns The Action entry for this `state` and this `terminal`.
 		 */
 		LRTableEntry& atAction(size_t state, TerminalType terminal) noexcept(true) {
@@ -530,7 +530,7 @@ namespace m0st4fa {
 		/**
 		 * @brief Gets the GOTO entry at this `state` and this `terminal`.
 		 * @param[in] state The state used as the first index of the table.
-		 * @param[in] symbol The symbol used as the second index of the table.
+		 * @param[in] nonTerminal The non-terminal used as the second index of the table.
 		 * @returns The GOTO entry for this `state` and this `terminal`.
 		 */
 		LRTableEntry& atGoto(size_t state, VariableType nonTerminal) noexcept(true) {
@@ -567,7 +567,6 @@ namespace m0st4fa {
 		/**
 		 * @brief Reserves rows in both the Action and GOTO tables. It simply resizes (using the `resize` method of vectors) the tables.
 		 * @param[in] newRowNum The new size of the rows of both tables.
-		 * @returns void.
 		 */
 		void reserveRows(size_t newRowNum) noexcept(true) {
 			this->actionTable.resize(newRowNum);

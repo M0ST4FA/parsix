@@ -1,5 +1,5 @@
-Exception Documentation
-=======================
+Exception
+=========
 
 .. doxygenstruct:: m0st4fa::parsix::MissingValueException
   :members:

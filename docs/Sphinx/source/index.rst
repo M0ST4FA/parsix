@@ -13,6 +13,7 @@ API
    :maxdepth: 2
 
    API/parser
+   API/table
    API/llparser
    API/lrparser
    API/string
@@ -21,6 +22,7 @@ API
    API/item
    API/symbols
    API/production
+   API/stack
 
 
 Indices and tables

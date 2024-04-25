@@ -1,5 +1,5 @@
-Grammatical Symbols and Symbol Strings
-======================================
+Grammatical Symbols & Symbol Strings
+====================================
 
 .. doxygenstruct:: m0st4fa::parsix::GrammaticalSymbol
   :members:

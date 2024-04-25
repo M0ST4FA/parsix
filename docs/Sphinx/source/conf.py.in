@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = '@PROJECT_NAME@'
-copyright = '2023, M0sT4fa'
+copyright = '2024, M0sT4fa'
 author = 'M0sT4fa'
 
 # -- General configuration ---------------------------------------------------

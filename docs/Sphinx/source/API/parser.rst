@@ -1,5 +1,5 @@
-Parser Documentation
-====================
+Parser
+======
 
 .. doxygenclass:: m0st4fa::parsix::Parser
   :members:

@@ -1,5 +1,5 @@
-Item & ItemSet Documentation
-============================
+Item & ItemSet
+==============
 
 .. .. doxygendefine:: m0st4fa::parsix::LookAheadSet
 

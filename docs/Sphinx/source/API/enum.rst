@@ -1,5 +1,5 @@
-Enum Documentation
-==================
+Enum
+====
 
 .. doxygenenum:: ErrorRecoveryType
 

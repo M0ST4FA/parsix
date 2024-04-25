@@ -590,7 +590,6 @@ namespace m0st4fa::parsix {
 
 		/**
 		 * @brief Appends a symbol to the end of the string.
-		 * @returns void.
 		 */
 		void push_back(const SymbolType& symbol) {
 			this->symbols.push_back(symbol);
@@ -598,7 +597,6 @@ namespace m0st4fa::parsix {
 		
 		/**
 		 * @brief Pops a symbol from the end of the string.
-		 * @returns void.
 		 */
 		void pop_back() {
 			this->symbols.pop_back();
@@ -755,8 +753,6 @@ namespace m0st4fa::parsix {
 	     * @brief Appends a new production rule to the end of the production vector.
 	     *
 	     * @param[in] prod The production rule to be added.
-	     * 
-	     * @returns void.
 	     */
 		void pushProduction(const ProductionT& prod) { this->p_Vector.push_back(prod); }
 
@@ -802,7 +798,6 @@ namespace m0st4fa::parsix {
 
 		/**
 		 * @brief Clears (eliminates all of the elements of) the production vector.
-		 * @returns void.
 		 */
 		void clear() { this->p_Vector.clear(); this->FIRST.clear(); this->FOLLOW.clear(); }
 
@@ -815,15 +810,12 @@ namespace m0st4fa::parsix {
 		/**
 		 * @brief Appends a new production rule to the end of the production vector. This is identical to pushProduction.
 		 *
-		 * @param[in] prod The production rule to be added.
-		 *
-		 * @returns void.
+		 * @param[in] production The production rule to be added.
 		 */
 		void push_back(const ProductionT& production) { p_Vector.push_back(production); }
 
 		/**
 		 * @brief Removes the last element from the production vector.
-		 * @returns void.
 		 */
 		void pop_back() { p_Vector.pop_back(); }
 
@@ -1389,7 +1381,7 @@ namespace m0st4fa::parsix {
 		*			- If `S` is a non-terminal call `getFOLLOWOfNonTerminal`.
 		**/
 
-		/**
+		/*
 		## Algorithm for getFOLLOWOfNonTerminal():
 		#### input:
 		*- Non-terminal `N`.

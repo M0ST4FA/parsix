@@ -190,8 +190,6 @@ namespace m0st4fa::parsix {
 		 * @param pos The position in the input stream at which to report. It is an ordered pair of line number and character number.
 		 *
 		 * This function prints a synchronization message. It formats a message with the current position in the input stream and the current input token, and logs the message at the info level.
-		 *
-		 * @return void
 		 */
 		void print_sync_msg(const std::pair<size_t, size_t> pos) const {
 			static constexpr LoggerInfo info = { .level = LOG_LEVEL::LL_INFO };

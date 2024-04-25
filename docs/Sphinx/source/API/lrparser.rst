@@ -1,5 +1,5 @@
-LR Parser Documentation
-=======================
+LR Parser
+=========
 
 .. doxygenclass:: m0st4fa::parsix::LRParser
   :members:
